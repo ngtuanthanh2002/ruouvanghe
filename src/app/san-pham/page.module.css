@@ -1,0 +1,137 @@
+.catalogHeader {
+  padding: 1.5rem 0 2rem;
+}
+
+.filtersBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .filtersBar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterBtn {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.filterBtn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--color-gold-bright);
+}
+
+.filterBtn.active {
+  background: var(--color-wine-primary);
+  border-color: var(--color-gold);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.originFilters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.originLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.originLink {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+
+.originLink:hover {
+  color: var(--color-gold);
+}
+
+.activeOrigin {
+  border-color: var(--border-gold);
+  color: var(--color-gold-light);
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.wineGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.emptyState {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--bg-surface-card);
+  border: 1px dashed var(--border-gold);
+  border-radius: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+}
+
+.seoContentBlock {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+}
+
+.seoContentBlock h2 {
+  font-size: 1.5rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1rem;
+}
+
+.seoContentBlock p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.seoContentBlock ul {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.seoContentBlock li strong {
+  color: var(--color-gold-bright);
+}
+
+.seoContentBlock li em {
+  color: var(--text-primary);
+  font-style: normal;
+}

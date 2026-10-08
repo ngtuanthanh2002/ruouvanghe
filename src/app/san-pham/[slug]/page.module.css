@@ -1,0 +1,346 @@
+.productDetail {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 900px) {
+  .productDetail {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.visualCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bottleVisualBox {
+  position: relative;
+  background: radial-gradient(circle at center, #2A1017 0%, #12090D 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: linear-gradient(135deg, #E5C158, #B8860B);
+  color: #140C0F;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.auraGlow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent, #D4AF37) 0%, transparent 70%);
+  opacity: 0.28;
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.bottleBig {
+  color: var(--color-gold-light);
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8));
+  transition: transform var(--transition-smooth);
+}
+
+.bottleVisualBox:hover .bottleBig {
+  transform: scale(1.05);
+}
+
+.criticBadgeBig {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(18, 10, 14, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-gold-bright);
+  font-size: 0.9rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.guaranteeBox {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.guaranteeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.goldIcon {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.topMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.originTag,
+.typeTag,
+.vintageTag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-gold-bright);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.title {
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1.25rem;
+}
+
+.ratingBar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+}
+
+.ratingNumber {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.reviewText {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.priceContainer {
+  background: rgba(36, 14, 21, 0.5);
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.mainPrice {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-heading, serif);
+  color: var(--color-gold-bright);
+}
+
+.strikePrice {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.vatNote {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.specSection {
+  margin-bottom: 2rem;
+}
+
+.specHeading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  margin-bottom: 1rem;
+}
+
+.specGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem 1.5rem;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.specLabel {
+  color: var(--text-muted);
+}
+
+.specValue {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.specValueInStock {
+  color: #4ADE80;
+  font-weight: 600;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 500px) {
+  .actionButtons {
+    flex-direction: column;
+  }
+}
+
+/* Tasting notes */
+.tastingNotesSection {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.tastingMainTitle {
+  font-size: 1.65rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-gold-light);
+  margin-bottom: 2.5rem;
+}
+
+.tastingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.tastingCard {
+  background: rgba(14, 9, 12, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+}
+
+.tastingIcon {
+  font-size: 2rem;
+  margin-bottom: 0.85rem;
+}
+
+.tastingCard h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.tastingCard p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.winerySection {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 4rem;
+}
+
+.winerySection h2 {
+  font-size: 1.45rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1rem;
+}
+
+.winerySection p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.relatedSection h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.75rem;
+  color: var(--color-gold-light);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}

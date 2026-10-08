@@ -1,0 +1,89 @@
+.header {
+  padding: 1.5rem 0 2rem;
+}
+
+.articlesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.articleCard {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  transition: all var(--transition-smooth);
+}
+
+.articleCard:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.categoryBadge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  letter-spacing: 0.08em;
+}
+
+.readTime {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.articleTitle {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.85rem;
+}
+
+.articleTitle a {
+  color: var(--text-primary);
+}
+
+.articleTitle a:hover {
+  color: var(--color-gold-bright);
+}
+
+.excerpt {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.authorBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+}
+
+.authorRole {
+  color: var(--text-muted);
+}
+
+.readBtn {
+  font-weight: 600;
+  color: var(--color-gold-bright);
+}
+
+.readBtn:hover {
+  color: #FFFFFF;
+}
