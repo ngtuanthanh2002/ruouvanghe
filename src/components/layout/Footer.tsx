@@ -166,7 +166,7 @@ export default function Footer() {
 
         {/* Bottom Copyright */}
         <div className={styles.bottomBar}>
-          <p>© {new Date().getFullYear()} {siteConfig.publisher}. Mã số thuế: 0108899888. Mọi quyền được bảo lưu.</p>
+          <p>© 2026 {siteConfig.publisher}. Mã số thuế: 0108899888. Mọi quyền được bảo lưu.</p>
           <p className={styles.bottomDisclaimer}>
             Website tuân thủ tiêu chuẩn SEO Quốc Tế, Semantic Schema.org và Core Web Vitals tối ưu bởi Next.js.
           </p>

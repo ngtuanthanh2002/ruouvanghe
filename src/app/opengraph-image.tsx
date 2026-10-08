@@ -118,13 +118,13 @@ export default async function OGImage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#F3E5AB" }}>
-            ✓ 100% Chính Hãng Đầy Đủ CO/CQ
+            • 100% Chính Hãng Đầy Đủ CO/CQ
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#F3E5AB" }}>
-            ✓ Hầm Bảo Quản Tiêu Chuẩn 16°C
+            • Hầm Bảo Quản Tiêu Chuẩn 16°C
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#F3E5AB" }}>
-            ✓ Giao Hỏa Tốc 2H Toàn Quốc
+            • Giao Hỏa Tốc 2H Toàn Quốc
           </div>
         </div>
       </div>

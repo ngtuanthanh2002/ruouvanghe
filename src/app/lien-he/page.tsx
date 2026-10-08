@@ -4,7 +4,8 @@ import styles from "./page.module.css";
 import { siteConfig } from "@/lib/site-config";
 import Breadcrumb from "@/components/seo/Breadcrumb";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { MapPinIcon, PhoneIcon, WineGlassIcon } from "@/components/ui/Icons";
+import { MapPinIcon, PhoneIcon } from "@/components/ui/Icons";
+import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
   title: "Liên Hệ Hệ Thống Hầm Rượu & Showroom Rượu Vang Hè",
@@ -78,68 +79,7 @@ export default function ContactPage() {
 
         {/* Contact Inquiry Form */}
         <div className={styles.formCol}>
-          <div className={styles.formCard}>
-            <div className={styles.formHeader}>
-              <WineGlassIcon size={32} className={styles.formLogoIcon} />
-              <h2 className={styles.formTitle}>Gửi Yêu Cầu Tư Vấn Sommelier</h2>
-              <p className={styles.formSubtitle}>
-                Vui lòng để lại thông tin, chuyên gia của chúng tôi sẽ liên hệ lại trong vòng 15 phút.
-              </p>
-            </div>
-
-            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-              <div className={styles.formGroup}>
-                <label htmlFor="fullName">Họ và tên của quý khách *</label>
-                <input
-                  id="fullName"
-                  type="text"
-                  placeholder="Ví dụ: Nguyễn Văn An"
-                  required
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="phone">Số điện thoại liên hệ *</label>
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="Ví dụ: 0988 123 456"
-                  required
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="interest">Dòng sản phẩm quý khách quan tâm</label>
-                <select id="interest" className={styles.select}>
-                  <option value="vang-do">Rượu vang đỏ (Ý, Pháp, Chile)</option>
-                  <option value="vang-trang">Rượu vang trắng & Hải sản</option>
-                  <option value="champagne">Champagne & Vang nổ khai tiệc</option>
-                  <option value="hop-qua">Hộp quà tết & Quà tặng doanh nghiệp</option>
-                  <option value="khac">Tư vấn chọn vang cho tiệc cưới / sự kiện</option>
-                </select>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="message">Ghi chú thêm (ngân sách, số lượng...)</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  placeholder="Quý khách cần tư vấn rượu tầm giá bao nhiêu hoặc số lượng bao nhiêu chai..."
-                  className={styles.textarea}
-                />
-              </div>
-
-              <button type="submit" className="btn-gold" style={{ width: "100%", padding: "1rem" }}>
-                Gửi Yêu Cầu Tư Vấn Ngay
-              </button>
-
-              <p className={styles.privacyNote}>
-                🔒 Thông tin của quý khách được bảo mật tuyệt đối theo chính sách bảo mật của Rượu Vang Hè.
-              </p>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </div>

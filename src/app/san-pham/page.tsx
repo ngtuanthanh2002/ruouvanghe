@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import { siteConfig } from "@/lib/site-config";
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function WineCatalogPage({
+async function WineCatalogList({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string; origin?: string; search?: string }>;
@@ -79,18 +79,8 @@ export default async function WineCatalogPage({
   };
 
   return (
-    <div className="container" style={{ paddingBottom: "5rem" }}>
+    <>
       <JsonLd data={itemListSchema} />
-
-      <Breadcrumb items={[{ name: "Bộ sưu tập rượu vang", item: "/san-pham" }]} />
-
-      <header className={styles.catalogHeader}>
-        <SectionHeading
-          badge="BỘ SƯU TẬP 2026"
-          title="Tuyển Tập Rượu Vang Thượng Hạng Nhập Khẩu"
-          description="Khám phá các dòng vang danh tiếng được tuyển chọn kỹ lưỡng bởi chuyên gia Sommelier, lưu trữ trong điều kiện hầm tiêu chuẩn 16°C."
-        />
-      </header>
 
       {/* Filter Tabs */}
       <div className={styles.filtersBar}>
@@ -165,6 +155,36 @@ export default async function WineCatalogPage({
           </Link>
         </div>
       )}
+    </>
+  );
+}
+
+export default function WineCatalogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; origin?: string; search?: string }>;
+}) {
+  return (
+    <div className="container" style={{ paddingBottom: "5rem" }}>
+      <Breadcrumb items={[{ name: "Bộ sưu tập rượu vang", item: "/san-pham" }]} />
+
+      <header className={styles.catalogHeader}>
+        <SectionHeading
+          badge="BỘ SƯU TẬP 2026"
+          title="Tuyển Tập Rượu Vang Thượng Hạng Nhập Khẩu"
+          description="Khám phá các dòng vang danh tiếng được tuyển chọn kỹ lưỡng bởi chuyên gia Sommelier, lưu trữ trong điều kiện hầm tiêu chuẩn 16°C."
+        />
+      </header>
+
+      <Suspense
+        fallback={
+          <div style={{ textAlign: "center", padding: "3rem", color: "var(--color-gold-light)" }}>
+            Đang tải danh mục rượu vang...
+          </div>
+        }
+      >
+        <WineCatalogList searchParams={searchParams} />
+      </Suspense>
 
       {/* Bottom SEO Content Section for Keyword Authority */}
       <section className={styles.seoContentBlock}>

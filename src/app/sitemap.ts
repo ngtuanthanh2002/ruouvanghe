@@ -5,7 +5,7 @@ import { WINE_ARTICLES } from "@/lib/article-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
-  const currentDate = new Date();
+  const currentDate = new Date("2026-03-25T00:00:00.000Z");
 
   // Static core routes
   const staticRoutes: MetadataRoute.Sitemap = [
