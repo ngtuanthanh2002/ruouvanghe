@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "Rượu Vang Hè - Đẳng Cấp Rượu Vang Nhập Khẩu Chính Hãng";
 export const size = {
   width: 1200,

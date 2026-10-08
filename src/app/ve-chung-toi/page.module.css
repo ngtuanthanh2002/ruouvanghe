@@ -1,0 +1,129 @@
+.header {
+  padding: 1.5rem 0 2rem;
+}
+
+.storySection {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 600px) {
+  .storySection {
+    padding: 2rem 1.25rem;
+  }
+}
+
+.storyContent h2 {
+  font-size: 1.85rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1.25rem;
+}
+
+.storyContent p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.storyContent strong {
+  color: var(--color-gold-bright);
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.highlightCard {
+  background: rgba(14, 9, 12, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.iconGold {
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+
+.highlightCard h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.highlightCard p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.valuesSection {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.valuesSection h2 {
+  font-size: 1.65rem;
+  color: var(--color-gold-light);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.valuesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.valueRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.valueRow strong {
+  color: var(--text-primary);
+}
+
+.aboutCta {
+  text-align: center;
+  background: radial-gradient(circle, #2A0910 0%, #12070A 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 3.5rem 2rem;
+}
+
+.aboutCta h2 {
+  font-size: 1.85rem;
+  color: var(--color-gold-bright);
+  margin-bottom: 1rem;
+}
+
+.aboutCta p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.aboutCtaBtns {
+  display: flex;
+  justify-content: center;
+}
