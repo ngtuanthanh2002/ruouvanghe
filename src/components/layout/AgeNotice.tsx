@@ -1,29 +1,31 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useSyncExternalStore } from "react";
 import styles from "./AgeNotice.module.css";
 import { ShieldCheckIcon } from "../ui/Icons";
 
-export default function AgeNotice() {
-  const [show, setShow] = useState(false);
+const subscribe = (callback: () => void) => {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+};
 
-  useEffect(() => {
-    const verified = localStorage.getItem("ruouvanghe_age_verified");
-    if (!verified) {
-      setShow(true);
-    }
-  }, []);
+export default function AgeNotice() {
+  const isVerified = useSyncExternalStore(
+    subscribe,
+    () => localStorage.getItem("ruouvanghe_age_verified") === "true",
+    () => true // SSR server snapshot defaults to true to avoid hydration mismatch
+  );
 
   const handleConfirm = () => {
     localStorage.setItem("ruouvanghe_age_verified", "true");
-    setShow(false);
+    window.dispatchEvent(new Event("storage"));
   };
 
   const handleDecline = () => {
     window.location.href = "https://www.google.com";
   };
 
-  if (!show) return null;
+  if (isVerified) return null;
 
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="age-title">

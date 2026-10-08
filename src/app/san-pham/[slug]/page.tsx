@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { siteConfig } from "@/lib/site-config";
 import { WINE_PRODUCTS } from "@/lib/wine-data";
@@ -11,7 +10,6 @@ import { generateProductSchema } from "@/lib/seo-helpers";
 import WineCard from "@/components/ui/WineCard";
 import {
   AwardIcon,
-  CheckCircleIcon,
   PhoneIcon,
   ShieldCheckIcon,
   StarIcon,
