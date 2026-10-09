@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Be_Vietnam_Pro } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
@@ -11,15 +11,14 @@ import {
   generateWebSiteSchema,
 } from "@/lib/seo-helpers";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const beVietnam = Be_Vietnam_Pro({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
@@ -101,6 +100,8 @@ export const metadata: Metadata = {
   classification: "Wine Bar & Curated Wine Cellar",
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -110,7 +111,7 @@ export default function RootLayout({
   const webSiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
+    <html lang="vi" className={`${playfair.variable} ${plusJakarta.variable}`}>
       <head>
         <link rel="icon" href="/Logo_VH.png" type="image/png" />
         <link rel="apple-touch-icon" href="/Logo_VH.png" />
@@ -118,15 +119,17 @@ export default function RootLayout({
         <JsonLd data={webSiteSchema} />
       </head>
       <body>
-        <a href="#main-content" className="skip-to-content">
-          Chuyển đến nội dung chính
-        </a>
-        <Header />
-        <main id="main-content" style={{ flex: 1, minHeight: "60vh" }}>
-          {children}
-        </main>
-        <Footer />
-        <AgeNotice />
+        <LanguageProvider>
+          <a href="#main-content" className="skip-to-content">
+            Chuyển đến nội dung chính
+          </a>
+          <Header />
+          <main id="main-content" style={{ flex: 1, minHeight: "60vh" }}>
+            {children}
+          </main>
+          <Footer />
+          <AgeNotice />
+        </LanguageProvider>
       </body>
     </html>
   );

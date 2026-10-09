@@ -34,6 +34,7 @@ export const siteConfig = {
     zalo: "https://zalo.me/0988123456",
     facebook: "https://facebook.com/vanghe.thewinecorner",
     instagram: "https://www.instagram.com/vanghe.thewinecorner/",
+    menuUrl: "https://drive.google.com/drive/mobile/folders/1OSyZy0XzsEAoZuMRYNFzVkOgqW_nIOYk",
   },
   primaryLocation: {
     name: "Vanghé — The Wine Corner",

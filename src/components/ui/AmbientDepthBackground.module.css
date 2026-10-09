@@ -1,0 +1,314 @@
+/* ========================================================
+   AMBIENT DEPTH BACKGROUND — CONTINUOUS BOBBING SYMBOLS
+   Hiệu ứng chiều sâu đa tầng với biểu tượng nhấp nhô liên tục
+   (Ly vang pha lê, sao kim 4 cánh, giọt rượu vang, vòng hào quang)
+======================================================== */
+
+.ambientLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Individual Bobbing Items */
+.bobItem {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ----------------------------------------------------
+   THEMES: DARK / LIGHT / ESPRESSO
+---------------------------------------------------- */
+.themeDark {
+  color: #f5c278;
+}
+
+.themeDark .symbolWineGlass,
+.themeDark .symbolCoupe,
+.themeDark .symbolDrop,
+.themeDark .symbolRing {
+  color: #ffd796;
+}
+
+.themeDark .symbolSparkle {
+  color: #fffae8;
+}
+
+.themeLight {
+  color: #b8782a;
+}
+
+.themeLight .symbolWineGlass,
+.themeLight .symbolCoupe,
+.themeLight .symbolDrop,
+.themeLight .symbolRing {
+  color: #b8782a;
+}
+
+.themeLight .symbolSparkle {
+  color: #9c6018;
+}
+
+.themeEspresso {
+  color: #f7caa0;
+}
+
+.themeEspresso .symbolWineGlass,
+.themeEspresso .symbolCoupe,
+.themeEspresso .symbolDrop,
+.themeEspresso .symbolRing {
+  color: #fce2c2;
+}
+
+.themeEspresso .symbolSparkle {
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------
+   DEPTH LAYERS (CHIỀU SÂU ĐA TẦNG)
+---------------------------------------------------- */
+/* Far plane: deep in the background, smaller, subtle blur */
+.depthFar {
+  opacity: 0.38;
+  filter: blur(1px);
+}
+
+.themeLight .depthFar {
+  opacity: 0.28;
+}
+
+/* Mid plane: clearly visible, sharp, gentle ambient glow */
+.depthMid {
+  opacity: 0.72;
+  filter: drop-shadow(0 0 8px rgba(217, 154, 69, 0.45));
+}
+
+.themeLight .depthMid {
+  opacity: 0.65;
+  filter: drop-shadow(0 0 6px rgba(184, 120, 42, 0.3));
+}
+
+.themeEspresso .depthMid {
+  opacity: 0.78;
+  filter: drop-shadow(0 0 10px rgba(247, 202, 160, 0.5));
+}
+
+/* Near plane: prominent, radiant, dynamic presence */
+.depthNear {
+  opacity: 0.95;
+  filter: drop-shadow(0 0 14px rgba(245, 194, 120, 0.75));
+}
+
+.themeLight .depthNear {
+  opacity: 0.88;
+  filter: drop-shadow(0 0 10px rgba(184, 120, 42, 0.4));
+}
+
+.themeEspresso .depthNear {
+  opacity: 0.98;
+  filter: drop-shadow(0 0 16px rgba(255, 230, 200, 0.8));
+}
+
+/* ----------------------------------------------------
+   CONTINUOUS BOBBING KEYFRAME ANIMATIONS (NHẤP NHÔ LIÊN TỤC)
+   Varied paths, speeds, and rotations prevent robotic movement
+---------------------------------------------------- */
+.animBob1 {
+  animation: bobMotion1 6.8s ease-in-out infinite alternate;
+}
+
+.animBob2 {
+  animation: bobMotion2 8.4s ease-in-out infinite alternate;
+}
+
+.animBob3 {
+  animation: bobMotion3 10.2s ease-in-out infinite alternate;
+}
+
+.animBob4 {
+  animation: bobMotion4 7.5s ease-in-out infinite alternate;
+}
+
+.animBob5 {
+  animation: bobMotion5 11.5s ease-in-out infinite alternate;
+}
+
+.animSparkle {
+  animation: sparkleTwinkle 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes bobMotion1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(8px, -24px, 0) rotate(6deg);
+  }
+  100% {
+    transform: translate3d(-4px, 10px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes bobMotion2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-10px, 26px, 0) rotate(-7deg);
+  }
+  100% {
+    transform: translate3d(6px, -12px, 0) rotate(4deg);
+  }
+}
+
+@keyframes bobMotion3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(12px, -32px, 0) scale(1.08) rotate(-5deg);
+  }
+  100% {
+    transform: translate3d(-8px, 14px, 0) scale(0.96) rotate(3deg);
+  }
+}
+
+@keyframes bobMotion4 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-8px, -22px, 0) rotate(8deg);
+  }
+  100% {
+    transform: translate3d(7px, 16px, 0) rotate(-6deg);
+  }
+}
+
+@keyframes bobMotion5 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, 28px, 0) scale(0.94);
+  }
+  100% {
+    transform: translate3d(-6px, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0% {
+    opacity: 0.4;
+    transform: translate3d(0, 0, 0) scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(4px, -18px, 0) scale(1.25) rotate(18deg);
+  }
+  100% {
+    opacity: 0.55;
+    transform: translate3d(-4px, 8px, 0) scale(0.95) rotate(-10deg);
+  }
+}
+
+/* Explicit mobile class to hide inner icons completely */
+.hideOnMobile {
+  display: block;
+}
+
+/* Subtle responsiveness: strictly minimize icon count, shrink size, and prevent any text obstruction */
+@media (max-width: 768px) {
+  .depthFar,
+  .hideOnMobile {
+    display: none !important;
+  }
+
+  .bobItem {
+    opacity: 0.28 !important;
+    pointer-events: none !important;
+  }
+
+  /* Shrink remaining icons on mobile so they are tiny delicate background whispers */
+  .bobItem svg {
+    transform: scale(0.46) !important;
+    transform-origin: center center;
+  }
+
+  /* Gentle, micro-movements on mobile so icons stay tucked at the safe outer edges */
+  .animBob1 {
+    animation-name: bobMotionMobile1;
+    animation-duration: 7.5s;
+  }
+
+  .animBob2 {
+    animation-name: bobMotionMobile2;
+    animation-duration: 8.5s;
+  }
+
+  .animBob3 {
+    animation-name: bobMotionMobile1;
+    animation-duration: 9.5s;
+  }
+
+  .animBob4 {
+    animation-name: bobMotionMobile2;
+    animation-duration: 8s;
+  }
+
+  .animBob5 {
+    animation-name: bobMotionMobile1;
+    animation-duration: 10.5s;
+  }
+
+  .animSparkle {
+    animation-name: sparkleTwinkleMobile;
+    animation-duration: 6.5s;
+  }
+}
+
+@keyframes bobMotionMobile1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(2px, -8px, 0) rotate(2deg);
+  }
+  100% {
+    transform: translate3d(-1px, 4px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes bobMotionMobile2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-2px, 8px, 0) rotate(-2deg);
+  }
+  100% {
+    transform: translate3d(1px, -4px, 0) rotate(1deg);
+  }
+}
+
+@keyframes sparkleTwinkleMobile {
+  0% {
+    opacity: 0.12;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 0.35;
+    transform: translate3d(1px, -5px, 0) scale(1.05);
+  }
+  100% {
+    opacity: 0.18;
+    transform: translate3d(-1px, 3px, 0) scale(0.85);
+  }
+}

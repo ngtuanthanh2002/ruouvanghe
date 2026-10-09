@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { WINE_PRODUCTS } from "@/lib/wine-data";
-import { WINE_ARTICLES } from "@/lib/article-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -22,19 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/kienthuc-ruouvang`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/ve-chung-toi`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/lien-he`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.7,
@@ -55,13 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // Dynamic knowledge/article routes
-  const articleRoutes: MetadataRoute.Sitemap = WINE_ARTICLES.map((article) => ({
-    url: `${baseUrl}/kienthuc-ruouvang/${article.slug}`,
-    lastModified: new Date(article.modifiedTime),
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
-
-  return [...staticRoutes, ...productRoutes, ...articleRoutes];
+  return [...staticRoutes, ...productRoutes];
 }

@@ -1,61 +1,84 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { siteConfig } from "@/lib/site-config";
-import { MapPinIcon, PhoneIcon, ShieldCheckIcon } from "../ui/Icons";
+import {
+  MapPinIcon,
+  PhoneIcon,
+  ShieldCheckIcon,
+  TemperatureIcon,
+  SparklesIcon,
+  WineGlassIcon,
+  ArrowRightIcon,
+} from "../ui/Icons";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const googleMapsUrl =
+    "https://www.google.com/maps/place/Vang+H%C3%A8+-+The+Wine+Corner/@12.2388798,109.1905037,1721m/data=!3m1!1e3!4m12!1m5!8m4!1e2!2s114553681489507271886!3m1!1e1!3m5!1s0x3170670038805a7b:0x49cf297aba1a22d4!8m2!3d12.2392716!4d109.1904063!16s%2Fg%2F11z648jrtc?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D";
+
   return (
     <footer className={styles.footer}>
-      {/* Trust Badges Bar */}
+      {/* Redesigned Luxury Trust Bar — 100% SVG Icons, No Emojis */}
       <div className={styles.trustBar}>
         <div className={`container ${styles.trustGrid}`}>
           <div className={styles.trustItem}>
-            <ShieldCheckIcon size={24} className={styles.trustIcon} />
-            <div>
-              <h4 className={styles.trustTitle}>100% Chính Hãng Nhập Khẩu</h4>
-              <p className={styles.trustDesc}>Đầy đủ CO/CQ từ các nhà làm vang danh tiếng thế giới</p>
+            <div className={styles.trustIconCircle}>
+              <ShieldCheckIcon size={22} className={styles.trustSvg} />
+            </div>
+            <div className={styles.trustText}>
+              <h4 className={styles.trustTitle}>{t("trust.t1_title")}</h4>
+              <p className={styles.trustDesc}>{t("trust.t1_desc")}</p>
             </div>
           </div>
 
           <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>❄️</span>
-            <div>
-              <h4 className={styles.trustTitle}>Hầm Bảo Quản Tiêu Chuẩn 16°C</h4>
-              <p className={styles.trustDesc}>Nhiệt độ & độ ẩm 70% gìn giữ trọn vẹn hương vị tinh hoa</p>
+            <div className={styles.trustIconCircle}>
+              <TemperatureIcon size={22} className={styles.trustSvg} />
+            </div>
+            <div className={styles.trustText}>
+              <h4 className={styles.trustTitle}>{t("trust.t2_title")}</h4>
+              <p className={styles.trustDesc}>{t("trust.t2_desc")}</p>
             </div>
           </div>
 
           <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>✨</span>
-            <div>
-              <h4 className={styles.trustTitle}>Nghệ Thuật Tablescape</h4>
-              <p className={styles.trustDesc}>Sắp đặt bàn tiệc nghệ thuật & pairing phô mai hảo hạng</p>
+            <div className={styles.trustIconCircle}>
+              <SparklesIcon size={22} className={styles.trustSvg} />
+            </div>
+            <div className={styles.trustText}>
+              <h4 className={styles.trustTitle}>{t("trust.t3_title")}</h4>
+              <p className={styles.trustDesc}>{t("trust.t3_desc")}</p>
             </div>
           </div>
 
           <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>🍷</span>
-            <div>
-              <h4 className={styles.trustTitle}>Tư Vấn Sommelier Chuyên Nghiệp</h4>
-              <p className={styles.trustDesc}>Đồng hành lựa chọn vị vang hoàn hảo cho từng dịp gặp gỡ</p>
+            <div className={styles.trustIconCircle}>
+              <WineGlassIcon size={22} className={styles.trustSvg} />
+            </div>
+            <div className={styles.trustText}>
+              <h4 className={styles.trustTitle}>{t("trust.t4_title")}</h4>
+              <p className={styles.trustDesc}>{t("trust.t4_desc")}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Links & Info */}
+      {/* Streamlined Clean Footer Layout */}
       <div className={`container ${styles.mainFooter}`}>
         <div className={styles.footerGrid}>
-          {/* Column 1: Brand & Showrooms */}
+          {/* Column 1: Brand & Nha Trang Flagship */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo} aria-label="Trang chủ Vang Hè">
               <Image
                 src="/Logo_VH-White.png"
                 alt="Logo Vang Hè — The Wine Corner"
-                width={48}
-                height={48}
+                width={56}
+                height={56}
                 className={styles.logoImg}
               />
               <div className={styles.logoText}>
@@ -63,116 +86,112 @@ export default function Footer() {
                 <span className={styles.brandSub}>THE WINE CORNER · NHA TRANG</span>
               </div>
             </Link>
-            <p className={styles.brandSummary}>{siteConfig.description}</p>
 
-            <div className={styles.locations}>
-              <h5 className={styles.subHeading}>Không Gian Trải Nghiệm & Hầm Rượu:</h5>
-              {siteConfig.locations.map((loc, idx) => (
-                <div key={idx} className={styles.locationItem}>
-                  <MapPinIcon size={16} className={styles.locIcon} />
-                  <div>
-                    <strong>{loc.name}:</strong>
-                    <address className={styles.address}>{loc.address}</address>
-                    <span className={styles.hours}>Giờ phục vụ: {loc.hours}</span>
-                  </div>
-                </div>
-              ))}
+            <p className={styles.brandSummary}>
+              {t("footer.brand_desc")}
+            </p>
+
+            <div className={styles.locationSummary}>
+              <div className={styles.locItem}>
+                <MapPinIcon size={16} className={styles.locSvg} />
+                <span>65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang</span>
+              </div>
+              <div className={styles.locItem}>
+                <span className={styles.dotLive}>●</span>
+                <span>{t("footer.open_hours")} <strong>18:00 — 23:30</strong></span>
+              </div>
             </div>
           </div>
 
-          {/* Column 2: Story & Experience */}
+          {/* Column 2: Navigation Links */}
           <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>Khám Phá Câu Chuyện</h4>
+            <h4 className={styles.colTitle}>{t("footer.col_explore")}</h4>
             <ul className={styles.linkList}>
               <li>
-                <Link href="/#cau-chuyen">Câu Chuyện Vang Hè</Link>
+                <Link href="/#cau-chuyen">{t("nav.story")}</Link>
               </li>
               <li>
-                <Link href="/#ban-tiec">Nghệ Thuật Tablescape</Link>
+                <Link href="/#ban-tiec">{t("nav.tablescape")}</Link>
               </li>
               <li>
-                <Link href="/#ham-vang">Hầm Vang Tuyển Chọn</Link>
+                <Link href="/#khong-gian">{t("nav.space")}</Link>
               </li>
               <li>
-                <Link href="/#khong-gian">Không Gian Vanghé Nha Trang</Link>
+                <Link href="/#video">{t("nav.film")}</Link>
               </li>
               <li>
-                <Link href="/#dat-ban">Đặt Bàn Thưởng Vang</Link>
+                <Link href="/#diem-hen">{t("nav.location")}</Link>
+              </li>
+              <li>
+                <Link href="/#dat-ban">{t("res.badge")}</Link>
               </li>
               <li>
                 <a
-                  href={siteConfig.socialLinks[0].url}
+                  href={siteConfig.contact.menuUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.socialLink}
+                  style={{ color: "var(--amber-light)", fontWeight: 600 }}
                 >
-                  Instagram @vanghe.thewinecorner ↗
+                  📖 Thực Đơn & Menu Vang ↗
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Wine Categories */}
-          <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>Bộ Sưu Tập Rượu Vang</h4>
-            <ul className={styles.linkList}>
-              <li>
-                <Link href="/san-pham?category=vang-do">Rượu Vang Đỏ (Red Wine)</Link>
-              </li>
-              <li>
-                <Link href="/san-pham?category=vang-trang">Rượu Vang Trắng (White Wine)</Link>
-              </li>
-              <li>
-                <Link href="/san-pham?category=vang-no">Champagne & Vang Nổ</Link>
-              </li>
-              <li>
-                <Link href="/san-pham?category=hop-qua">Hộp Quà & Set Thử Rượu</Link>
-              </li>
-              <li>
-                <Link href="/kienthuc-ruouvang">Cẩm Nang Kiến Thức Thưởng Vang</Link>
-              </li>
-              <li>
-                <Link href="/ve-chung-toi">Về Triết Lý Thương Hiệu</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Reservation */}
-          <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>Đặt Bàn & Tư Vấn VIP</h4>
+          {/* Column 3: Contact & Hospitality */}
+          <div className={styles.contactCol}>
+            <h4 className={styles.colTitle}>{t("footer.col_contact")}</h4>
             <p className={styles.contactIntro}>
-              Liên hệ trực tiếp đội ngũ Sommelier để chuẩn bị trước bàn tiệc hoặc tư vấn bộ sưu tập vang phù hợp.
+              {t("footer.contact_intro")}
             </p>
 
-            <div className={styles.contactBlock}>
+            <a
+              href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
+              className={styles.footerHotlineBtn}
+            >
+              <PhoneIcon size={18} />
+              <span>Hotline: {siteConfig.contact.hotlineDisplay}</span>
+            </a>
+
+            <div className={styles.socialLinksRow}>
               <a
-                href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-                className={styles.hotlineLink}
+                href={siteConfig.contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
               >
-                <PhoneIcon size={18} />
-                <span>Hotline: {siteConfig.contact.hotlineDisplay}</span>
+                <span>Instagram ↗</span>
               </a>
-              <p className={styles.emailText}>Email: {siteConfig.contact.email}</p>
-              <Link href="/#dat-ban" className="btn" style={{ marginTop: "12px", width: "100%" }}>
-                Đặt Bàn Ngay
-              </Link>
+              <a
+                href={siteConfig.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
+              >
+                <span>Facebook ↗</span>
+              </a>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
+              >
+                <span>Google Maps ↗</span>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Responsible Drinking Notice */}
+        {/* Responsible Drinking Regulatory Notice */}
         <div className={styles.legalNotice}>
           <p className={styles.warningText}>
-            ⚠️ <strong>THƯỞNG THỨC CÓ TRÁCH NHIỆM:</strong> Tuân thủ quy định pháp luật Việt Nam. Rượu không dành cho người dưới 18 tuổi và phụ nữ mang thai. Đã uống rượu bia, không lái xe. Chúng tôi chỉ tiếp đón và cung cấp thông tin cho khách hàng đủ 18 tuổi.
+            {t("footer.legal")}
           </p>
         </div>
 
         {/* Bottom Copyright */}
         <div className={styles.bottomBar}>
-          <p>© 2026 {siteConfig.publisher} · 65 Trịnh Phong, Nha Trang. Mọi quyền được bảo lưu.</p>
-          <p className={styles.bottomDisclaimer}>
-            Website thiết kế chuẩn SEO, Semantic Microdata Schema.org & Tối ưu hóa trải nghiệm người dùng.
-          </p>
+          <p>{t("footer.copy")}</p>
         </div>
       </div>
     </footer>
