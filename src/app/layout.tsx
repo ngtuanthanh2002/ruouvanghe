@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
@@ -11,20 +11,23 @@ import {
   generateWebSiteSchema,
 } from "@/lib/seo-helpers";
 
-const playfair = Playfair_Display({
-  variable: "--font-heading",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
   subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-body",
+const beVietnam = Be_Vietnam_Pro({
+  variable: "--font-sans",
   subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#58111A",
+  themeColor: "#2A1A15",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -33,7 +36,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} - ${siteConfig.slogan}`,
+    default: `${siteConfig.name} — ${siteConfig.slogan}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -41,6 +44,14 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.creator,
   publisher: siteConfig.publisher,
+  icons: {
+    icon: [
+      { url: "/Logo_VH.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/Logo_VH.png",
+    apple: "/Logo_VH.png",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -57,20 +68,20 @@ export const metadata: Metadata = {
     locale: "vi_VN",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} - ${siteConfig.slogan}`,
+    title: `${siteConfig.name} — ${siteConfig.slogan}`,
     description: siteConfig.description,
     images: [
       {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Rượu Vang Nhập Khẩu Chính Hãng`,
+        alt: `${siteConfig.name} — The Wine Corner`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} - ${siteConfig.slogan}`,
+    title: `${siteConfig.name} — ${siteConfig.slogan}`,
     description: siteConfig.description,
     images: [`${siteConfig.url}/opengraph-image`],
   },
@@ -87,7 +98,7 @@ export const metadata: Metadata = {
     },
   },
   category: "food & beverage",
-  classification: "Liquor Store & Wine Importer",
+  classification: "Wine Bar & Curated Wine Cellar",
 };
 
 export default function RootLayout({
@@ -99,8 +110,10 @@ export default function RootLayout({
   const webSiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="vi" className={`${playfair.variable} ${plusJakarta.variable}`}>
+    <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
       <head>
+        <link rel="icon" href="/Logo_VH.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/Logo_VH.png" />
         <JsonLd data={orgSchema} />
         <JsonLd data={webSiteSchema} />
       </head>

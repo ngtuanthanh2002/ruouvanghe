@@ -1,33 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { siteConfig } from "@/lib/site-config";
-import { PhoneIcon, WineGlassIcon } from "../ui/Icons";
+import { PhoneIcon } from "../ui/Icons";
 
 export default function Header() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile nav on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const isHome = pathname === "/";
+  const isSolid = !isHome || scrolled;
 
   return (
-    <header className={styles.header}>
-      {/* Top Banner */}
+    <header className={`${styles.header} ${isSolid ? styles.solid : ""}`}>
+      {/* Top Notification Bar */}
       <div className={styles.topBar}>
         <div className={`container ${styles.topBarInner}`}>
           <div className={styles.topBarLeft}>
             <span className={styles.highlightText}>
-              ★ 100% Rượu Vang Nhập Khẩu Chính Hãng Có Đầy Đủ CO/CQ
+              Vanghé — The Wine Corner · 65 Trịnh Phong, Nha Trang
             </span>
           </div>
           <div className={styles.topBarRight}>
             <span className={styles.showroomText}>
-              Hà Nội: 88 Phố Vọng | TP.HCM: 168 Nguyễn Thị Minh Khai
+              Giờ mở cửa: 18:00 — 23:30 (Mỗi ngày)
             </span>
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
               className={styles.topBarPhone}
             >
-              <PhoneIcon size={14} />
+              <PhoneIcon size={13} />
               Hotline: {siteConfig.contact.hotlineDisplay}
             </a>
           </div>
@@ -37,46 +61,55 @@ export default function Header() {
       {/* Main Navigation Bar */}
       <div className={styles.mainNav}>
         <div className={`container ${styles.navInner}`}>
-          <Link href="/" className={styles.logo} aria-label="Rượu Vang Hè - Trang chủ">
-            <span className={styles.logoIcon}>
-              <WineGlassIcon size={28} />
-            </span>
+          <Link href="/" className={styles.logo} aria-label="Vang Hè - The Wine Corner">
+            <div className={styles.logoImageWrap}>
+              <Image
+                src="/Logo_VH-White.png"
+                alt="Logo Vang Hè"
+                width={40}
+                height={40}
+                className={styles.logoImg}
+                priority
+              />
+            </div>
             <div className={styles.logoText}>
-              <span className={styles.brandTitle}>RƯỢU VANG HÈ</span>
-              <span className={styles.brandSub}>HERITAGE CELLAR • EST. 2018</span>
+              <span className={styles.brandTitle}>vanghè</span>
+              <span className={styles.brandSub}>THE WINE CORNER</span>
             </div>
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Điều hướng chính">
-            <Link href="/" className={styles.navLink}>
-              Trang Chủ
+            <Link href="/#cau-chuyen" className={styles.navLink}>
+              Câu Chuyện
+            </Link>
+            <Link href="/#ban-tiec" className={styles.navLink}>
+              Bàn Tiệc & Tablescape
+            </Link>
+            <Link href="/#ham-vang" className={styles.navLink}>
+              Hầm Vang Tuyển Chọn
+            </Link>
+            <Link href="/#khong-gian" className={styles.navLink}>
+              Không Gian
             </Link>
             <Link href="/san-pham" className={styles.navLink}>
-              Bộ Sưu Tập Vang
-            </Link>
-            <Link href="/san-pham?category=hop-qua" className={styles.navLink}>
-              Hộp Quà Cao Cấp
+              Tất Cả Sản Phẩm
             </Link>
             <Link href="/kienthuc-ruouvang" className={styles.navLink}>
-              Kiến Thức Vang
-            </Link>
-            <Link href="/ve-chung-toi" className={styles.navLink}>
-              Về Chúng Tôi
+              Cẩm Nang Vang
             </Link>
             <Link href="/lien-he" className={styles.navLink}>
-              Hầm Rượu & Showroom
+              Liên Hệ
             </Link>
           </nav>
 
           <div className={styles.actions}>
-            <a
-              href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-              className="btn-gold"
-              title="Gọi hotline tư vấn Sommelier"
+            <Link
+              href="/#dat-ban"
+              className={styles.navCta}
+              title="Đặt bàn trải nghiệm hoặc nếm rượu vang"
             >
-              <PhoneIcon size={16} />
-              <span>Tư Vấn: {siteConfig.contact.hotlineDisplay}</span>
-            </a>
+              Đặt Bàn / Trải Nghiệm
+            </Link>
 
             <button
               className={styles.mobileToggle}
@@ -96,11 +129,32 @@ export default function Header() {
           <div className="container">
             <nav className={styles.mobileNavLinks} aria-label="Điều hướng di động">
               <Link
-                href="/"
+                href="/#cau-chuyen"
                 className={styles.mobileNavLink}
                 onClick={() => setMobileOpen(false)}
               >
-                Trang Chủ
+                Câu Chuyện Vang Hè
+              </Link>
+              <Link
+                href="/#ban-tiec"
+                className={styles.mobileNavLink}
+                onClick={() => setMobileOpen(false)}
+              >
+                Nghệ Thuật Tablescape
+              </Link>
+              <Link
+                href="/#ham-vang"
+                className={styles.mobileNavLink}
+                onClick={() => setMobileOpen(false)}
+              >
+                Hầm Vang Tuyển Chọn
+              </Link>
+              <Link
+                href="/#khong-gian"
+                className={styles.mobileNavLink}
+                onClick={() => setMobileOpen(false)}
+              >
+                Không Gian Vanghé
               </Link>
               <Link
                 href="/san-pham"
@@ -110,44 +164,30 @@ export default function Header() {
                 Bộ Sưu Tập Rượu Vang
               </Link>
               <Link
-                href="/san-pham?category=hop-qua"
-                className={styles.mobileNavLink}
-                onClick={() => setMobileOpen(false)}
-              >
-                Hộp Quà Tết & Doanh Nghiệp
-              </Link>
-              <Link
                 href="/kienthuc-ruouvang"
                 className={styles.mobileNavLink}
                 onClick={() => setMobileOpen(false)}
               >
-                Kiến Thức & Thưởng Thức Vang
-              </Link>
-              <Link
-                href="/ve-chung-toi"
-                className={styles.mobileNavLink}
-                onClick={() => setMobileOpen(false)}
-              >
-                Câu Chuyện Thương Hiệu
+                Kiến Thức & Thưởng Vang
               </Link>
               <Link
                 href="/lien-he"
                 className={styles.mobileNavLink}
                 onClick={() => setMobileOpen(false)}
               >
-                Hầm Rượu & Showroom
+                Ghé Thăm Vanghé
               </Link>
             </nav>
 
             <div className={styles.mobileContactBox}>
-              <p>Hotline Sommelier 24/7:</p>
+              <p>Hotline Đặt Bàn & Tư Vấn Sommelier:</p>
               <a
                 href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-                className="btn-gold"
-                style={{ width: "100%", marginTop: "0.5rem" }}
+                className="btn"
+                style={{ width: "100%", marginTop: "0.6rem" }}
               >
                 <PhoneIcon size={16} />
-                Gọi {siteConfig.contact.hotlineDisplay}
+                Gọi Ngay: {siteConfig.contact.hotlineDisplay}
               </a>
             </div>
           </div>

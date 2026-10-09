@@ -8,16 +8,16 @@ import { MapPinIcon, PhoneIcon } from "@/components/ui/Icons";
 import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Liên Hệ Hệ Thống Hầm Rượu & Showroom Rượu Vang Hè",
+  title: "Liên Hệ Không Gian Trải Nghiệm & Hầm Rượu Vang Hè",
   description:
-    "Địa chỉ showroom và hầm rượu vang nhập khẩu Rượu Vang Hè tại Hà Nội (88 Phố Vọng) và TP.HCM (168 Nguyễn Thị Minh Khai). Hotline tư vấn Sommelier 24/7.",
+    "Ghé thăm Vanghé — The Wine Corner tại 65 Trịnh Phong (Nha Trang) và hệ thống hầm rượu tại Hà Nội, TP.HCM. Hotline đặt bàn & tư vấn Sommelier 24/7.",
   alternates: {
     canonical: "/lien-he",
   },
   openGraph: {
-    title: "Liên Hệ Showroom & Hầm Rượu Vang Hè",
+    title: "Liên Hệ Không Gian Vang Hè — The Wine Corner",
     description:
-      "Ghé thăm trực tiếp hầm rượu tiêu chuẩn 16°C để trải nghiệm nếm thử vang hoặc đặt hàng quà tết doanh nghiệp.",
+      "Ghé thăm trực tiếp không gian ấm cúng tại Nha Trang hoặc hầm rượu tiêu chuẩn 16°C để trải nghiệm nếm thử vang và đặt tiệc tablescape.",
     url: `${siteConfig.url}/lien-he`,
   },
 };

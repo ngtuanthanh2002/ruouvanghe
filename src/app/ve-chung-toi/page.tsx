@@ -120,12 +120,12 @@ export default function AboutPage() {
       <section className={styles.aboutCta}>
         <h2>Trải Nghiệm Thử Rượu Trực Tiếp Cùng Chuyên Gia</h2>
         <p>
-          Ghé thăm showroom Rượu Vang Hè tại Hà Nội và TP.HCM để hòa mình vào không gian hầm vang châu Âu cổ điển.
+          Ghé thăm không gian Vanghé — The Wine Corner tại 65 Trịnh Phong (Nha Trang) hoặc hệ thống showroom tại Hà Nội và TP.HCM để hòa mình vào không gian hầm vang ấm cúng và thưởng thức tablescape nghệ thuật.
         </p>
         <div className={styles.aboutCtaBtns}>
           <a
             href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-            className="btn-gold"
+            className="btn-wine"
           >
             <PhoneIcon size={18} /> Đặt Lịch Tiếp Đón: {siteConfig.contact.hotlineDisplay}
           </a>
