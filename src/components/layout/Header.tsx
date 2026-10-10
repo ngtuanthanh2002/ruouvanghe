@@ -92,23 +92,26 @@ export default function Header() {
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Điều hướng chính">
-            <Link href="/#cau-chuyen" className={styles.navLink}>
-              {t("nav.story")}
+            <Link
+              href="/#gioi-thieu"
+              className={`${styles.navLink} ${pathname === "/" ? styles.navLinkActive : ""}`}
+            >
+              {t("nav.about")}
             </Link>
-            <Link href="/#ban-tiec" className={styles.navLink}>
-              {t("nav.tablescape")}
+            <Link
+              href="/thuc-don"
+              className={`${styles.navMenuButton} ${pathname === "/thuc-don" ? styles.navMenuButtonActive : ""}`}
+            >
+              <span>{t("nav.menu")}</span>
             </Link>
             <Link href="/#khong-gian" className={styles.navLink}>
               {t("nav.space")}
             </Link>
-            <Link href="/#video" className={styles.navLink}>
-              {t("nav.film")}
-            </Link>
-            <Link href="/#diem-hen" className={styles.navLink}>
-              {t("nav.location")}
-            </Link>
-            <Link href="/#dat-ban" className={styles.navLink}>
-              {t("nav.contact")}
+            <Link
+              href="/#dat-ban"
+              className={`${styles.navLink} ${styles.navReserveLink}`}
+            >
+              {t("nav.reservation")}
             </Link>
           </nav>
 
@@ -182,18 +185,18 @@ export default function Header() {
 
             <nav className={styles.mobileNavLinks} aria-label="Điều hướng di động">
               <Link
-                href="/#cau-chuyen"
+                href="/#gioi-thieu"
                 className={styles.mobileNavLink}
                 onClick={() => setMobileOpen(false)}
               >
-                {t("nav.story")}
+                {t("nav.about")}
               </Link>
               <Link
-                href="/#ban-tiec"
-                className={styles.mobileNavLink}
+                href="/thuc-don"
+                className={`${styles.mobileNavLink} ${styles.mobileNavMenuBtn}`}
                 onClick={() => setMobileOpen(false)}
               >
-                {t("nav.tablescape")}
+                ✨ {t("nav.menu")} (Menu)
               </Link>
               <Link
                 href="/#khong-gian"
@@ -203,11 +206,11 @@ export default function Header() {
                 {t("nav.space")}
               </Link>
               <Link
-                href="/#video"
+                href="/#dat-ban"
                 className={styles.mobileNavLink}
                 onClick={() => setMobileOpen(false)}
               >
-                {t("nav.film")}
+                {t("nav.reservation")}
               </Link>
               <Link
                 href="/#diem-hen"
@@ -215,13 +218,6 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
               >
                 {t("nav.location")}
-              </Link>
-              <Link
-                href="/#dat-ban"
-                className={styles.mobileNavLink}
-                onClick={() => setMobileOpen(false)}
-              >
-                {t("nav.contact")}
               </Link>
 
               <a

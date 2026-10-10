@@ -6,13 +6,16 @@ export const translations = {
     "topbar.address": "65 Trịnh Phong, P. Tân Lập, Nha Trang",
     "topbar.hours": "Mở cửa mỗi ngày 18:00 — 23:30",
     "topbar.hotline": "Hotline",
-    "nav.story": "Câu Chuyện",
-    "nav.tablescape": "Tablescape",
+    "nav.about": "Giới Thiệu",
+    "nav.menu": "Thực Đơn",
+    "nav.reservation": "Đặt Bàn",
+    "nav.story": "Giới Thiệu",
+    "nav.tablescape": "Bàn Tiệc",
     "nav.space": "Không Gian",
     "nav.film": "Thước Phim",
     "nav.location": "Bản Đồ & Vị Trí",
     "nav.handbook": "Cẩm Nang Vang",
-    "nav.contact": "Liên Hệ",
+    "nav.contact": "Đặt Bàn",
 
     // Hero Section
     "hero.live_badge": "Mở cửa mỗi tối: 18:00 — 23:30 · 65 Trịnh Phong, Nha Trang",
@@ -20,59 +23,65 @@ export const translations = {
     "hero.title_white": "Nơi Bàn Tiệc",
     "hero.title_gold": "Mở Lời Cho Cuộc Vui",
     "hero.tagline":
-      "Góc rượu vang ấm cúng giữa lòng phố biển Nha Trang — Nơi mỗi chiếc ly chạm nhau mở ra một câu chuyện, và đêm vui thăng hoa cùng nghệ thuật sắp đặt tablescape.",
+      "Góc rượu vang ấm cúng giữa lòng phố biển Nha Trang — Nơi mỗi chiếc ly chạm nhau mở ra một câu chuyện, và đêm vui thăng hoa cùng rượu vang tuyển chọn và khay cold cut hảo hạng.",
+    "hero.cta_menu": "Khám Phá Thực Đơn ↗",
     "hero.cta_space": "Khám Phá Không Gian",
-    "hero.cta_film": "Xem Thước Phim Vang Hè",
+    "hero.cta_reserve": "Đặt Bàn Ngay",
+    "hero.cta_film": "Thước Phim Vang Hè",
     "hero.cta_map": "Bản Đồ Google Maps ↗",
     "hero.scroll_down": "Cuộn xuống khám phá",
 
-    // Chapter I: Story & Philosophy
-    "story.badge": "CHƯƠNG I · KHỞI NGUỒN & TRIẾT LÝ",
-    "story.title": "Khi Rượu Vang Là Chất Xúc Tác Của Cảm Xúc",
-    "story.quote":
+    // Concise About Us (Thay thế cho Khởi nguồn & Triết lý)
+    "about.badge": "GIỚI THIỆU · VANG HÈ NHA TRANG",
+    "about.title": "Góc Nhỏ Thưởng Vang Ấm Cúng Giữa Phố Biển",
+    "about.quote":
       "Ở Vang Hè, chúng tôi không đơn thuần rót một ly vang. Chúng tôi ủ ấm những câu chuyện, gìn giữ những khoảnh khắc mà thời gian dường như ngưng đọng bên ánh nến lung linh và giai điệu jazz êm đềm.",
-    "story.quote_author": "— Triết lý đón tiếp tại 65 Trịnh Phong, Nha Trang",
+    "about.quote_author": "— Vang Hè · 65 Trịnh Phong, Nha Trang",
+    "about.lead":
+      "Vang Hè (The Wine Corner) là góc nhỏ tĩnh tại tại số 65 Trịnh Phong, nơi ánh đèn vàng hạ bớt độ sáng và nhịp sống phố biển chậm lại để nhường chỗ cho những xúc cảm chân thành.",
+    "about.body1":
+      "Không cầu kỳ kiểu cách, chúng tôi tin rằng giá trị lớn nhất của một chai vang ngon nằm ở khoảnh khắc nó được mở ra giữa những người bạn, người thương. Rượu vang là chất xúc tác để nụ cười tự nhiên hơn và câu chuyện chân thật hơn.",
+    "about.p1_title": "Rượu Vang Tuyển Chọn",
+    "about.p1_desc": "Sparkling, White, Rose & Red tuyển chọn từ các điền trang danh tiếng thế giới, bảo quản hầm chuẩn 16°C.",
+    "about.p2_title": "Cold Cut & Khai Vị Chuẩn Gu",
+    "about.p2_desc": "Khay thịt nguội Jamon Iberico, phô mai nhập khẩu châu Âu và bánh mì Sourdough nướng giòn cùng Pate Hải Phòng.",
+    "about.p3_title": "Không Gian Thân Mật",
+    "about.p3_desc": "Ánh nến ấm áp, giai điệu dịu êm và bàn tiệc lãng mạn cho những buổi hẹn hò hay gặp gỡ bạn bè thân tình.",
+    "about.cta_menu": "Xem Thực Đơn Chi Tiết ↗",
+
+    // Home Menu Preview Section
+    "homemenu.badge": "THỰC ĐƠN · MENU HIGHLIGHTS",
+    "homemenu.title": "Khám Phá Hương Vị Tại Vang Hè",
+    "homemenu.subtitle":
+      "Sự kết hợp tinh tế giữa những chai vang hảo hạng cùng khay cold cut phô mai, bánh mì Sourdough thơm giòn chuẩn gu.",
+    "homemenu.cta": "XEM ĐẦY ĐỦ THỰC ĐƠN ↗",
+
+    // Story (Backwards compatible fallback)
+    "story.badge": "GIỚI THIỆU · VANG HÈ",
+    "story.title": "Góc Nhỏ Thưởng Vang Ấm Cúng Giữa Phố Biển",
+    "story.quote":
+      "Ở Vang Hè, chúng tôi không đơn thuần rót một ly vang. Chúng tôi ủ ấm những câu chuyện bên ánh nến lung linh và giai điệu jazz êm đềm.",
+    "story.quote_author": "— Vang Hè · 65 Trịnh Phong, Nha Trang",
     "story.lead":
-      "Vang Hè (Vanghé) ra đời không bắt đầu từ sự phô trương của một nhà hàng kiểu mẫu, mà từ mong muốn kiến tạo một góc nhỏ ấm áp tại số 65 Trịnh Phong, nơi ánh đèn vàng hạ bớt độ sáng và nhịp sống phố biển chậm lại.",
+      "Vang Hè (The Wine Corner) là góc nhỏ ấm áp tại số 65 Trịnh Phong, nơi ánh đèn vàng hạ bớt độ sáng và nhịp sống phố biển chậm lại.",
     "story.body1":
-      "Chúng tôi tin rằng: giá trị lớn nhất của một chai vang ngon không nằm ở mức giá hay nhãn mác danh giá, mà ở khoảnh khắc nó được mở ra giữa những người bạn, người thương. Rượu vang là chất xúc tác để nụ cười tự nhiên hơn, câu chuyện chân thành hơn và mọi khoảng cách được thu ngắn lại.",
+      "Chúng tôi tin rằng: giá trị lớn nhất của một chai vang ngon không nằm ở mức giá, mà ở khoảnh khắc nó được mở ra giữa những người bạn, người thương.",
     "story.body2":
-      "Dù bạn là một người sành vang đang tìm kiếm một dòng vang đỏ đậm sâu để chiêm nghiệm, hay chỉ đơn giản muốn ghé qua nhâm nhi ly vang trắng mát lạnh cùng đĩa phô mai thơm ngậy sau ngày dài — Vang Hè luôn sẵn sàng một chiếc ghế êm và nụ cười đón tiếp.",
-    "story.p1_title": "Ánh Sáng & Nhiệt Độ",
-    "story.p1_desc": "Đèn vàng hạ bớt 40%, hầm ủ 16°C giữ trọn vẹn tầng hương hoa quả.",
-    "story.p2_title": "Gỗ Sồi & Nến Thơm",
-    "story.p2_desc": "Hương sồi dịu nhẹ hòa quyện sắc nến ấm, đưa nhịp sống chậm lại.",
-    "story.p3_title": "Thanh Âm Chạm Ly",
-    "story.p3_desc": "Tiếng pha lê ngân vang khẽ khàng mở đầu cho những sẻ chia chân thành.",
-    "story.p4_title": "Vị Vang & Bản Sắc",
-    "story.p4_desc": "Tuyển chọn từ điền trang danh tiếng, hòa quyện phô mai hảo hạng.",
+      "Dù bạn muốn thưởng thức một dòng vang đỏ đậm sâu hay nhâm nhi ly vang trắng mát lạnh cùng đĩa cold cut sau ngày dài — Vang Hè luôn sẵn sàng một chiếc ghế êm và nụ cười đón tiếp.",
+    "story.p1_title": "Rượu Vang Tuyển Chọn",
+    "story.p1_desc": "Hầm ủ 16°C giữ trọn vẹn tầng hương hoa quả cho từng dòng vang.",
+    "story.p2_title": "Cold Cut Chuẩn Gu",
+    "story.p2_desc": "Phô mai châu Âu, Jamon Iberico và bánh mì Sourdough Pate Hải Phòng.",
+    "story.p3_title": "Ánh Nến & Gỗ Mộc",
+    "story.p3_desc": "Không gian mộc mạc bên ánh nến ấm, đưa nhịp sống chậm lại.",
+    "story.p4_title": "Chạm Ly Pha Lê",
+    "story.p4_desc": "Tiếng ly pha lê ngân vang mở đầu cho những sẻ chia chân thành.",
     "story.img_tag": "Vang Hè · The Wine Corner · Nha Trang",
     "story.img_sub": "Góc hẹn thân mật từ 18:00 mỗi chiều",
     "story.accent_badge": "Ấm cúng & Lãng mạn",
 
-    // Chapter II: Tablescape
-    "tablescape.badge": "CHƯƠNG II · BÀN TIỆC & TABLESCAPE",
-    "tablescape.title": "Nghệ Thuật Sắp Đặt Khơi Mở Mọi Giác Quan",
-    "tablescape.subtitle":
-      "Tablescape không chỉ là bài trí, mà là cách chúng tôi kể một câu chuyện đón tiếp bằng hoa tươi, ánh nến, gỗ mộc và ly pha lê.",
-    "tablescape.c1_title": "Tablescape Nghệ Thuật",
-    "tablescape.c1_desc":
-      "Từng bình hoa theo mùa, chân nến lung linh và khăn trải bàn dệt thủ công được sắp đặt tỉ mỉ, tạo nên mỹ cảm trang nhã cho những buổi hẹn hò hay kỷ niệm.",
-    "tablescape.c1_tag1": "Hoa tươi theo mùa",
-    "tablescape.c1_tag2": "Nến lung linh",
-    "tablescape.c2_title": "Ham & Cheese Tuyển Chọn",
-    "tablescape.c2_desc":
-      "Sự kết hợp ăn ý giữa Jamon Iberico, phô mai Truffle, ô liu ngâm và trái cây tươi — tôn vinh trọn vẹn vị chát êm và hương hoa quả của từng ngụm vang.",
-    "tablescape.c2_tag1": "Jamon Iberico",
-    "tablescape.c2_tag2": "Phô mai Truffle",
-    "tablescape.c3_title": "Rượu Vang & Câu Chuyện",
-    "tablescape.c3_desc":
-      "Các dòng vang được tuyển lựa kỹ lưỡng từ các điền trang danh tiếng thế giới, phục vụ đúng chuẩn nhiệt độ 16°C để bung tỏa trọn vẹn từng tầng hương.",
-    "tablescape.c3_tag1": "Chuẩn 16°C",
-    "tablescape.c3_tag2": "Ly pha lê chuẩn",
-
-    // Chapter III: Space
-    "space.badge": "CHƯƠNG III · KHÔNG GIAN VANGHÉ",
+    // Space
+    "space.badge": "KHÔNG GIAN · THE SPACE",
     "space.title": "Góc Nhỏ Bình Yên Giữa Lòng Phố Biển",
     "space.subtitle":
       "Mộc mạc nhưng tinh tế, hiện đại nhưng ấm cúng. Nơi bạn có thể ngồi hàng giờ bên người thân mà không cảm thấy vội vã.",
@@ -93,34 +102,15 @@ export const translations = {
     "space.g5_desc": "Chân nến sáp tự nhiên và hoa tươi mang lại mỹ cảm lãng mạn",
     "space.g6_title": "Không Gian Thân Mật",
     "space.g6_desc": "Sofa êm ái cho những đêm vui không khoảng cách",
-    "space.banner_badge": "TRẢI NGHIỆM ĐẶC BIỆT · SIGNATURE TABLESCAPE",
-    "space.banner_title": "Bàn Tiệc Tablescape Hoa Tươi & Tháp Cold Cut Thượng Hạng",
+    "space.banner_badge": "TRẢI NGHIỆM ĐẶC BIỆT · VANG HÈ CORNER",
+    "space.banner_title": "Bàn Tiệc Hoa Nến & Khay Cold Cut Thượng Hạng",
     "space.banner_desc": "Sự kết hợp hoàn mỹ giữa hoa tươi rực rỡ, đĩa phô mai thịt nguội thượng hạng và ly vang nồng nàn cho những buổi gặp gỡ thăng hoa.",
     "space.banner_tag1": "Hoa tươi theo mùa",
     "space.banner_tag2": "Cold Cut & Cheese",
     "space.banner_tag3": "Ly Pha Lê Sommelier",
 
-    // Chapter IV: Film
-    "film.badge": "CHƯƠNG IV · THƯỚC PHIM CẢM XÚC",
-    "film.title": "Chuyển Động Ấm Cúng Tại Vang Hè",
-    "film.subtitle":
-      "Lắng nghe tiếng chạm ly rộn rã, chiêm ngưỡng ánh nến lung linh và cảm nhận nhịp sống thư thái tại quán qua những thước phim chân thực.",
-    "film.tab1_tag": "01 · Ambiance",
-    "film.tab1_title": "Không Gian & Quầy Bar",
-    "film.tab1_desc": "Ánh đèn vàng dịu, quầy bar gỗ ấm áp và giai điệu jazz êm đềm.",
-    "film.tab2_tag": "02 · Tablescape",
-    "film.tab2_title": "Nghệ Thuật Tablescape",
-    "film.tab2_desc": "Sắp đặt hoa nến, đĩa cold cut phô mai và từng chiếc ly pha lê chỉn chu.",
-    "film.tab3_tag": "03 · Connection",
-    "film.tab3_title": "Khoảnh Khắc Chạm Ly",
-    "film.tab3_desc": "Thanh âm trong trẻo của những chiếc ly chạm nhau mở đầu cho đêm chuyện trò.",
-    "film.btn_pause": "Tạm Dừng",
-    "film.btn_play": "Phát Video",
-    "film.btn_unmute": "Bật Âm Thanh",
-    "film.btn_mute": "Tắt Âm Thanh",
-
-    // Chapter V: Location
-    "loc.badge": "CHƯƠNG V · ĐIỂM HẸN NHA TRANG",
+    // Location
+    "loc.badge": "ĐIỂM HẸN NHA TRANG",
     "loc.title": "Hẹn Gặp Bạn Tại Vang Hè",
     "loc.subtitle": "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang — Trung tâm phố biển, thuận tiện ghé thăm và gửi xe ô tô.",
     "loc.c1_label": "THỜI GIAN MỞ CỬA",
@@ -133,17 +123,17 @@ export const translations = {
     "loc.c3_val": "0988 123 456",
     "loc.c3_sub": "Tư vấn Sommelier & Đặt bàn chu đáo",
     "loc.c4_label": "DỊCH VỤ ĐẶC TRƯNG",
-    "loc.c4_val": "Tablescape & Wine",
+    "loc.c4_val": "Wine & Cold Cut",
     "loc.c4_sub": "Bàn tiệc hoa nến & ghép đôi ẩm thực",
     "loc.map_title": "Vang Hè — The Wine Corner trên Google Maps",
     "loc.map_addr": "65 Trịnh Phong, Phường Tân Lập, Nha Trang",
     "loc.map_btn": "Mở Trên Google Maps",
 
-    // Chapter VI: Reservation
-    "res.badge": "CHƯƠNG VI · ĐẶT BÀN & TRẢI NGHIỆM",
+    // Reservation
+    "res.badge": "ĐẶT BÀN & TRẢI NGHIỆM",
     "res.title": "Dành Trọn Cho Bạn Một Buổi Tối Đáng Nhớ",
     "res.subtitle":
-      "Để chúng tôi chuẩn bị trước bàn tiệc tablescape chu đáo, cắm hoa tươi và làm mát rượu ở nhiệt độ lý tưởng nhất trước khi bạn đến.",
+      "Để chúng tôi chuẩn bị trước bàn tiệc chu đáo, cắm hoa tươi và làm mát rượu ở nhiệt độ lý tưởng nhất trước khi bạn đến.",
     "res.success_title": "Yêu Cầu Đã Được Tiếp Nhận!",
     "res.success_desc": "Sommelier của Vang Hè sẽ liên hệ qua điện thoại trong vòng 15 phút để xác nhận bàn tiệc cho bạn.",
     "res.success_hotline": "Cần hỗ trợ gấp? Gọi ngay hotline:",
@@ -167,25 +157,53 @@ export const translations = {
     "res.perk3": "Sommelier tư vấn nếm thử tại bàn",
     "res.sidebar_note": "● Mở cửa mỗi tối 18:00 — 23:30",
 
+    // Dedicated Menu Page Translations (/thuc-don)
+    "menu.page_title": "Thực Đơn — Vang Hè Nha Trang",
+    "menu.hero_title": "Thực Đơn Vang Hè",
+    "menu.hero_subtitle": "The Wine Corner · 65 Trịnh Phong, Nha Trang",
+    "menu.alacarte_title": "Thực đơn gọi món",
+    "menu.alacarte_desc":
+      "Hòa tấu giữa rượu vang tuyển chọn và đồ nguội thượng hạng: Jamon Iberico, phô mai châu Âu và bánh mì Sourdough nướng giòn.",
+    "menu.btn_explore": "Thực đơn",
+    "menu.slider_title": "Món Ăn & Thức Uống Đặc Sắc",
+    "menu.slider_subtitle": "Tuyển chọn chuẩn gu tại Vang Hè",
+    "menu.more_title": "Một điều gì đó mới hơn....",
+    "menu.more_subtitle":
+      "Những set kết hợp chuẩn gu cho bàn tiệc thêm trọn vẹn.",
+    "menu.tapas_title": "COLD CUT & TAPAS",
+    "menu.tapas_desc":
+      "Jamon Iberico, phô mai Truffle, xúc xích Chorizo và quả ô liu tuyển chọn.",
+    "menu.bread_title": "BÁNH MÌ SOURDOUGH & MÓN KÈM",
+    "menu.bread_desc":
+      "Bánh mì Sourdough giòn rụm, Pate Hải Phòng gia truyền và phô mai hun khói.",
+    "menu.wine_title": "BỘ SƯU TẬP RƯỢU VANG",
+    "menu.wine_desc":
+      "Sparkling, White và Rose tuyển chọn từ các điền trang danh tiếng thế giới, bảo quản chuẩn 16°C.",
+    "menu.modal_title": "Thực Đơn — Vang Hè Nha Trang",
+    "menu.modal_hint": "Bấm vào các trang để xem hình ảnh thực đơn",
+    "menu.modal_close": "Đóng",
+    "menu.modal_drive_btn": "Xem Toàn Bộ Thực Đơn ↗",
+    "menu.vat_notice": "Giá trên áp dụng theo menu tại quán (chưa bao gồm VAT). Đơn vị: 1.000 VNĐ.",
+
     // Trust Bar & Footer
-    "trust.t1_title": "100% Nguồn Gốc Chính Hãng",
-    "trust.t1_desc": "Đầy đủ hồ sơ CO/CQ từ các điền trang danh tiếng",
-    "trust.t2_title": "Hầm Bảo Quản Chuẩn 16°C",
-    "trust.t2_desc": "Kiểm soát nhiệt độ & độ ẩm 70% gìn giữ tầng hương",
-    "trust.t3_title": "Nghệ Thuật Tablescape",
-    "trust.t3_desc": "Sắp đặt bàn tiệc hoa nến & pairing phô mai hảo hạng",
-    "trust.t4_title": "Tư Vấn Sommelier Chuyên Nghiệp",
-    "trust.t4_desc": "Đồng hành lựa chọn vị vang hoàn hảo cho từng dịp gặp gỡ",
+    "trust.t1_title": "100% Chính Hãng",
+    "trust.t1_desc": "Đầy đủ CO/CQ",
+    "trust.t2_title": "Hầm Vang 16°C",
+    "trust.t2_desc": "Bảo quản tiêu chuẩn",
+    "trust.t3_title": "Cold Cut Chuẩn Gu",
+    "trust.t3_desc": "Jamon Iberico & phô mai",
+    "trust.t4_title": "Tư Vấn Sommelier",
+    "trust.t4_desc": "Chu đáo & tận tâm",
     "footer.brand_desc":
-      "Góc rượu vang ấm cúng giữa lòng phố biển Nha Trang. Nơi bàn tiệc tablescape nghệ thuật gặp gỡ những giọt vang tinh hoa, kết nối câu chuyện và cảm xúc.",
-    "footer.open_hours": "Mở cửa mỗi ngày:",
-    "footer.col_explore": "Khám Phá Vang Hè",
-    "footer.col_contact": "Đặt Bàn & Tư Vấn",
+      "Góc rượu vang ấm cúng giữa lòng phố biển Nha Trang.",
+    "footer.open_hours": "Mở cửa mỗi tối:",
+    "footer.col_explore": "Khám Phá",
+    "footer.col_contact": "Liên Hệ & Đặt Bàn",
     "footer.contact_intro":
-      "Liên hệ trực tiếp để chuẩn bị trước bàn tiệc hoa nến hoặc nhận tư vấn dòng vang phù hợp cho buổi tối của bạn.",
+      "Liên hệ trực tiếp để chuẩn bị trước bàn tiệc chu đáo.",
     "footer.legal":
-      "THƯỞNG THỨC CÓ TRÁCH NHIỆM: Tuân thủ quy định pháp luật Việt Nam. Rượu không dành cho người dưới 18 tuổi và phụ nữ mang thai. Đã uống rượu bia, không lái xe.",
-    "footer.copy": "© 2026 Vang Hè · The Wine Corner · 65 Trịnh Phong, Nha Trang. Mọi quyền được bảo lưu.",
+      "Thưởng thức có trách nhiệm: Tuân thủ quy định pháp luật. Rượu bia không dành cho người dưới 18 tuổi. Đã uống rượu bia, không lái xe.",
+    "footer.copy": "© 2026 Vang Hè · The Wine Corner · 65 Trịnh Phong, Nha Trang.",
   },
 
   en: {
@@ -193,73 +211,82 @@ export const translations = {
     "topbar.address": "65 Trinh Phong, Tan Lap, Nha Trang",
     "topbar.hours": "Open Daily 18:00 — 23:30",
     "topbar.hotline": "Hotline",
-    "nav.story": "Our Story",
+    "nav.about": "About Us",
+    "nav.menu": "Menu",
+    "nav.reservation": "Reservation",
+    "nav.story": "About Us",
     "nav.tablescape": "Tablescape",
     "nav.space": "The Space",
-    "nav.film": "Cinematic Film",
+    "nav.film": "Film",
     "nav.location": "Map & Location",
     "nav.handbook": "Wine Journal",
-    "nav.contact": "Contact",
+    "nav.contact": "Reservation",
 
     // Hero Section
     "hero.live_badge": "Open Tonight: 18:00 — 23:30 · 65 Trinh Phong, Nha Trang",
     "hero.eyebrow": "Vanghé · The Wine Corner · Nha Trang",
-    "hero.title_white": "Where The Table",
+    "hero.title_white": "Where Fine Wine",
     "hero.title_gold": "Begins The Night",
     "hero.tagline":
-      "An intimate wine sanctuary in the heart of coastal Nha Trang — Where every clinking glass unlocks a story, and evening gatherings flourish with artistic tablescape design.",
+      "An intimate wine sanctuary in the heart of coastal Nha Trang — Where every clinking glass unlocks a story, paired with curated vintages and artisanal charcuterie platters.",
+    "hero.cta_menu": "Explore Menu ↗",
     "hero.cta_space": "Explore The Space",
-    "hero.cta_film": "Watch Cinematic Film",
+    "hero.cta_reserve": "Reserve A Table",
+    "hero.cta_film": "Cinematic Film",
     "hero.cta_map": "Google Maps Directions ↗",
     "hero.scroll_down": "Scroll to discover",
 
-    // Chapter I: Story & Philosophy
-    "story.badge": "CHAPTER I · ORIGIN & PHILOSOPHY",
-    "story.title": "When Fine Wine Becomes The Catalyst For Emotion",
-    "story.quote":
+    // Concise About Us
+    "about.badge": "ABOUT US · VANG HÈ NHA TRANG",
+    "about.title": "An Intimate Wine Sanctuary in Coastal Nha Trang",
+    "about.quote":
       "At Vang Hè, we do not merely pour a glass of wine. We nurture stories, holding still the fleeting moments where time gently slows beside dancing candlelight and soothing jazz melodies.",
-    "story.quote_author": "— Hospitality philosophy at 65 Trinh Phong, Nha Trang",
+    "about.quote_author": "— Vang Hè · 65 Trinh Phong, Nha Trang",
+    "about.lead":
+      "Vang Hè (The Wine Corner) is a quiet, poetic retreat at 65 Trinh Phong, where golden lamps dim low and the coastal pulse slows down to make room for heartfelt moments.",
+    "about.body1":
+      "Unpretentious and sincere, we believe that the true essence of fine wine lies in the cherished moments uncorked among friends and loved ones. Wine is the catalyst for genuine laughter and authentic connection.",
+    "about.p1_title": "Curated Wine Cellar",
+    "about.p1_desc": "Sparkling, White, Rose & Red wines curated from premier estates, cellared at precise 16°C.",
+    "about.p2_title": "Artisanal Charcuterie & Bites",
+    "about.p2_desc": "Jamon Iberico platters, European cheeses, and crusty sourdough with signature Hai Phong pate.",
+    "about.p3_title": "Warm & Intimate Ambiance",
+    "about.p3_desc": "Flickering candlelight, soothing tunes, and cozy settings designed for couples and close friends.",
+    "about.cta_menu": "Explore Full Menu ↗",
+
+    // Home Menu Preview Section
+    "homemenu.badge": "OUR MENU · HIGHLIGHTS",
+    "homemenu.title": "Discover Exceptional Flavors at Vang Hè",
+    "homemenu.subtitle":
+      "An artful pairing of handpicked global vintages, premium European cheese & cold cut boards, and warm sourdough bread.",
+    "homemenu.cta": "VIEW COMPLETE MENU ↗",
+
+    // Story (Fallback)
+    "story.badge": "ABOUT US · VANG HÈ",
+    "story.title": "An Intimate Wine Sanctuary in Coastal Nha Trang",
+    "story.quote":
+      "At Vang Hè, we do not merely pour a glass of wine. We nurture stories beside dancing candlelight and soothing jazz melodies.",
+    "story.quote_author": "— Vang Hè · 65 Trinh Phong, Nha Trang",
     "story.lead":
-      "Vang Hè (Vanghé) was born not from the grandiosity of conventional fine dining, but from a heartfelt desire to craft an intimate sanctuary at 65 Trinh Phong, where golden lamps dim low and the coastal pulse slows down.",
+      "Vang Hè (The Wine Corner) was born to craft an intimate sanctuary at 65 Trinh Phong, where golden lamps dim low and the seaside pace slows down.",
     "story.body1":
-      "We believe that the true essence of a bottle of wine lies not in its prestige or price tag, but in the cherished moment it is uncorked among dearest companions. Wine is the catalyst for genuine laughter, sincere confessions, and bridging every distance between hearts.",
+      "We believe that the true essence of a bottle of wine lies not in its price tag, but in the cherished moment it is uncorked among dearest companions.",
     "story.body2":
-      "Whether you are a seasoned oenophile seeking an intense, brooding red vintage to savor, or simply wishing to unwind with a chilled glass of crisp white wine paired with artisanal cheeses after sunset — Vang Hè awaits with a plush armchair and a warm welcoming smile.",
-    "story.p1_title": "Light & Temperature",
-    "story.p1_desc": "40% softened amber glow, precise 16°C cellar preserving every floral aroma.",
-    "story.p2_title": "Oak Wood & Candlelight",
-    "story.p2_desc": "Subtle oak accents blend with gentle wax flames, slowing down the coastal pace.",
-    "story.p3_title": "The Clink of Crystal",
-    "story.p3_desc": "The delicate chime of crystal glasses gracefully commences sincere evening talks.",
-    "story.p4_title": "Authentic Heritage",
-    "story.p4_desc": "Curated from world-renowned estates, paired with artisanal cheese & charcuterie.",
+      "Whether you seek an intense red vintage to savor or a chilled crisp white wine with artisanal cheeses — Vang Hè awaits with a plush armchair and a warm welcoming smile.",
+    "story.p1_title": "Curated Wine Cellar",
+    "story.p1_desc": "16°C cellar safeguarding every delicate fruit and floral aroma.",
+    "story.p2_title": "Artisanal Cold Cuts",
+    "story.p2_desc": "European cheese, Jamon Iberico, and Hai Phong pate sourdough bread.",
+    "story.p3_title": "Candlelight & Warmth",
+    "story.p3_desc": "Artisanal candle warmth and natural wood textures slowing down time.",
+    "story.p4_title": "Crystal Clinking",
+    "story.p4_desc": "The bright ring of crystal glasses opening the floor for unforgettable stories.",
     "story.img_tag": "Vang Hè · The Wine Corner · Nha Trang",
     "story.img_sub": "Intimate wine gatherings from 18:00 every evening",
     "story.accent_badge": "Intimate & Romantic",
 
-    // Chapter II: Tablescape
-    "tablescape.badge": "CHAPTER II · THE TABLE & TABLESCAPE",
-    "tablescape.title": "The Art of Dining Presentation Awaking All Senses",
-    "tablescape.subtitle":
-      "Tablescape is not mere decoration; it is our way of welcoming you with seasonal blossoms, warm candles, natural wood textures, and refined crystal.",
-    "tablescape.c1_title": "Artistic Tablescape",
-    "tablescape.c1_desc":
-      "Seasonal floral arrangements, glowing candlesticks, and bespoke table runners meticulously set for romantic dates and heartfelt celebrations.",
-    "tablescape.c1_tag1": "Seasonal Flowers",
-    "tablescape.c1_tag2": "Warm Candlelight",
-    "tablescape.c2_title": "Artisanal Ham & Cheese",
-    "tablescape.c2_desc":
-      "Harmonious pairings of Jamon Iberico, Truffle cheese, marinated olives, and fresh fruit — elevating the smooth tannins and bouquet of every sip.",
-    "tablescape.c2_tag1": "Jamon Iberico",
-    "tablescape.c2_tag2": "Truffle Cheese",
-    "tablescape.c3_title": "Fine Wine & Stories",
-    "tablescape.c3_desc":
-      "Curated selections from esteemed global vineyards, served precisely at 16°C to unfold their fullest aromatic layers.",
-    "tablescape.c3_tag1": "Standard 16°C",
-    "tablescape.c3_tag2": "Crystal Glasses",
-
-    // Chapter III: Space
-    "space.badge": "CHAPTER III · THE SPACE AT VANGHÉ",
+    // Space
+    "space.badge": "THE SPACE · VANGHÉ",
     "space.title": "A Serene Corner in the Heart of the Coastal City",
     "space.subtitle":
       "Rustic yet refined, modern yet deeply intimate. A sanctuary where you can linger for hours with loved ones without ever feeling rushed.",
@@ -280,34 +307,15 @@ export const translations = {
     "space.g5_desc": "Artisanal wax candles and seasonal blossoms creating poetic warmth",
     "space.g6_title": "Intimate Lounge",
     "space.g6_desc": "Plush seating designed for seamless, barrier-free evenings of joy",
-    "space.banner_badge": "SIGNATURE EXPERIENCE · THE GRAND TABLESCAPE",
-    "space.banner_title": "Grand Tablescape, Fresh Blooms & Gourmet Platter",
+    "space.banner_badge": "SIGNATURE EXPERIENCE · VANG HÈ CORNER",
+    "space.banner_title": "Candlelit Setting, Fresh Blooms & Gourmet Platter",
     "space.banner_desc": "An enchanting harmony of vibrant seasonal blooms, artisanal cold cuts & cheese pedestals, and fine wine beneath warm candlelight.",
     "space.banner_tag1": "Seasonal Blooms",
     "space.banner_tag2": "Cold Cut & Cheese",
     "space.banner_tag3": "Sommelier Crystal",
 
-    // Chapter IV: Film
-    "film.badge": "CHAPTER IV · CINEMATIC EMOTIONS",
-    "film.title": "Warm Moving Moments at Vang Hè",
-    "film.subtitle":
-      "Hear the crystalline clink of glasses, gaze upon flickering candle warmth, and immerse in the relaxed seaside evening rhythm through authentic footage.",
-    "film.tab1_tag": "01 · Ambiance",
-    "film.tab1_title": "Space & Wine Bar",
-    "film.tab1_desc": "Gentle golden glow, comforting timber bar, and mellow jazz undertones.",
-    "film.tab2_tag": "02 · Tablescape",
-    "film.tab2_title": "Tablescape Artistry",
-    "film.tab2_desc": "Thoughtful placements of seasonal flowers, cheese boards, and sparkling crystal.",
-    "film.tab3_tag": "03 · Connection",
-    "film.tab3_title": "Clinking Glasses",
-    "film.tab3_desc": "The bright ring of crystal glasses opening the floor for unforgettable stories.",
-    "film.btn_pause": "Pause",
-    "film.btn_play": "Play Video",
-    "film.btn_unmute": "Unmute Sound",
-    "film.btn_mute": "Mute Sound",
-
-    // Chapter V: Location
-    "loc.badge": "CHAPTER V · NHA TRANG RENDEZVOUS",
+    // Location
+    "loc.badge": "NHA TRANG RENDEZVOUS",
     "loc.title": "Meet Us at Vang Hè Corner",
     "loc.subtitle": "65 Trinh Phong, Tan Lap, Nha Trang City — Central coastal location with easy access and convenient car parking.",
     "loc.c1_label": "OPENING HOURS",
@@ -320,17 +328,17 @@ export const translations = {
     "loc.c3_val": "0988 123 456",
     "loc.c3_sub": "Sommelier Consultation & VIP Table Booking",
     "loc.c4_label": "SIGNATURE SERVICE",
-    "loc.c4_val": "Tablescape & Wine",
-    "loc.c4_sub": "Candlelit tablescape & artisanal food pairing",
+    "loc.c4_val": "Wine & Cold Cut",
+    "loc.c4_sub": "Candlelit tables & artisanal food pairing",
     "loc.map_title": "Vang Hè — The Wine Corner on Google Maps",
     "loc.map_addr": "65 Trinh Phong, Tan Lap, Nha Trang",
     "loc.map_btn": "Open in Google Maps",
 
-    // Chapter VI: Reservation
-    "res.badge": "CHAPTER VI · RESERVATION & VIP EXPERIENCE",
+    // Reservation
+    "res.badge": "RESERVATION & VIP EXPERIENCE",
     "res.title": "Dedicated to Crafting Your Unforgettable Evening",
     "res.subtitle":
-      "Allow us to prepare your tablescape in advance, arrange fresh seasonal flowers, and bring your chosen vintage to ideal cellar temperature before your arrival.",
+      "Allow us to prepare your table in advance, arrange fresh seasonal flowers, and bring your chosen vintage to ideal cellar temperature before your arrival.",
     "res.success_title": "Your Request Has Been Received!",
     "res.success_desc": "Our Sommelier will contact you within 15 minutes to confirm your table arrangement.",
     "res.success_hotline": "Urgent assistance needed? Call our hotline:",
@@ -354,25 +362,53 @@ export const translations = {
     "res.perk3": "At-table Sommelier tasting and pairing guidance",
     "res.sidebar_note": "● Open every evening 18:00 — 23:30",
 
+    // Dedicated Menu Page Translations (/thuc-don)
+    "menu.page_title": "Menu — Vang Hè Nha Trang",
+    "menu.hero_title": "Vang Hè Menu",
+    "menu.hero_subtitle": "The Wine Corner · 65 Trinh Phong, Nha Trang",
+    "menu.alacarte_title": "A La Carte Menu",
+    "menu.alacarte_desc":
+      "A delicate pairing of curated wines and artisanal charcuterie: Jamon Iberico, European cheeses, and toasted sourdough bread.",
+    "menu.btn_explore": "Menu",
+    "menu.slider_title": "Featured Dishes & Drinks",
+    "menu.slider_subtitle": "Handpicked favorites at Vang Hè",
+    "menu.more_title": "Something a little more special....",
+    "menu.more_subtitle":
+      "Curated sets to elevate your evening table.",
+    "menu.tapas_title": "COLD CUT & TAPAS",
+    "menu.tapas_desc":
+      "Jamon Iberico ham, Truffle cheese, Chorizo sausages, and pitted olives.",
+    "menu.bread_title": "SOURDOUGH BREAD & SIDES",
+    "menu.bread_desc":
+      "Toasted sourdough, traditional Hai Phong pate, and smoked string cheese.",
+    "menu.wine_title": "WINE COLLECTION",
+    "menu.wine_desc":
+      "Sparkling, White, and Rose handpicked from renowned world vineyards, preserved at 16°C.",
+    "menu.modal_title": "Menu — Vang Hè Nha Trang",
+    "menu.modal_hint": "Select pages below to view menu images",
+    "menu.modal_close": "Close",
+    "menu.modal_drive_btn": "Open Full Menu ↗",
+    "menu.vat_notice": "Prices follow in-house menu (VAT not included). Unit: 1,000 VND.",
+
     // Trust Bar & Footer
-    "trust.t1_title": "100% Certified Authentic",
-    "trust.t1_desc": "Complete origin certificates from renowned worldwide estates",
-    "trust.t2_title": "16°C Controlled Cellar",
-    "trust.t2_desc": "Strict temperature and 70% humidity safeguarding delicate aromatics",
-    "trust.t3_title": "Tablescape Artistry",
-    "trust.t3_desc": "Artful candlelit tablescapes paired with artisanal charcuterie",
-    "trust.t4_title": "Professional Sommelier Guide",
-    "trust.t4_desc": "Dedicated guidance discovering the ideal vintage for every evening",
+    "trust.t1_title": "100% Authentic",
+    "trust.t1_desc": "Certified origin",
+    "trust.t2_title": "16°C Wine Cellar",
+    "trust.t2_desc": "Optimal storage",
+    "trust.t3_title": "Artisanal Charcuterie",
+    "trust.t3_desc": "Jamon Iberico & cheese",
+    "trust.t4_title": "Sommelier Guidance",
+    "trust.t4_desc": "Dedicated service",
     "footer.brand_desc":
-      "An intimate wine corner in coastal Nha Trang. Where artistic tablescapes meet rare vintages, weaving unforgettable stories and authentic emotions.",
-    "footer.open_hours": "Open daily:",
-    "footer.col_explore": "Explore Vang Hè",
-    "footer.col_contact": "Reservations & Inquiries",
+      "An intimate wine corner in coastal Nha Trang.",
+    "footer.open_hours": "Open nightly:",
+    "footer.col_explore": "Explore",
+    "footer.col_contact": "Contact & Booking",
     "footer.contact_intro":
-      "Contact us directly to reserve your candlelit tablescape or to receive tailored vintage recommendations for your evening.",
+      "Contact us directly to reserve your candlelit table.",
     "footer.legal":
-      "DRINK RESPONSIBLY: In compliance with Vietnamese regulations. Alcohol is not for individuals under 18 years of age or pregnant women. Do not drive after drinking.",
-    "footer.copy": "© 2026 Vang Hè · The Wine Corner · 65 Trinh Phong, Nha Trang. All rights reserved.",
+      "Drink responsibly: In compliance with law. Alcohol is not for persons under 18. Do not drive after drinking.",
+    "footer.copy": "© 2026 Vang Hè · The Wine Corner · 65 Trinh Phong, Nha Trang.",
   },
 };
 

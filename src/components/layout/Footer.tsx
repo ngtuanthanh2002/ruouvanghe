@@ -5,15 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { siteConfig } from "@/lib/site-config";
-import {
-  MapPinIcon,
-  PhoneIcon,
-  ShieldCheckIcon,
-  TemperatureIcon,
-  SparklesIcon,
-  WineGlassIcon,
-  ArrowRightIcon,
-} from "../ui/Icons";
+import { MapPinIcon, PhoneIcon } from "../ui/Icons";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
@@ -23,51 +15,6 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      {/* Redesigned Luxury Trust Bar — 100% SVG Icons, No Emojis */}
-      <div className={styles.trustBar}>
-        <div className={`container ${styles.trustGrid}`}>
-          <div className={styles.trustItem}>
-            <div className={styles.trustIconCircle}>
-              <ShieldCheckIcon size={22} className={styles.trustSvg} />
-            </div>
-            <div className={styles.trustText}>
-              <h4 className={styles.trustTitle}>{t("trust.t1_title")}</h4>
-              <p className={styles.trustDesc}>{t("trust.t1_desc")}</p>
-            </div>
-          </div>
-
-          <div className={styles.trustItem}>
-            <div className={styles.trustIconCircle}>
-              <TemperatureIcon size={22} className={styles.trustSvg} />
-            </div>
-            <div className={styles.trustText}>
-              <h4 className={styles.trustTitle}>{t("trust.t2_title")}</h4>
-              <p className={styles.trustDesc}>{t("trust.t2_desc")}</p>
-            </div>
-          </div>
-
-          <div className={styles.trustItem}>
-            <div className={styles.trustIconCircle}>
-              <SparklesIcon size={22} className={styles.trustSvg} />
-            </div>
-            <div className={styles.trustText}>
-              <h4 className={styles.trustTitle}>{t("trust.t3_title")}</h4>
-              <p className={styles.trustDesc}>{t("trust.t3_desc")}</p>
-            </div>
-          </div>
-
-          <div className={styles.trustItem}>
-            <div className={styles.trustIconCircle}>
-              <WineGlassIcon size={22} className={styles.trustSvg} />
-            </div>
-            <div className={styles.trustText}>
-              <h4 className={styles.trustTitle}>{t("trust.t4_title")}</h4>
-              <p className={styles.trustDesc}>{t("trust.t4_desc")}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Streamlined Clean Footer Layout */}
       <div className={`container ${styles.mainFooter}`}>
         <div className={styles.footerGrid}>
@@ -77,8 +24,8 @@ export default function Footer() {
               <Image
                 src="/Logo_VH-White.png"
                 alt="Logo Vang Hè — The Wine Corner"
-                width={56}
-                height={56}
+                width={52}
+                height={52}
                 className={styles.logoImg}
               />
               <div className={styles.logoText}>
@@ -87,14 +34,12 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className={styles.brandSummary}>
-              {t("footer.brand_desc")}
-            </p>
+            <p className={styles.brandSummary}>{t("footer.brand_desc")}</p>
 
             <div className={styles.locationSummary}>
               <div className={styles.locItem}>
-                <MapPinIcon size={16} className={styles.locSvg} />
-                <span>65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang</span>
+                <MapPinIcon size={15} className={styles.locSvg} />
+                <span>65 Trịnh Phong, P. Tân Lập, Nha Trang</span>
               </div>
               <div className={styles.locItem}>
                 <span className={styles.dotLive}>●</span>
@@ -108,48 +53,31 @@ export default function Footer() {
             <h4 className={styles.colTitle}>{t("footer.col_explore")}</h4>
             <ul className={styles.linkList}>
               <li>
-                <Link href="/#cau-chuyen">{t("nav.story")}</Link>
+                <Link href="/#gioi-thieu">{t("nav.about")}</Link>
               </li>
               <li>
-                <Link href="/#ban-tiec">{t("nav.tablescape")}</Link>
+                <Link href="/thuc-don" style={{ color: "var(--amber-light)", fontWeight: 600 }}>
+                  🍷 {t("nav.menu")}
+                </Link>
               </li>
               <li>
                 <Link href="/#khong-gian">{t("nav.space")}</Link>
               </li>
               <li>
-                <Link href="/#video">{t("nav.film")}</Link>
-              </li>
-              <li>
-                <Link href="/#diem-hen">{t("nav.location")}</Link>
-              </li>
-              <li>
-                <Link href="/#dat-ban">{t("res.badge")}</Link>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.contact.menuUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--amber-light)", fontWeight: 600 }}
-                >
-                  📖 Thực Đơn & Menu Vang ↗
-                </a>
+                <Link href="/#dat-ban">{t("nav.reservation")}</Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Contact & Hospitality */}
+          {/* Column 3: Contact & Hotline */}
           <div className={styles.contactCol}>
             <h4 className={styles.colTitle}>{t("footer.col_contact")}</h4>
-            <p className={styles.contactIntro}>
-              {t("footer.contact_intro")}
-            </p>
 
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
               className={styles.footerHotlineBtn}
             >
-              <PhoneIcon size={18} />
+              <PhoneIcon size={16} />
               <span>Hotline: {siteConfig.contact.hotlineDisplay}</span>
             </a>
 
@@ -184,9 +112,7 @@ export default function Footer() {
 
         {/* Responsible Drinking Regulatory Notice */}
         <div className={styles.legalNotice}>
-          <p className={styles.warningText}>
-            {t("footer.legal")}
-          </p>
+          <p className={styles.warningText}>{t("footer.legal")}</p>
         </div>
 
         {/* Bottom Copyright */}

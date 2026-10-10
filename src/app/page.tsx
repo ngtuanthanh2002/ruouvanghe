@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -15,10 +15,6 @@ import {
   WineGlassIcon,
   ClockIcon,
   SparklesIcon,
-  PlayIcon,
-  PauseIcon,
-  Volume2Icon,
-  VolumeXIcon,
   ArrowRightIcon,
   CheckCircleIcon,
 } from "@/components/ui/Icons";
@@ -26,11 +22,6 @@ import AmbientDepthBackground from "@/components/ui/AmbientDepthBackground";
 
 export default function HomePage() {
   const { t, lang } = useLanguage();
-
-  const [currentVideoIdx, setCurrentVideoIdx] = useState<number>(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(true);
-  const [isVideoMuted, setIsVideoMuted] = useState<boolean>(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [formData, setFormData] = useState({
@@ -42,31 +33,6 @@ export default function HomePage() {
     occasion: "Hẹn hò lãng mạn",
     notes: "",
   });
-
-  // Localized Video Playlist
-  const videoPlaylist = [
-    {
-      id: "atmosphere",
-      title: t("film.tab1_title"),
-      tag: t("film.tab1_tag"),
-      desc: t("film.tab1_desc"),
-      src: "/videos/vanghe-atmosphere.mp4",
-    },
-    {
-      id: "tablescape",
-      title: t("film.tab2_title"),
-      tag: t("film.tab2_tag"),
-      desc: t("film.tab2_desc"),
-      src: "/videos/vanghe-tablescape.mp4",
-    },
-    {
-      id: "moments",
-      title: t("film.tab3_title"),
-      tag: t("film.tab3_tag"),
-      desc: t("film.tab3_desc"),
-      src: "/videos/vanghe-moments.mp4",
-    },
-  ];
 
   // Scroll Reveal Observer with blur-to-clear & cascading stagger support
   useEffect(() => {
@@ -93,32 +59,6 @@ export default function HomePage() {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, [lang]);
-
-  const handleSelectVideo = (idx: number) => {
-    setCurrentVideoIdx(idx);
-    setIsVideoPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
-  const togglePlayPause = () => {
-    if (!videoRef.current) return;
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsVideoPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsVideoPlaying(false);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !videoRef.current.muted;
-    setIsVideoMuted(videoRef.current.muted);
-  };
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -188,6 +128,7 @@ export default function HomePage() {
   const googleMapsUrl =
     "https://www.google.com/maps/place/Vang+H%C3%A8+-+The+Wine+Corner/@12.2388798,109.1905037,1721m/data=!3m1!1e3!4m12!1m5!8m4!1e2!2s114553681489507271886!3m1!1e1!3m5!1s0x3170670038805a7b:0x49cf297aba1a22d4!8m2!3d12.2392716!4d109.1904063!16s%2Fg%2F11z648jrtc?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D";
 
+
   return (
     <div className={styles.pageWrapper}>
       <JsonLd data={localBusinessSchema} />
@@ -198,7 +139,6 @@ export default function HomePage() {
           WITH CINEMATIC LUXURY GRADIENT OVERLAY & AMBIENT LIGHT ORBS
       ======================================================== */}
       <section className={styles.heroCentered}>
-        {/* Full-bleed background image with subtle zoom */}
         <div className={styles.heroBgWrapper}>
           <Image
             src="/images/1.jpg"
@@ -210,14 +150,14 @@ export default function HomePage() {
           <div className={styles.heroCinematicOverlay} />
         </div>
 
-        {/* Floating Luminous Light Orbs (Hình tròn mờ, sáng, trôi nổi chuyển động) */}
+        {/* Floating Luminous Light Orbs */}
         <div className={styles.heroLightOrbContainer} aria-hidden="true">
           <div className={styles.heroLightOrbAmber} />
           <div className={styles.heroLightOrbChampagne} />
           <div className={styles.heroLightOrbWine} />
         </div>
 
-        {/* Ambient Multi-Depth Bobbing Symbols (Ly vang pha lê, sao kim 4 cánh, giọt vang nhấp nhô liên tục tạo chiều sâu) */}
+        {/* Ambient Multi-Depth Bobbing Symbols */}
         <AmbientDepthBackground variant="hero" theme="dark" />
 
         {/* Centered Luxury Content */}
@@ -253,27 +193,24 @@ export default function HomePage() {
           </div>
 
           <div className={styles.heroCtasCentered}>
-            <Link href="/#khong-gian" className={styles.btnPrimaryLuxury}>
-              <span>{t("hero.cta_space")}</span>
+            {/* Primary Menu Button */}
+            <Link href="/thuc-don" className={styles.btnPrimaryLuxury}>
+              <span>{t("hero.cta_menu")}</span>
               <ArrowRightIcon size={16} />
             </Link>
 
-            <a
-              href={siteConfig.contact.menuUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.btnMenuLuxury}
-            >
-              <span>{lang === "en" ? "Explore Menu ↗" : "Mở Thực Đơn & Menu ↗"}</span>
-            </a>
-
-            <Link href="/#video" className={styles.btnVideoLuxury}>
-              <span className={styles.playIconCircle}>
-                <PlayIcon size={12} />
-              </span>
-              <span>{t("hero.cta_film")}</span>
+            {/* Reservation Button */}
+            <Link href="/#dat-ban" className={styles.btnMenuLuxury}>
+              <span>{t("hero.cta_reserve")}</span>
             </Link>
 
+            {/* Space Button */}
+            <Link href="/#khong-gian" className={styles.btnVideoLuxury}>
+              <WineGlassIcon size={15} />
+              <span>{t("hero.cta_space")}</span>
+            </Link>
+
+            {/* Maps Button */}
             <a
               href={googleMapsUrl}
               target="_blank"
@@ -285,9 +222,9 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* Elegant Mouse Scroll Down Indicator */}
+          {/* Mouse Scroll Down Indicator */}
           <a
-            href="#cau-chuyen"
+            href="#gioi-thieu"
             className={styles.heroScrollDown}
             aria-label={t("hero.scroll_down")}
           >
@@ -300,97 +237,47 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          CHƯƠNG I: KHỞI NGUỒN & TRIẾT LÝ (EMOTIONAL DESIGN)
+          MỤC 1: GIỚI THIỆU GỌN GÀNG (ABOUT US)
+          Sửa lại từ Khởi nguồn & Triết lý rườm rà thành súc tích, ấm áp
       ======================================================== */}
-      <section id="cau-chuyen" className={styles.storySection}>
-        <AmbientDepthBackground variant="story" theme="light" />
+      <section id="gioi-thieu" className={styles.storySection}>
+        <AmbientDepthBackground variant="story" theme="dark" />
         <div className={styles.candleWarmthHalo} aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className={`${styles.sectionHeader} rv`}>
-            <span className={styles.chapterBadge}>{t("story.badge")}</span>
-            <h2 className={styles.sectionTitle}>{t("story.title")}</h2>
+          <div className={`${styles.sectionHeaderLight} rv`}>
+            <span className={styles.chapterBadgeLight}>{t("about.badge")}</span>
+            <h2 className={styles.sectionTitleLight}>{t("about.title")}</h2>
           </div>
 
           {/* Poetic Pull Quote Banner */}
           <div className={`${styles.storyQuoteBox} rv rv-scale`}>
             <span className={styles.quoteMark}>“</span>
             <blockquote className={styles.quoteText}>
-              {t("story.quote")}
+              {t("about.quote")}
             </blockquote>
             <cite className={styles.quoteAuthor}>
-              {t("story.quote_author")}
+              {t("about.quote_author")}
             </cite>
           </div>
 
           <div className={styles.storyGrid}>
             <div className={`${styles.storyText} rv rv-left`}>
-              <p className={styles.storyLead}>{t("story.lead")}</p>
-              <p className={styles.storyBody}>{t("story.body1")}</p>
-              <p className={styles.storyBody}>{t("story.body2")}</p>
-
-              {/* 4 Sensory Pillars */}
-              <div className={styles.sensoryGrid}>
-                <div className={`${styles.sensoryItem} rv rv-d1`}>
-                  <div className={styles.sensoryNum}>01</div>
-                  <div>
-                    <strong>{t("story.p1_title")}</strong>
-                    <p>{t("story.p1_desc")}</p>
-                  </div>
-                </div>
-                <div className={`${styles.sensoryItem} rv rv-d2`}>
-                  <div className={styles.sensoryNum}>02</div>
-                  <div>
-                    <strong>{t("story.p2_title")}</strong>
-                    <p>{t("story.p2_desc")}</p>
-                  </div>
-                </div>
-                <div className={`${styles.sensoryItem} rv rv-d3`}>
-                  <div className={styles.sensoryNum}>03</div>
-                  <div>
-                    <strong>{t("story.p3_title")}</strong>
-                    <p>{t("story.p3_desc")}</p>
-                  </div>
-                </div>
-                <div className={`${styles.sensoryItem} rv rv-d4`}>
-                  <div className={styles.sensoryNum}>04</div>
-                  <div>
-                    <strong>{t("story.p4_title")}</strong>
-                    <p>{t("story.p4_desc")}</p>
-                  </div>
-                </div>
-              </div>
+              <p className={styles.storyLead}>{t("about.lead")}</p>
+              <p className={styles.storyBody}>{t("about.body1")}</p>
             </div>
 
             <div className={`${styles.storyVisual} rv rv-right`}>
-              <div className={styles.storyCollageFrame}>
-                {/* Main Large Photo */}
-                <div className={styles.storyImgMainWrap}>
-                  <Image
-                    src="/images/story-facade.jpg"
-                    alt={t("story.img_tag")}
-                    width={560}
-                    height={560}
-                    className={styles.storyImgMain}
-                  />
-                  <div className={styles.storyImgTag}>
-                    <strong>{t("story.img_tag")}</strong>
-                    <span>{t("story.img_sub")}</span>
-                  </div>
-                </div>
-
-                {/* Overlapping Secondary Photo */}
-                <div className={styles.storyImgAccentWrap}>
-                  <Image
-                    src="/images/3.jpg"
-                    alt={t("story.accent_badge")}
-                    width={260}
-                    height={260}
-                    className={styles.storyImgAccent}
-                  />
-                  <div className={styles.accentBadge}>
-                    <SparklesIcon size={14} className={styles.accentBadgeSvg} />
-                    <span>{t("story.accent_badge")}</span>
-                  </div>
+              <div className={styles.storySingleSpaceWrap}>
+                <Image
+                  src="/images/gallery-cozy.jpg"
+                  alt="Không gian thưởng vang ấm cúng tại Vang Hè — 65 Trịnh Phong, Nha Trang"
+                  fill
+                  sizes="(max-width: 960px) 100vw, 48vw"
+                  className={styles.storySingleSpaceImg}
+                />
+                <div className={styles.storySpaceImgBadge}>
+                  <SparklesIcon size={14} className={styles.accentBadgeSvg} />
+                  <span>Vang Hè · 65 Trịnh Phong, Nha Trang</span>
                 </div>
               </div>
             </div>
@@ -399,142 +286,8 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          CHƯƠNG II: BÀN TIỆC & TABLESCAPE (UNCLIPPED PHOTOS)
-      ======================================================== */}
-      <section id="ban-tiec" className={styles.tablescapeSection}>
-        <AmbientDepthBackground variant="tablescape" theme="espresso" />
-        <div className={styles.tablescapeShimmerAura} aria-hidden="true" />
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className={`${styles.sectionHeaderLight} rv`}>
-            <span className={styles.chapterBadgeLight}>
-              {t("tablescape.badge")}
-            </span>
-            <h2 className={styles.sectionTitleLight}>
-              {t("tablescape.title")}
-            </h2>
-            <p className={styles.sectionSubtitleLight}>
-              {t("tablescape.subtitle")}
-            </p>
-            <div className={styles.tablescapeHeaderAction}>
-              <a
-                href={siteConfig.contact.menuUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.btnTablescapeMenu}
-              >
-                <span>{lang === "en" ? "Explore Full Menu & Wine List ↗" : "Mở Thực Đơn & Menu Vang (Drive) ↗"}</span>
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.tablescapeGrid}>
-            <div className={`${styles.tablescapeCard} rv rv-d1`}>
-              <div className={styles.cardImgFrame}>
-                <Image
-                  src="/images/tablescape-main.jpg"
-                  alt={t("tablescape.c1_title")}
-                  width={560}
-                  height={420}
-                  className={styles.cardPhoto}
-                />
-                <span className={styles.cardNumberBadge}>01</span>
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{t("tablescape.c1_title")}</h3>
-                <p className={styles.cardDesc}>{t("tablescape.c1_desc")}</p>
-                <div className={styles.cardPillRow}>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c1_tag1")}
-                  </span>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c1_tag2")}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className={`${styles.tablescapeCard} rv rv-d2`}>
-              <div className={styles.cardImgFrame}>
-                <Image
-                  src="/images/coldcut-glass.jpg"
-                  alt={t("tablescape.c2_title")}
-                  width={560}
-                  height={420}
-                  className={styles.cardPhoto}
-                />
-                <span className={styles.cardNumberBadge}>02</span>
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{t("tablescape.c2_title")}</h3>
-                <p className={styles.cardDesc}>{t("tablescape.c2_desc")}</p>
-                <div className={styles.cardPillRow}>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c2_tag1")}
-                  </span>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c2_tag2")}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className={`${styles.tablescapeCard} rv rv-d3`}>
-              <div className={styles.cardImgFrame}>
-                <Image
-                  src="/images/gallery-table.jpg"
-                  alt={t("tablescape.c3_title")}
-                  width={560}
-                  height={420}
-                  className={styles.cardPhoto}
-                />
-                <span className={styles.cardNumberBadge}>03</span>
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{t("tablescape.c3_title")}</h3>
-                <p className={styles.cardDesc}>{t("tablescape.c3_desc")}</p>
-                <div className={styles.cardPillRow}>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c3_tag1")}
-                  </span>
-                  <span className={styles.cardPill}>
-                    {t("tablescape.c3_tag2")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Menu Callout Banner */}
-          <div className={`${styles.menuCalloutBanner} rv rv-scale`}>
-            <div className={styles.menuCalloutInfo}>
-              <span className={styles.menuCalloutBadge}>
-                {lang === "en" ? "FULL MENU & WINE LIST" : "THỰC ĐƠN & MENU VANG"}
-              </span>
-              <h4 className={styles.menuCalloutTitle}>
-                {lang === "en"
-                  ? "Explore All Vintages, Cold Cut Platters & Tasting Sets"
-                  : "Khám Phá Toàn Bộ Menu Vang, Khay Cold Cut & Bàn Tiệc"}
-              </h4>
-              <p className={styles.menuCalloutDesc}>
-                {lang === "en"
-                  ? "Browse the complete selection of cellared wines, cheese boards, and tablescape offerings on Google Drive."
-                  : "Mở menu chi tiết trên Google Drive với đầy đủ danh mục rượu vang theo quốc gia, các set khai vị và giá dịch vụ."}
-              </p>
-            </div>
-            <a
-              href={siteConfig.contact.menuUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.menuCalloutBtn}
-            >
-              <span>{lang === "en" ? "Open Menu (Google Drive) ↗" : "Mở Menu Vang Hè ↗"}</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          CHƯƠNG III: KHÔNG GIAN VANGHÉ (MASTER EDITORIAL MOSAIC)
+          MỤC 2: KHÔNG GIAN VANGHÉ (SEAMLESS EDITORIAL MOSAIC)
+          Ảnh nối liền nhau, không đóng khung, không bo góc, cách điệu đẹp, ít text
       ======================================================== */}
       <section id="khong-gian" className={styles.gallerySection}>
         <AmbientDepthBackground variant="space" theme="espresso" />
@@ -543,171 +296,97 @@ export default function HomePage() {
           <div className={`${styles.sectionHeaderLight} rv`}>
             <span className={styles.chapterBadgeLight}>{t("space.badge")}</span>
             <h2 className={styles.sectionTitleLight}>{t("space.title")}</h2>
-            <p className={styles.sectionSubtitleLight}>{t("space.subtitle")}</p>
           </div>
 
-          {/* Master Space Collage Frame Matching User's Curated Layout */}
-          <div className={`${styles.spaceCollageFrame} rv`}>
-            {/* Top Row: 3 Columns (Tall Left + Stacked Middle + Stacked Right) */}
-            <div className={styles.spaceMosaicTop}>
-              {/* Column 1: Tall Card — Quầy Bar & Không Gian Đón Khách */}
-              <div
-                className={`${styles.spaceCard} ${styles.spaceCardTall} rv rv-left`}
-              >
+          {/* Seamless Editorial Tapestry Grid — Zero rigid boxes, zero border radius */}
+          <div className={`${styles.seamlessSpaceGrid} rv`}>
+            {/* Top Row: Asymmetrical Magazine Mosaic */}
+            <div className={styles.seamlessRowTop}>
+              {/* Column 1: Tall Left Photo */}
+              <div className={styles.seamlessTallCell}>
                 <Image
                   src="/images/2.jpg"
-                  alt={t("space.g1_title")}
+                  alt="Quầy bar & không gian đón khách Vang Hè"
                   fill
-                  sizes="(max-width: 992px) 100vw, 36vw"
-                  className={styles.spacePhoto}
+                  sizes="(max-width: 992px) 100vw, 38vw"
+                  className={styles.seamlessPhoto}
                 />
-                <div className={styles.spaceCardOverlay}>
-                  <span className={styles.spaceCardTag}>
-                    {t("space.g1_tag")}
-                  </span>
-                  <h3 className={styles.spaceCardTitle}>
-                    {t("space.g1_title")}
-                  </h3>
-                  <p className={styles.spaceCardDesc}>{t("space.g1_desc")}</p>
-                </div>
+                <div className={styles.seamlessCellAura} />
               </div>
 
-              {/* Column 2: Stacked 2 Cards */}
-              <div className={styles.spaceColStacked}>
-                {/* 2.1: Kệ Vang & Ly Pha Lê */}
-                <div
-                  className={`${styles.spaceCard} ${styles.spaceCardSmall} rv rv-d1`}
-                >
+              {/* Column 2: Stacked 2 Photos */}
+              <div className={styles.seamlessColStacked}>
+                <div className={styles.seamlessSmallCell}>
                   <Image
                     src="/images/gallery-bar.jpg"
-                    alt={t("space.g2_title")}
+                    alt="Kệ vang & ly pha lê"
                     fill
-                    sizes="(max-width: 992px) 100vw, 32vw"
-                    className={styles.spacePhoto}
+                    sizes="(max-width: 992px) 100vw, 31vw"
+                    className={styles.seamlessPhoto}
                   />
-                  <div className={styles.spaceCardOverlay}>
-                    <span className={styles.spaceCardTag}>
-                      {t("space.g2_tag")}
-                    </span>
-                    <h3 className={styles.spaceCardTitle}>
-                      {t("space.g2_title")}
-                    </h3>
-                    <p className={styles.spaceCardDesc}>
-                      {t("space.g2_desc")}
-                    </p>
-                  </div>
+                  <div className={styles.seamlessCellAura} />
                 </div>
 
-                {/* 2.2: Băng Ghế Banquette & Bàn Tiệc */}
-                <div
-                  className={`${styles.spaceCard} ${styles.spaceCardSmall} rv rv-d2`}
-                >
+                <div className={styles.seamlessSmallCell}>
                   <Image
-                    src="/images/gallery-table.jpg"
-                    alt={t("space.g3_title")}
+                    src="/images/gallery-interior.jpg"
+                    alt="Bàn tiệc banquette ấm cúng"
                     fill
-                    sizes="(max-width: 992px) 100vw, 32vw"
-                    className={styles.spacePhoto}
+                    sizes="(max-width: 992px) 100vw, 31vw"
+                    className={styles.seamlessPhoto}
                   />
-                  <div className={styles.spaceCardOverlay}>
-                    <span className={styles.spaceCardTag}>
-                      {t("space.g3_tag")}
-                    </span>
-                    <h3 className={styles.spaceCardTitle}>
-                      {t("space.g3_title")}
-                    </h3>
-                    <p className={styles.spaceCardDesc}>
-                      {t("space.g3_desc")}
-                    </p>
-                  </div>
+                  <div className={styles.seamlessCellAura} />
                 </div>
               </div>
 
-              {/* Column 3: Stacked 2 Cards */}
-              <div className={styles.spaceColStacked}>
-                {/* 3.1: Biển Đồng Vanghé & Góc Check-in */}
-                <div
-                  className={`${styles.spaceCard} ${styles.spaceCardSmall} rv rv-d2`}
-                >
+              {/* Column 3: Stacked 2 Photos */}
+              <div className={styles.seamlessColStacked}>
+                <div className={styles.seamlessSmallCell}>
                   <Image
-                    src="/images/4.jpg"
-                    alt={t("space.g4_title")}
+                    src="/images/gallery-shelves.jpg"
+                    alt="Tủ vang bảo quản chuẩn 16°C"
                     fill
-                    sizes="(max-width: 992px) 100vw, 32vw"
-                    className={styles.spacePhoto}
+                    sizes="(max-width: 992px) 100vw, 31vw"
+                    className={styles.seamlessPhoto}
                   />
-                  <div className={styles.spaceCardOverlay}>
-                    <span className={styles.spaceCardTag}>
-                      {t("space.g4_tag")}
-                    </span>
-                    <h3 className={styles.spaceCardTitle}>
-                      {t("space.g4_title")}
-                    </h3>
-                    <p className={styles.spaceCardDesc}>
-                      {t("space.g4_desc")}
-                    </p>
-                  </div>
+                  <div className={styles.seamlessCellAura} />
                 </div>
 
-                {/* 3.2: Nến Chai Mộc & Bình Hoa Bàn Tiệc */}
-                <div
-                  className={`${styles.spaceCard} ${styles.spaceCardSmall} rv rv-d3`}
-                >
+                <div className={styles.seamlessSmallCell}>
                   <Image
                     src="/images/10.jpg"
-                    alt={t("space.g5_title")}
+                    alt="Nến chai mộc mạc bên hoa tươi"
                     fill
-                    sizes="(max-width: 992px) 100vw, 32vw"
-                    className={styles.spacePhoto}
+                    sizes="(max-width: 992px) 100vw, 31vw"
+                    className={styles.seamlessPhoto}
                   />
-                  <div className={styles.spaceCardOverlay}>
-                    <span className={styles.spaceCardTag}>
-                      {t("space.g5_tag")}
-                    </span>
-                    <h3 className={styles.spaceCardTitle}>
-                      {t("space.g5_title")}
-                    </h3>
-                    <p className={styles.spaceCardDesc}>
-                      {t("space.g5_desc")}
-                    </p>
-                  </div>
+                  <div className={styles.seamlessCellAura} />
                 </div>
               </div>
             </div>
 
-            {/* Bottom Row: Full-Width Panoramic Tablescape Banner */}
-            <div className={`${styles.spaceWideBanner} rv rv-scale`}>
-              <Image
-                src="/images/1791444307745_8243178211297854059_8243178211297854059_8a09c2d9a895ad0ede8a13193d959fb5.jpg"
-                alt={t("space.banner_title")}
-                fill
-                sizes="100vw"
-                className={styles.spacePhoto}
-              />
-              <div className={styles.spaceBannerOverlay}>
-                <div className={styles.spaceBannerBadgeWrap}>
-                  <SparklesIcon size={14} className={styles.spaceBannerSvg} />
-                  <span className={styles.spaceBannerBadge}>
-                    {t("space.banner_badge")}
-                  </span>
-                </div>
-                <h3 className={styles.spaceBannerTitle}>
-                  {t("space.banner_title")}
-                </h3>
-                <p className={styles.spaceBannerDesc}>
-                  {t("space.banner_desc")}
-                </p>
-                <div className={styles.spaceBannerPills}>
-                  <span className={styles.spaceBannerPill}>
-                    {t("space.banner_tag1")}
-                  </span>
-                  <span className={styles.spaceBannerPill}>
-                    {t("space.banner_tag2")}
-                  </span>
-                  <span className={styles.spaceBannerPill}>
-                    {t("space.banner_tag3")}
-                  </span>
-                </div>
+            {/* Bottom Row: Panoramic Seamless Flow */}
+            <div className={styles.seamlessRowBottom}>
+              <div className={styles.seamlessWideCell}>
+                <Image
+                  src="/images/1791444307745_8243178211297854059_8243178211297854059_8a09c2d9a895ad0ede8a13193d959fb5.jpg"
+                  alt="Toàn cảnh bàn tiệc hoa nến Vang Hè"
+                  fill
+                  sizes="(max-width: 992px) 100vw, 62vw"
+                  className={styles.seamlessPhoto}
+                />
+                <div className={styles.seamlessCellAura} />
+              </div>
+
+              <div className={styles.seamlessWideCell}>
+                <Image
+                  src="/images/tablescape-main.jpg"
+                  alt="Không gian thư thái đêm Nha Trang"
+                  fill
+                  sizes="(max-width: 992px) 100vw, 38vw"
+                  className={styles.seamlessPhoto}
+                />
+                <div className={styles.seamlessCellAura} />
               </div>
             </div>
           </div>
@@ -715,112 +394,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          CHƯƠNG IV: THƯỚC PHIM CẢM XÚC (CINEMATIC PLAYER)
-      ======================================================== */}
-      <section id="video" className={styles.videoSection}>
-        <AmbientDepthBackground variant="video" theme="light" />
-        <div className={styles.theaterBeamGlow} aria-hidden="true" />
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className={`${styles.sectionHeader} rv`}>
-            <span className={styles.chapterBadge}>
-              {t("film.badge")}
-            </span>
-            <h2 className={styles.sectionTitle}>{t("film.title")}</h2>
-            <p className={styles.sectionSubtitle}>{t("film.subtitle")}</p>
-          </div>
-
-          {/* Video Selector Tabs */}
-          <div className={`${styles.videoSelectorTabs} rv rv-scale`}>
-            {videoPlaylist.map((item, idx) => (
-              <button
-                key={item.id}
-                onClick={() => handleSelectVideo(idx)}
-                className={`${styles.videoTab} ${
-                  currentVideoIdx === idx ? styles.activeVideoTab : ""
-                }`}
-              >
-                <span className={styles.videoTabTag}>{item.tag}</span>
-                <strong className={styles.videoTabTitle}>{item.title}</strong>
-              </button>
-            ))}
-          </div>
-
-          {/* Video Player */}
-          <div className={`${styles.videoPlayerFrame} rv`}>
-            <video
-              ref={videoRef}
-              key={videoPlaylist[currentVideoIdx].src}
-              className={styles.videoElement}
-              autoPlay
-              loop
-              muted={isVideoMuted}
-              playsInline
-              preload="metadata"
-            >
-              <source
-                src={videoPlaylist[currentVideoIdx].src}
-                type="video/mp4"
-              />
-              {lang === "en"
-                ? "Your browser does not support the video tag."
-                : "Trình duyệt của bạn không hỗ trợ thẻ video."}
-            </video>
-
-            {/* Video Player Overlay Bar */}
-            <div className={styles.videoPlayerBar}>
-              <div className={styles.videoPlayerMeta}>
-                <h4>{videoPlaylist[currentVideoIdx].title}</h4>
-                <p>{videoPlaylist[currentVideoIdx].desc}</p>
-              </div>
-
-              <div className={styles.videoPlayerControls}>
-                <button
-                  onClick={togglePlayPause}
-                  className={styles.ctrlBtn}
-                  aria-label={
-                    isVideoPlaying ? t("film.btn_pause") : t("film.btn_play")
-                  }
-                >
-                  {isVideoPlaying ? (
-                    <>
-                      <PauseIcon size={14} />
-                      <span>{t("film.btn_pause")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <PlayIcon size={14} />
-                      <span>{t("film.btn_play")}</span>
-                    </>
-                  )}
-                </button>
-
-                <button
-                  onClick={toggleMute}
-                  className={styles.ctrlBtn}
-                  aria-label={
-                    isVideoMuted ? t("film.btn_unmute") : t("film.btn_mute")
-                  }
-                >
-                  {isVideoMuted ? (
-                    <>
-                      <VolumeXIcon size={16} />
-                      <span>{t("film.btn_unmute")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Volume2Icon size={16} />
-                      <span>{t("film.btn_mute")}</span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          CHƯƠNG V: ĐIỂM HẸN NHA TRANG & BẢN ĐỒ GOOGLE MAPS
+          MỤC 4: ĐIỂM HẸN NHA TRANG & BẢN ĐỒ GOOGLE MAPS
       ======================================================== */}
       <section id="diem-hen" className={styles.locationSection}>
         <div className="container">
@@ -830,7 +404,6 @@ export default function HomePage() {
             <p className={styles.sectionSubtitleLight}>{t("loc.subtitle")}</p>
           </div>
 
-          {/* Quick Info Grid with SVG Icons */}
           <div className={styles.locationInfoGrid}>
             <div className={`${styles.locCard} rv rv-d1`}>
               <div className={styles.locCardHeader}>
@@ -909,7 +482,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          CHƯƠNG VI: ĐẶT BÀN & TRẢI NGHIỆM THƯỞNG VANG (VIP LOUNGE)
+          MỤC 5: ĐẶT BÀN & TRẢI NGHIỆM THƯỞNG VANG
       ======================================================== */}
       <section id="dat-ban" className={styles.reservationSection}>
         <AmbientDepthBackground variant="reservation" theme="dark" />
@@ -1092,8 +665,8 @@ export default function HomePage() {
                     >
                       <option value="Hẹn hò lãng mạn">
                         {lang === "en"
-                          ? "Romantic Date (Candle & floral tablescape)"
-                          : "Hẹn hò lãng mạn (Tablescape nến hoa)"}
+                          ? "Romantic Date"
+                          : "Hẹn hò lãng mạn"}
                       </option>
                       <option value="Kỷ niệm ngày đặc biệt">
                         {lang === "en"
@@ -1142,7 +715,7 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Sidebar Direct Hotline — Cohesive Luxury Design */}
+            {/* Sidebar Direct Hotline */}
             <div className={`${styles.resSidebar} rv rv-right`}>
               <div className={styles.resSidebarBox}>
                 <div className={styles.sidebarBadge}>
@@ -1195,14 +768,12 @@ export default function HomePage() {
                 </div>
 
                 <div className={styles.resSidebarQuickLinks}>
-                  <a
-                    href={siteConfig.contact.menuUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/thuc-don"
                     className={styles.resSidebarMenuBtn}
                   >
-                    <span>{lang === "en" ? "📖 View Menu (Google Drive) ↗" : "📖 Xem Thực Đơn & Menu Vang ↗"}</span>
-                  </a>
+                    <span>{lang === "en" ? "📖 View Full Menu ↗" : "📖 Xem Thực Đơn & Menu Vang ↗"}</span>
+                  </Link>
                   <a
                     href={siteConfig.contact.instagram}
                     target="_blank"

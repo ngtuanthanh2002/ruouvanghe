@@ -1,0 +1,1126 @@
+/* ========================================================
+   THỰC ĐƠN PAGE STYLES — VANG HÈ THE WINE CORNER
+   Inspired by Mamita Nha Trang layout with Vang Hè luxury palette
+======================================================== */
+
+.menuPageWrapper {
+  background-color: var(--espresso);
+  color: var(--cream);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 5rem;
+}
+
+/* ========================================================
+   1. HERO BANNER
+======================================================== */
+.heroBanner {
+  position: relative;
+  height: 48vh;
+  min-height: 380px;
+  max-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 3.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(217, 154, 69, 0.2);
+}
+
+.heroBgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.65) saturate(1.1);
+  transform: scale(1.02);
+  transition: transform 8s ease-out;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 9, 8, 0.6) 0%,
+    rgba(20, 13, 11, 0.75) 55%,
+    rgba(14, 9, 8, 0.98) 100%
+  );
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.heroContent {
+  max-width: 800px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  padding: 5px 14px;
+  background: rgba(217, 154, 69, 0.12);
+  border: 1px solid rgba(217, 154, 69, 0.3);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+
+.heroTitle {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+}
+
+.heroSubtitle {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: rgba(246, 239, 230, 0.78);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ========================================================
+   2. SECTION: THỰC ĐƠN GỌI MÓN (A LA CARTE)
+======================================================== */
+.alacarteSection {
+  padding: 3.5rem 0 3.5rem;
+  position: relative;
+}
+
+.alacarteContainer {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.alacarteGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.75rem;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .alacarteGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.alacarteTextCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.alacartePreBadge {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+/* Script cursive style like Mamita */
+.scriptHeading {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #FFFDF9;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(217, 154, 69, 0.2);
+}
+
+.alacarteDesc {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(246, 239, 230, 0.8);
+  margin-bottom: 1.5rem;
+  max-width: 440px;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btnExploreRef {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 26px;
+  background: #E8DCC8;
+  color: #19100C;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
+}
+
+.btnExploreRef:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 154, 69, 0.35);
+}
+
+.alacarteVisualCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.alacarteImgFrame {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 16 / 10;
+  max-height: 290px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(217, 154, 69, 0.28);
+  cursor: pointer;
+  background: #19100d;
+}
+
+.alacarteImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.alacarteImgFrame:hover .alacarteImg {
+  transform: scale(1.05);
+}
+
+.alacarteHoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 9, 8, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #FFFFFF;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.alacarteImgFrame:hover .alacarteHoverOverlay {
+  opacity: 1;
+}
+
+/* ========================================================
+   3. SECTION: CAROUSEL SLIDER (FEATURED DISHES & DRINKS)
+======================================================== */
+.carouselSection {
+  padding: 4.5rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(35, 23, 19, 0.6) 0%, rgba(14, 9, 8, 0.95) 100%);
+  border-top: 1px solid rgba(217, 154, 69, 0.15);
+  border-bottom: 1px solid rgba(217, 154, 69, 0.15);
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.sectionSmallBadge {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.carouselMainTitle {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carouselArrowBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: rgba(42, 26, 21, 0.8);
+  border: 1px solid rgba(217, 154, 69, 0.35);
+  color: var(--amber-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carouselArrowBtn:hover:not(:disabled) {
+  background: var(--amber);
+  color: #1a0f0b;
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+
+.carouselArrowBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carouselViewport {
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  padding: 6px 0;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.carouselItem {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.dishCard {
+  background: rgba(26, 17, 14, 0.75);
+  border: 1px solid rgba(217, 154, 69, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  backdrop-filter: blur(8px);
+}
+
+.dishCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217, 154, 69, 0.55);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(217, 154, 69, 0.15);
+}
+
+.dishImgWrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #1a100d;
+}
+
+.dishImg {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dishCard:hover .dishImg {
+  transform: scale(1.08);
+}
+
+.dishOverlayPill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(14, 9, 8, 0.85);
+  border: 1px solid rgba(217, 154, 69, 0.3);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--amber-light);
+  backdrop-filter: blur(4px);
+}
+
+.dishBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--amber);
+  color: #1a0f0b;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.dishInfo {
+  padding: 1.25rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dishName {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.dishSubName {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--amber-light);
+  margin-bottom: 0.65rem;
+  font-weight: 500;
+}
+
+.dishDesc {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(246, 239, 230, 0.72);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dishFooterRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid rgba(217, 154, 69, 0.15);
+  padding-top: 0.75rem;
+  margin-top: auto;
+}
+
+.dishPrice {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.02em;
+}
+
+.dishOrigin {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: rgba(246, 239, 230, 0.6);
+}
+
+.carouselDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.8rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(217, 154, 69, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.activeDot {
+  width: 26px;
+  border-radius: 999px;
+  background: var(--amber);
+  box-shadow: 0 0 10px rgba(217, 154, 69, 0.5);
+}
+
+/* ========================================================
+   4. SECTION: "MỘT ĐIỀU GÌ ĐÓ MỚI HƠN...."
+======================================================== */
+.moreSection {
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.moreHeader {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.scriptHeadingCenter {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 400;
+  color: #FFFDF9;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.moreSubtitle {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(246, 239, 230, 0.75);
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .moreGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.moreCard {
+  background: #181210;
+  border: 1px solid rgba(217, 154, 69, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .moreCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.moreCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 154, 69, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.moreContentCol {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.moreTag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+.moreCardTitle {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.moreCardDesc {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(246, 239, 230, 0.75);
+  margin-bottom: 1.5rem;
+}
+
+.moreImgCol {
+  position: relative;
+  height: 100%;
+  min-height: 220px;
+}
+
+.moreImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================================
+   5. SECTION: BỘ SƯU TẬP RƯỢU VANG (WINE BANNER)
+   Matching Mamita's large bold typography & wine pouring visual
+======================================================== */
+.wineSection {
+  padding: 3rem 0 5rem;
+}
+
+.wineBannerBox {
+  background: linear-gradient(135deg, #1f1412 0%, #160e0c 100%);
+  border: 1px solid rgba(217, 154, 69, 0.35);
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 992px) {
+  .wineBannerBox {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wineContentSide {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .wineContentSide {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.winePreTag {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--amber);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.wineHugeTitle {
+  font-family: var(--sans);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.wineDesc {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(246, 239, 230, 0.82);
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.wineActionRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btnExploreRefLight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: #E8DCC8;
+  color: #19100C;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.btnExploreRefLight:hover {
+  background: #FFFFFF;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 154, 69, 0.4);
+}
+
+.wineCategoriesPills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wineMiniPill {
+  background: rgba(217, 154, 69, 0.12);
+  border: 1px solid rgba(217, 154, 69, 0.35);
+  color: var(--amber-light);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wineMiniPill:hover {
+  background: var(--amber);
+  color: #1a0f0b;
+}
+
+.wineVisualSide {
+  position: relative;
+  min-height: 350px;
+}
+
+.wineImgFrame {
+  position: absolute;
+  inset: 0;
+}
+
+.winePhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ========================================================
+   6. BOTTOM CTA SECTION
+======================================================== */
+.bottomCtaSection {
+  padding: 2rem 0;
+}
+
+.bottomCtaCard {
+  background: radial-gradient(circle at 70% 30%, rgba(42, 26, 21, 0.95), rgba(18, 12, 10, 0.98));
+  border: 1.5px solid rgba(217, 154, 69, 0.35);
+  border-radius: 14px;
+  padding: 2.75rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .bottomCtaCard {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.bottomCtaEyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.bottomCtaText h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  color: #FFF;
+  margin-bottom: 0.4rem;
+}
+
+.bottomCtaText p {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: rgba(246, 239, 230, 0.75);
+}
+
+.bottomCtaButtons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .bottomCtaButtons {
+    justify-content: center;
+  }
+}
+
+.btnReserveGold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--amber);
+  color: #1a0f0b;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(217, 154, 69, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btnReserveGold:hover {
+  background: #FFFFFF;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.btnHotlineDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(217, 154, 69, 0.12);
+  border: 1px solid rgba(217, 154, 69, 0.35);
+  color: var(--amber-light);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btnHotlineDark:hover {
+  background: rgba(217, 154, 69, 0.25);
+  color: #FFF;
+}
+
+/* ========================================================
+   7. MODAL LIGHTBOX — XEM 4 TRANG MENU THẬT TỪ QUÁN
+======================================================== */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(7, 5, 4, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContainer {
+  background: #19120F;
+  border: 1px solid rgba(217, 154, 69, 0.35);
+  border-radius: 16px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(217, 154, 69, 0.15);
+  animation: scaleUp 0.25s ease-out;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(217, 154, 69, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #140d0b;
+}
+
+.modalTitleBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modalIcon {
+  color: var(--amber);
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.modalSubtitle {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: rgba(246, 239, 230, 0.65);
+  margin-top: 2px;
+}
+
+.modalHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modalDriveBtn {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--amber-light);
+  background: rgba(217, 154, 69, 0.12);
+  border: 1px solid rgba(217, 154, 69, 0.3);
+  border-radius: 6px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.modalDriveBtn:hover {
+  background: var(--amber);
+  color: #1a0f0b;
+}
+
+.modalCloseBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.modalTabsBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 1.5rem;
+  background: #110b09;
+  border-bottom: 1px solid rgba(217, 154, 69, 0.15);
+  overflow-x: auto;
+}
+
+.modalTabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(246, 239, 230, 0.7);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.modalTabBtn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.activeModalTab {
+  background: rgba(217, 154, 69, 0.18) !important;
+  border-color: rgba(217, 154, 69, 0.45) !important;
+  color: var(--amber-light) !important;
+  font-weight: 700;
+}
+
+.tabNum {
+  font-size: 10px;
+  color: var(--amber);
+  font-weight: 700;
+}
+
+.modalImageStage {
+  flex-grow: 1;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #0d0806;
+  min-height: 480px;
+}
+
+.modalImgWrap {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.modalScanImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.modalNavArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(20, 13, 11, 0.85);
+  border: 1px solid rgba(217, 154, 69, 0.4);
+  color: var(--amber-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+.modalNavArrow:hover {
+  background: var(--amber);
+  color: #1a0f0b;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.modalArrowLeft {
+  left: 1rem;
+}
+
+.modalArrowRight {
+  right: 1rem;
+}
+
+.modalFooter {
+  padding: 0.85rem 1.5rem;
+  border-top: 1px solid rgba(217, 154, 69, 0.15);
+  background: #140d0b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modalVatNote {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: rgba(246, 239, 230, 0.58);
+  margin: 0;
+}
+
+.modalPageIndicator {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amber-light);
+  background: rgba(217, 154, 69, 0.12);
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
