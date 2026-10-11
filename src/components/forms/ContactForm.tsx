@@ -67,7 +67,7 @@ export default function ContactForm() {
             <input
               id="phone"
               type="tel"
-              placeholder="Ví dụ: 0988 123 456"
+              placeholder="Ví dụ: 0866 817 884"
               required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}

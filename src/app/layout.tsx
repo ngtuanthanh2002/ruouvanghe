@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
@@ -22,6 +22,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const alexBrush = Alex_Brush({
+  variable: "--font-script",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -111,7 +118,10 @@ export default function RootLayout({
   const webSiteSchema = generateWebSiteSchema();
 
   return (
-    <html lang="vi" className={`${playfair.variable} ${plusJakarta.variable}`}>
+    <html
+      lang="vi"
+      className={`${playfair.variable} ${plusJakarta.variable} ${alexBrush.variable}`}
+    >
       <head>
         <link rel="icon" href="/Logo_VH.png" type="image/png" />
         <link rel="apple-touch-icon" href="/Logo_VH.png" />

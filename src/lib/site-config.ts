@@ -27,20 +27,25 @@ export const siteConfig = {
   creator: "Vanghé Sommelier & Hospitality Team",
   publisher: "Vanghé — The Wine Corner",
   contact: {
-    hotline: "0988.123.456",
-    hotlineDisplay: "0988 123 456",
-    salesPhone: "0912 888 999",
+    hotline: "0866.817.884",
+    hotlineDisplay: "0866 817 884",
+    salesPhone: "0866 817 884",
     email: "contact@ruouvanghe.vn",
-    zalo: "https://zalo.me/0988123456",
-    facebook: "https://facebook.com/vanghe.thewinecorner",
-    instagram: "https://www.instagram.com/vanghe.thewinecorner/",
+    zalo: "https://zalo.me/0868833059",
+    zaloPhone: "0868 833 059",
+    whatsapp: "https://wa.me/84866817884",
+    whatsappPhone: "0866 817 884",
+    kakaotalk: "0866817884",
+    facebook: "https://www.facebook.com/share/14ooaK66yHR/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/vanghe.thewinecorner?dlrf=bmF5YmNvN3ByMGZo&utm_source=qr",
+    tiktok: "https://www.tiktok.com/@vanghe.thewinecorner?_r=1&_t=ZS-9APUdFujXdO",
     menuUrl: "https://drive.google.com/drive/mobile/folders/1OSyZy0XzsEAoZuMRYNFzVkOgqW_nIOYk",
   },
   primaryLocation: {
     name: "Vanghé — The Wine Corner",
     address: "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang, Khánh Hòa",
-    phone: "0988 123 456",
-    hours: "18:00 — 23:30 (Mở cửa tất cả các ngày trong tuần)",
+    phone: "0866 817 884",
+    hours: "17:00 — 23:30 (Mở cửa tất cả các ngày trong tuần)",
     geo: {
       latitude: 12.2415,
       longitude: 109.1912,
@@ -50,8 +55,8 @@ export const siteConfig = {
     {
       name: "Vanghé — The Wine Corner (Nha Trang)",
       address: "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang, Khánh Hòa",
-      phone: "0988 123 456",
-      hours: "18:00 — 23:30 (Mở cửa hàng ngày)",
+      phone: "0866 817 884",
+      hours: "17:00 — 23:30 (Mở cửa hàng ngày)",
       geo: {
         latitude: 12.2415,
         longitude: 109.1912,
@@ -60,7 +65,7 @@ export const siteConfig = {
     {
       name: "Showroom & Hầm Rượu Hà Nội",
       address: "Số 88 Phố Vọng, Phường Phương Liệt, Quận Thanh Xuân, Hà Nội",
-      phone: "0988 123 456",
+      phone: "0866 817 884",
       hours: "08:30 — 22:00 (Tất cả các ngày trong tuần)",
       geo: {
         latitude: 20.9984,
@@ -70,7 +75,7 @@ export const siteConfig = {
     {
       name: "Showroom TP. Hồ Chí Minh",
       address: "Số 168 Nguyễn Thị Minh Khai, Phường Võ Thị Sáu, Quận 3, TP. Hồ Chí Minh",
-      phone: "0912 888 999",
+      phone: "0866 817 884",
       hours: "08:30 — 22:00 (Tất cả các ngày trong tuần)",
       geo: {
         latitude: 10.7769,
@@ -79,8 +84,10 @@ export const siteConfig = {
     },
   ],
   socialLinks: [
-    { name: "Instagram", url: "https://www.instagram.com/vanghe.thewinecorner/" },
-    { name: "Facebook", url: "https://facebook.com/vanghe.thewinecorner" },
-    { name: "Zalo", url: "https://zalo.me/0988123456" },
+    { name: "Instagram", url: "https://www.instagram.com/vanghe.thewinecorner?dlrf=bmF5YmNvN3ByMGZo&utm_source=qr" },
+    { name: "Facebook", url: "https://www.facebook.com/share/14ooaK66yHR/?mibextid=wwXIfr" },
+    { name: "TikTok", url: "https://www.tiktok.com/@vanghe.thewinecorner?_r=1&_t=ZS-9APUdFujXdO" },
+    { name: "Zalo", url: "https://zalo.me/0868833059" },
+    { name: "WhatsApp", url: "https://wa.me/84866817884" },
   ],
 };

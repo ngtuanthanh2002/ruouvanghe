@@ -6,8 +6,15 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { siteConfig } from "@/lib/site-config";
-import { PhoneIcon } from "../ui/Icons";
 import { useLanguage } from "@/context/LanguageContext";
+import LanguageDropdown from "./LanguageDropdown";
+import {
+  PhoneIcon,
+  InstagramIcon,
+  TikTokIcon,
+  FacebookIcon,
+  ZaloIcon,
+} from "../ui/Icons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -56,13 +63,29 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.topBarInsta}
+              title="Instagram Vang Hè"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
             >
-              <span>Instagram ↗</span>
+              <InstagramIcon size={14} />
+              <span>Instagram</span>
+            </a>
+            <span className={styles.topBarSep}>·</span>
+            <a
+              href={siteConfig.contact.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.topBarInsta}
+              title="TikTok Vang Hè"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <TikTokIcon size={14} />
+              <span>TikTok</span>
             </a>
             <span className={styles.topBarSep}>·</span>
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
               className={styles.topBarPhone}
+              title={`Hotline: ${siteConfig.contact.hotlineDisplay}`}
             >
               <PhoneIcon size={13} />
               {t("topbar.hotline")}: {siteConfig.contact.hotlineDisplay}
@@ -116,26 +139,8 @@ export default function Header() {
           </nav>
 
           <div className={styles.actions}>
-            {/* Language Switcher Pill */}
-            <div className={styles.langSwitch} role="group" aria-label="Chọn ngôn ngữ">
-              <button
-                type="button"
-                onClick={() => setLang("vi")}
-                className={`${styles.langBtn} ${lang === "vi" ? styles.langActive : ""}`}
-                title="Tiếng Việt"
-              >
-                VI
-              </button>
-              <span className={styles.langSep}>/</span>
-              <button
-                type="button"
-                onClick={() => setLang("en")}
-                className={`${styles.langBtn} ${lang === "en" ? styles.langActive : ""}`}
-                title="English"
-              >
-                EN
-              </button>
-            </div>
+            {/* Language Switcher Dropdown */}
+            <LanguageDropdown variant="header" />
 
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
@@ -164,23 +169,10 @@ export default function Header() {
           <div className="container">
             <div className={styles.mobileLangRow}>
               <span className={styles.mobileLangLabel}>Ngôn ngữ / Language:</span>
-              <div className={styles.langSwitch}>
-                <button
-                  type="button"
-                  onClick={() => setLang("vi")}
-                  className={`${styles.langBtn} ${lang === "vi" ? styles.langActive : ""}`}
-                >
-                  Tiếng Việt
-                </button>
-                <span className={styles.langSep}>/</span>
-                <button
-                  type="button"
-                  onClick={() => setLang("en")}
-                  className={`${styles.langBtn} ${lang === "en" ? styles.langActive : ""}`}
-                >
-                  English
-                </button>
-              </div>
+              <LanguageDropdown
+                variant="mobile"
+                onSelect={() => setMobileOpen(false)}
+              />
             </div>
 
             <nav className={styles.mobileNavLinks} aria-label="Điều hướng di động">
@@ -226,21 +218,60 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className={styles.mobileInstaLink}
                 onClick={() => setMobileOpen(false)}
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
-                <span>📸 Instagram: @vanghe.thewinecorner ↗</span>
+                <InstagramIcon size={17} />
+                <span>Instagram: @vanghe.thewinecorner ↗</span>
+              </a>
+
+              <a
+                href={siteConfig.contact.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mobileInstaLink}
+                onClick={() => setMobileOpen(false)}
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <TikTokIcon size={17} />
+                <span>TikTok: @vanghe.thewinecorner ↗</span>
+              </a>
+
+              <a
+                href={siteConfig.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mobileInstaLink}
+                onClick={() => setMobileOpen(false)}
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <FacebookIcon size={17} />
+                <span>Facebook Vang Hè — The Wine Corner ↗</span>
               </a>
             </nav>
 
             <div className={styles.mobileContactBox}>
-              <p>{t("topbar.hotline")} & Zalo Vang Hè:</p>
-              <a
-                href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-                className="btn"
-                style={{ width: "100%", marginTop: "0.6rem" }}
-              >
-                <PhoneIcon size={16} />
-                {siteConfig.contact.hotlineDisplay}
-              </a>
+              <p>Hotline Sommelier: <strong>{siteConfig.contact.hotlineDisplay}</strong></p>
+              <p style={{ marginTop: "4px", fontSize: "12px", opacity: 0.85 }}>
+                Zalo: <strong>0868 833 059</strong> · WhatsApp / Kakao: <strong>0866 817 884</strong>
+              </p>
+              <div style={{ display: "flex", gap: "8px", marginTop: "0.75rem" }}>
+                <a
+                  href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
+                  className="btn"
+                  style={{ flex: 1, padding: "10px", fontSize: "13px" }}
+                >
+                  <PhoneIcon size={14} /> Gọi Hotline
+                </a>
+                <a
+                  href={siteConfig.contact.zalo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                  style={{ flex: 1, padding: "10px", fontSize: "13px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                >
+                  <ZaloIcon size={14} /> Chat Zalo ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>

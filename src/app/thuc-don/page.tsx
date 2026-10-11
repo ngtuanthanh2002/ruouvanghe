@@ -117,6 +117,9 @@ export default function MenuPage() {
               <WineGlassIcon size={14} />
               <span>VANGHÉ · THE WINE CORNER</span>
             </span>
+            <span className={styles.heroScriptBadge}>
+              {lang !== "vi" ? "A coastal culinary gem" : "Viên ngọc ẩm thực"}
+            </span>
             <h1 className={styles.heroTitle}>{t("menu.hero_title")}</h1>
             <p className={styles.heroSubtitle}>{t("menu.hero_subtitle")}</p>
           </div>
@@ -132,7 +135,7 @@ export default function MenuPage() {
             {/* Left Content */}
             <div className={styles.alacarteTextCol}>
               <span className={styles.alacartePreBadge}>
-                {lang === "en" ? "COLD CUT & TAPAS" : "ẨM THỰC THƯỞNG VANG"}
+                {lang !== "vi" ? "COLD CUT & TAPAS" : "ẨM THỰC THƯỞNG VANG"}
               </span>
               <h2 className={styles.scriptHeading}>{t("menu.alacarte_title")}</h2>
               <p className={styles.alacarteDesc}>{t("menu.alacarte_desc")}</p>
@@ -144,7 +147,7 @@ export default function MenuPage() {
                   rel="noopener noreferrer"
                   className={styles.btnExploreRef}
                 >
-                  <span>{lang === "en" ? "Menu" : "Thực đơn"}</span>
+                  <span>{lang !== "vi" ? "Menu" : "Thực đơn"}</span>
                   <ArrowRightIcon size={15} />
                 </a>
               </div>
@@ -157,7 +160,7 @@ export default function MenuPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.alacarteImgFrame}
-                title={lang === "en" ? "View full menu" : "Xem toàn bộ thực đơn"}
+                title={lang !== "vi" ? "View full menu" : "Xem toàn bộ thực đơn"}
               >
                 <Image
                   src="/images/coldcut-glass.jpg"
@@ -168,7 +171,7 @@ export default function MenuPage() {
                 />
                 <div className={styles.alacarteHoverOverlay}>
                   <SparklesIcon size={18} />
-                  <span>{lang === "en" ? "View full menu" : "Xem toàn bộ thực đơn"}</span>
+                  <span>{lang !== "vi" ? "View full menu" : "Xem toàn bộ thực đơn"}</span>
                 </div>
               </a>
             </div>
@@ -247,7 +250,7 @@ export default function MenuPage() {
 
                     <div className={styles.dishInfo}>
                       <h4 className={styles.dishName}>
-                        {lang === "en" ? item.name : (item.subName || item.name)}
+                        {lang !== "vi" ? item.name : (item.subName || item.name)}
                       </h4>
                       <div className={styles.dishFooterRow}>
                         <span className={styles.dishPrice}>{item.price}</span>
@@ -301,7 +304,7 @@ export default function MenuPage() {
                   rel="noopener noreferrer"
                   className={styles.btnExploreRef}
                 >
-                  <span>{lang === "en" ? "Menu" : "Thực đơn"}</span>
+                  <span>{lang !== "vi" ? "Menu" : "Thực đơn"}</span>
                   <ArrowRightIcon size={15} />
                 </a>
               </div>
@@ -328,7 +331,7 @@ export default function MenuPage() {
                   rel="noopener noreferrer"
                   className={styles.btnExploreRef}
                 >
-                  <span>{lang === "en" ? "Menu" : "Thực đơn"}</span>
+                  <span>{lang !== "vi" ? "Menu" : "Thực đơn"}</span>
                   <ArrowRightIcon size={15} />
                 </a>
               </div>
@@ -364,7 +367,7 @@ export default function MenuPage() {
                   rel="noopener noreferrer"
                   className={styles.btnExploreRefLight}
                 >
-                  <span>{lang === "en" ? "Menu" : "Thực đơn"}</span>
+                  <span>{lang !== "vi" ? "Menu" : "Thực đơn"}</span>
                   <ArrowRightIcon size={15} />
                 </a>
 
@@ -420,23 +423,23 @@ export default function MenuPage() {
           <div className={styles.bottomCtaCard}>
             <div className={styles.bottomCtaText}>
               <span className={styles.bottomCtaEyebrow}>
-                {lang === "en" ? "RESERVE YOUR CORNER" : "ĐẶT BÀN TỐI NAY"}
+                {lang !== "vi" ? "RESERVE YOUR CORNER" : "ĐẶT BÀN TỐI NAY"}
               </span>
               <h3>
-                {lang === "en"
+                {lang !== "vi"
                   ? "Experience Warm Evenings at Vang Hè"
                   : "Dành Trọn Cho Bạn Một Buổi Tối Đáng Nhớ"}
               </h3>
               <p>
-                {lang === "en"
-                  ? "65 Trinh Phong, Nha Trang · Open Daily 18:00 — 23:30"
-                  : "65 Trịnh Phong, P. Tân Lập, Nha Trang · Mở cửa mỗi tối 18:00 — 23:30"}
+                {lang !== "vi"
+                  ? "65 Trinh Phong, Nha Trang · Open Daily 17:00 — 23:30"
+                  : "65 Trịnh Phong, P. Tân Lập, Nha Trang · Mở cửa mỗi tối 17:00 — 23:30"}
               </p>
             </div>
 
             <div className={styles.bottomCtaButtons}>
               <Link href="/#dat-ban" className={styles.btnReserveGold}>
-                <span>{lang === "en" ? "Book Table Now" : "Đặt Bàn Trải Nghiệm"}</span>
+                <span>{lang !== "vi" ? "Book Table Now" : "Đặt Bàn Trải Nghiệm"}</span>
                 <ArrowRightIcon size={16} />
               </Link>
               <a
@@ -472,10 +475,14 @@ export default function MenuPage() {
                 <WineGlassIcon size={18} className={styles.modalIcon} />
                 <div>
                   <h3 className={styles.modalTitle}>
-                    {MENU_SCAN_PAGES[activeMenuPageIdx].titleVi}
+                    {lang !== "vi"
+                      ? (MENU_SCAN_PAGES[activeMenuPageIdx].titleEn || MENU_SCAN_PAGES[activeMenuPageIdx].titleVi)
+                      : MENU_SCAN_PAGES[activeMenuPageIdx].titleVi}
                   </h3>
                   <p className={styles.modalSubtitle}>
-                    {MENU_SCAN_PAGES[activeMenuPageIdx].descVi}
+                    {lang !== "vi"
+                      ? (MENU_SCAN_PAGES[activeMenuPageIdx].descEn || MENU_SCAN_PAGES[activeMenuPageIdx].descVi)
+                      : MENU_SCAN_PAGES[activeMenuPageIdx].descVi}
                   </p>
                 </div>
               </div>
@@ -513,7 +520,7 @@ export default function MenuPage() {
                 >
                   <span className={styles.tabNum}>0{idx + 1}</span>
                   <span className={styles.tabText}>
-                    {lang === "en" ? page.titleEn : page.titleVi}
+                    {lang !== "vi" ? page.titleEn : page.titleVi}
                   </span>
                 </button>
               ))}

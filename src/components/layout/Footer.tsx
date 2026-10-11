@@ -5,7 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { siteConfig } from "@/lib/site-config";
-import { MapPinIcon, PhoneIcon } from "../ui/Icons";
+import {
+  MapPinIcon,
+  PhoneIcon,
+  InstagramIcon,
+  FacebookIcon,
+  TikTokIcon,
+  WhatsAppIcon,
+  ZaloIcon,
+} from "../ui/Icons";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
@@ -43,7 +51,7 @@ export default function Footer() {
               </div>
               <div className={styles.locItem}>
                 <span className={styles.dotLive}>●</span>
-                <span>{t("footer.open_hours")} <strong>18:00 — 23:30</strong></span>
+                <span>{t("footer.open_hours")} <strong>17:00 — 23:30</strong></span>
               </div>
             </div>
           </div>
@@ -69,13 +77,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact & Hotline */}
+          {/* Column 3: Contact & Hotline & Socials */}
           <div className={styles.contactCol}>
             <h4 className={styles.colTitle}>{t("footer.col_contact")}</h4>
 
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
               className={styles.footerHotlineBtn}
+              title={`Hotline Vang Hè: ${siteConfig.contact.hotlineDisplay}`}
             >
               <PhoneIcon size={16} />
               <span>Hotline: {siteConfig.contact.hotlineDisplay}</span>
@@ -83,28 +92,64 @@ export default function Footer() {
 
             <div className={styles.socialLinksRow}>
               <a
+                href={siteConfig.contact.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
+                title="Nhắn Zalo: 0868 833 059"
+              >
+                <ZaloIcon size={15} />
+                <span>Zalo: 0868 833 059</span>
+              </a>
+              <a
+                href={siteConfig.contact.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
+                title="WhatsApp / KakaoTalk: 0866 817 884"
+              >
+                <WhatsAppIcon size={15} />
+                <span>WhatsApp / KakaoTalk</span>
+              </a>
+              <a
                 href={siteConfig.contact.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
+                title="Instagram Vang Hè"
               >
-                <span>Instagram ↗</span>
+                <InstagramIcon size={15} />
+                <span>Instagram</span>
               </a>
               <a
                 href={siteConfig.contact.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
+                title="Facebook Vang Hè"
               >
-                <span>Facebook ↗</span>
+                <FacebookIcon size={15} />
+                <span>Facebook</span>
+              </a>
+              <a
+                href={siteConfig.contact.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialPill}
+                title="TikTok Vang Hè"
+              >
+                <TikTokIcon size={15} />
+                <span>TikTok</span>
               </a>
               <a
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
+                title="Xem trên Google Maps"
               >
-                <span>Google Maps ↗</span>
+                <MapPinIcon size={14} />
+                <span>Google Maps</span>
               </a>
             </div>
           </div>

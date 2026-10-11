@@ -80,6 +80,19 @@
   backdrop-filter: blur(8px);
 }
 
+.heroScriptBadge {
+  display: block;
+  font-family: var(--script), cursive;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #F8D9A8;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  text-shadow: 0 0 24px rgba(217, 154, 69, 0.4);
+  transform: rotate(-1.5deg);
+}
+
 .heroTitle {
   font-family: var(--serif);
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -146,15 +159,15 @@
 
 /* Script cursive style like Mamita */
 .scriptHeading {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  font-family: var(--script), cursive;
+  font-style: normal;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
   font-weight: 400;
   line-height: 1.2;
-  color: #FFFDF9;
+  color: #F8D9A8;
   margin-bottom: 0.9rem;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 14px rgba(217, 154, 69, 0.2);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 24px rgba(217, 154, 69, 0.35);
 }
 
 .alacarteDesc {
@@ -509,14 +522,15 @@
 }
 
 .scriptHeadingCenter {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-family: var(--script), cursive;
+  font-style: normal;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   font-weight: 400;
-  color: #FFFDF9;
+  color: #F8D9A8;
   line-height: 1.2;
   margin-bottom: 1rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 28px rgba(217, 154, 69, 0.35);
 }
 
 .moreSubtitle {

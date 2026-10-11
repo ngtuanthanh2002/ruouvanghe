@@ -333,7 +333,7 @@ export const FAQS = [
   {
     question: "Tôi có thể yêu cầu tư vấn lựa chọn rượu vang theo ngân sách và tiệc không?",
     answer:
-      "Hoàn toàn được! Đội ngũ Sommelier (chuyên gia nếm thử rượu vang) của Rượu Vang Hè sẵn sàng tư vấn miễn phí 24/7 qua Hotline 0988.123.456 hoặc Zalo, giúp quý khách chọn đúng chai vang phù hợp với thực đơn món ăn, phong thủy hoặc khẩu vị người nhận quà.",
+      "Hoàn toàn được! Đội ngũ Sommelier (chuyên gia nếm thử rượu vang) của Rượu Vang Hè sẵn sàng tư vấn miễn phí 24/7 qua Hotline 0866.817.884 hoặc Zalo (0868.833.059), giúp quý khách chọn đúng chai vang phù hợp với thực đơn món ăn, phong thủy hoặc khẩu vị người nhận quà.",
   },
   {
     question: "Rượu Vang Hè có xuất hóa đơn VAT cho doanh nghiệp không?",

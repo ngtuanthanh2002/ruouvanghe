@@ -21,6 +21,7 @@
   /* Typography */
   --serif: var(--font-serif, "Playfair Display", Georgia, serif);
   --sans: var(--font-sans, "Plus Jakarta Sans", system-ui, -apple-system, sans-serif);
+  --script: var(--font-script, "Alex Brush", cursive);
 
   /* Compatibility & Legacy aliases */
   --font-heading: var(--serif);
