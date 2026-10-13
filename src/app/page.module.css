@@ -53,13 +53,14 @@
 
 .heroTitle {
   font-size: clamp(2.2rem, 5.5vw, 4rem);
-  max-width: 18ch;
+  text-wrap: balance;
   margin: 0 auto 1.25rem;
 }
 
 /* Cụm viết tay trong hero xuống dòng riêng, to hơn */
 .heroTitle .script {
   display: block;
+  white-space: normal;
   margin-top: 0.15em;
   font-size: 1.55em;
 }
@@ -72,6 +73,7 @@
   line-height: 1;
   letter-spacing: 0;
   color: var(--amber-light);
+  white-space: nowrap;
 }
 
 .heroText {
@@ -151,6 +153,7 @@
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   line-height: 1.35;
   text-align: center;
+  text-wrap: balance;
   margin-bottom: 1rem;
   color: var(--cream);
 }
@@ -197,11 +200,18 @@
 }
 
 /* ===== KHÔNG GIAN ===== */
+/* 3 cột, ảnh giữ nguyên tỉ lệ gốc; cột giữa lệch xuống tạo nhịp so le */
 .photoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem 1.5rem;
+  align-items: start;
   margin-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.photo:nth-child(3n + 2) {
+  transform: translateY(4rem);
 }
 
 .photo {
@@ -209,22 +219,28 @@
 }
 
 .photoImgWrap {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--espresso-2);
 }
 
 .photoImg {
-  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s ease;
+}
+
+.photo:hover .photoImg {
+  transform: scale(1.03);
 }
 
 .photoCaption {
   margin-top: 0.75rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
 /* ===== THỰC ĐƠN ===== */
@@ -237,10 +253,17 @@
 
 .splitImgWrap {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
+  max-width: 460px;
+  width: 100%;
+  justify-self: center;
   border-radius: 8px;
   overflow: hidden;
   background: var(--espresso-2);
+}
+
+.splitImg {
+  object-fit: cover;
 }
 
 .splitText {
@@ -392,8 +415,19 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 960px) {
+  /* 2 cột, cột phải lệch xuống */
   .photoGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .photo:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  .photo:nth-child(2n) {
+    transform: translateY(3rem);
   }
 
   .reviews {
@@ -411,6 +445,15 @@
 }
 
 @media (max-width: 600px) {
+  .heroEyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+  }
+
+  .heroTitle .script {
+    font-size: 1.3em;
+  }
+
   .heroInfo {
     flex-direction: column;
     align-items: center;
@@ -426,7 +469,16 @@
   }
 
   .photoGrid {
-    grid-template-columns: 1fr;
+    gap: 1.25rem 0.75rem;
+  }
+
+  .photo:nth-child(2n) {
+    transform: translateY(2rem);
+  }
+
+  .photoCaption {
+    font-size: 0.78rem;
+    margin-top: 0.5rem;
   }
 
   .formRow,

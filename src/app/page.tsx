@@ -18,10 +18,13 @@ import {
   ZaloIcon,
 } from "@/components/ui/Icons";
 
+// w/h là kích thước gốc — hiển thị đúng tỉ lệ, không cắt ảnh
 const SPACE_PHOTOS = [
   {
     id: 1,
     src: "/images/2.jpg",
+    w: 1724,
+    h: 2584,
     alt: "Quầy Bar & Không Gian Đón Khách Vang Hè",
     title: "Quầy Bar & Không Gian Đón Khách",
     titleEn: "Welcome Bar & Cozy Lounge",
@@ -29,27 +32,35 @@ const SPACE_PHOTOS = [
   {
     id: 2,
     src: "/images/gallery-bar.jpg",
+    w: 1724,
+    h: 2584,
     alt: "Kệ Vang Tuyển Chọn & Ly Pha Lê",
     title: "Kệ Vang & Ly Pha Lê",
     titleEn: "Curated Vintages & Crystal Glassware",
   },
   {
     id: 3,
-    src: "/images/tablescape-main.jpg",
-    alt: "Bàn Tiệc Tablescape Hoa & Cold Cut",
-    title: "Bàn Tiệc Hoa & Cold Cut",
-    titleEn: "Floral Tablescape & Charcuterie",
-  },
-  {
-    id: 4,
     src: "/images/10.jpg",
+    w: 1724,
+    h: 2584,
     alt: "Nến Sáp & Hoa Tươi",
     title: "Nến Sáp & Hoa Tươi",
     titleEn: "Candlelight & Fresh Lilies",
   },
   {
+    id: 4,
+    src: "/images/tablescape-main.jpg",
+    w: 1920,
+    h: 2560,
+    alt: "Bàn Tiệc Tablescape Hoa & Cold Cut",
+    title: "Bàn Tiệc Hoa & Cold Cut",
+    titleEn: "Floral Tablescape & Charcuterie",
+  },
+  {
     id: 5,
     src: "/images/1791444307745_8243178211297854059_8243178211297854059_8a09c2d9a895ad0ede8a13193d959fb5.jpg",
+    w: 1920,
+    h: 2560,
     alt: "Toàn Cảnh Bàn Tiệc Vang Hè",
     title: "Toàn Cảnh Dạ Tiệc",
     titleEn: "Evening Tablescape",
@@ -57,6 +68,8 @@ const SPACE_PHOTOS = [
   {
     id: 6,
     src: "/images/gallery-interior.jpg",
+    w: 1724,
+    h: 2584,
     alt: "Băng Ghế Banquette Ấm Cúng",
     title: "Góc Banquette",
     titleEn: "Banquette Nook",
@@ -258,8 +271,9 @@ export default function HomePage() {
                   <Image
                     src={photo.src}
                     alt={photo.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"
+                    width={photo.w}
+                    height={photo.h}
+                    sizes="(max-width: 960px) 50vw, 33vw"
                     className={styles.photoImg}
                   />
                 </div>
@@ -277,11 +291,11 @@ export default function HomePage() {
         <div className={`container ${styles.split} rv`}>
           <div className={styles.splitImgWrap}>
             <Image
-              src="/images/gallery-cozy.jpg"
+              src="/images/coldcut-glass.jpg"
               alt="Rượu vang và cold cut tại Vang Hè — 65 Trịnh Phong, Nha Trang"
               fill
               sizes="(max-width: 860px) 100vw, 50vw"
-              className={styles.photoImg}
+              className={styles.splitImg}
             />
           </div>
           <div className={styles.splitText}>
