@@ -9,9 +9,6 @@ import {
   MapPinIcon,
   PhoneIcon,
   InstagramIcon,
-  FacebookIcon,
-  TikTokIcon,
-  WhatsAppIcon,
   ZaloIcon,
 } from "../ui/Icons";
 import { useLanguage } from "@/context/LanguageContext";
@@ -23,10 +20,8 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      {/* Streamlined Clean Footer Layout */}
       <div className={`container ${styles.mainFooter}`}>
         <div className={styles.footerGrid}>
-          {/* Column 1: Brand & Nha Trang Flagship */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo} aria-label="Trang chủ Vang Hè">
               <Image
@@ -51,12 +46,13 @@ export default function Footer() {
               </div>
               <div className={styles.locItem}>
                 <span className={styles.dotLive}>●</span>
-                <span>{t("footer.open_hours")} <strong>17:00 — 23:30</strong></span>
+                <span>
+                  {t("footer.open_hours")} <strong>17:00 — 23:30</strong>
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Navigation Links */}
           <div className={styles.linksCol}>
             <h4 className={styles.colTitle}>{t("footer.col_explore")}</h4>
             <ul className={styles.linkList}>
@@ -64,9 +60,7 @@ export default function Footer() {
                 <Link href="/#gioi-thieu">{t("nav.about")}</Link>
               </li>
               <li>
-                <Link href="/thuc-don" style={{ color: "var(--amber-light)", fontWeight: 600 }}>
-                  🍷 {t("nav.menu")}
-                </Link>
+                <Link href="/thuc-don">{t("nav.menu")}</Link>
               </li>
               <li>
                 <Link href="/#khong-gian">{t("nav.space")}</Link>
@@ -77,17 +71,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact & Hotline & Socials */}
           <div className={styles.contactCol}>
             <h4 className={styles.colTitle}>{t("footer.col_contact")}</h4>
 
             <a
               href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
               className={styles.footerHotlineBtn}
-              title={`Hotline Vang Hè: ${siteConfig.contact.hotlineDisplay}`}
+              title={`Hotline: ${siteConfig.contact.hotlineDisplay}`}
             >
               <PhoneIcon size={16} />
-              <span>Hotline: {siteConfig.contact.hotlineDisplay}</span>
+              <span>{siteConfig.contact.hotlineDisplay}</span>
             </a>
 
             <div className={styles.socialLinksRow}>
@@ -96,71 +89,39 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
-                title="Nhắn Zalo: 0868 833 059"
+                title="Zalo"
               >
                 <ZaloIcon size={15} />
-                <span>Zalo: 0868 833 059</span>
-              </a>
-              <a
-                href={siteConfig.contact.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialPill}
-                title="WhatsApp / KakaoTalk: 0866 817 884"
-              >
-                <WhatsAppIcon size={15} />
-                <span>WhatsApp / KakaoTalk</span>
+                <span>Zalo</span>
               </a>
               <a
                 href={siteConfig.contact.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
-                title="Instagram Vang Hè"
+                title="Instagram"
               >
                 <InstagramIcon size={15} />
                 <span>Instagram</span>
-              </a>
-              <a
-                href={siteConfig.contact.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialPill}
-                title="Facebook Vang Hè"
-              >
-                <FacebookIcon size={15} />
-                <span>Facebook</span>
-              </a>
-              <a
-                href={siteConfig.contact.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialPill}
-                title="TikTok Vang Hè"
-              >
-                <TikTokIcon size={15} />
-                <span>TikTok</span>
               </a>
               <a
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialPill}
-                title="Xem trên Google Maps"
+                title="Google Maps"
               >
                 <MapPinIcon size={14} />
-                <span>Google Maps</span>
+                <span>Maps</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Responsible Drinking Regulatory Notice */}
         <div className={styles.legalNotice}>
           <p className={styles.warningText}>{t("footer.legal")}</p>
         </div>
 
-        {/* Bottom Copyright */}
         <div className={styles.bottomBar}>
           <p>{t("footer.copy")}</p>
         </div>

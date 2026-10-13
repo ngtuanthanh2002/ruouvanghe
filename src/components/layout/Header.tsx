@@ -10,9 +10,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import LanguageDropdown from "./LanguageDropdown";
 import {
   PhoneIcon,
-  InstagramIcon,
-  TikTokIcon,
-  FacebookIcon,
   ZaloIcon,
 } from "../ui/Icons";
 
@@ -20,7 +17,7 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { lang, setLang, toggleLang, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,56 +41,6 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${isSolid ? styles.solid : ""}`}>
-      {/* Top Info Strip */}
-      <div className={styles.topBar}>
-        <div className={`container ${styles.topBarInner}`}>
-          <div className={styles.topBarLeft}>
-            <span className={styles.topBarDot}>●</span>
-            <span className={styles.highlightText}>
-              {t("topbar.address")}
-            </span>
-            <span className={styles.topBarSep}>·</span>
-            <span className={styles.hoursText}>
-              {t("topbar.hours")}
-            </span>
-          </div>
-          <div className={styles.topBarRight}>
-            <a
-              href={siteConfig.contact.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.topBarInsta}
-              title="Instagram Vang Hè"
-              style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
-            >
-              <InstagramIcon size={14} />
-              <span>Instagram</span>
-            </a>
-            <span className={styles.topBarSep}>·</span>
-            <a
-              href={siteConfig.contact.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.topBarInsta}
-              title="TikTok Vang Hè"
-              style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
-            >
-              <TikTokIcon size={14} />
-              <span>TikTok</span>
-            </a>
-            <span className={styles.topBarSep}>·</span>
-            <a
-              href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-              className={styles.topBarPhone}
-              title={`Hotline: ${siteConfig.contact.hotlineDisplay}`}
-            >
-              <PhoneIcon size={13} />
-              {t("topbar.hotline")}: {siteConfig.contact.hotlineDisplay}
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Single-Line Navigation */}
       <div className={styles.mainNav}>
         <div className={`container ${styles.navInner}`}>
@@ -188,7 +135,7 @@ export default function Header() {
                 className={`${styles.mobileNavLink} ${styles.mobileNavMenuBtn}`}
                 onClick={() => setMobileOpen(false)}
               >
-                ✨ {t("nav.menu")} (Menu)
+                {t("nav.menu")}
               </Link>
               <Link
                 href="/#khong-gian"
@@ -211,48 +158,11 @@ export default function Header() {
               >
                 {t("nav.location")}
               </Link>
-
-              <a
-                href={siteConfig.contact.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.mobileInstaLink}
-                onClick={() => setMobileOpen(false)}
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <InstagramIcon size={17} />
-                <span>Instagram: @vanghe.thewinecorner ↗</span>
-              </a>
-
-              <a
-                href={siteConfig.contact.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.mobileInstaLink}
-                onClick={() => setMobileOpen(false)}
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <TikTokIcon size={17} />
-                <span>TikTok: @vanghe.thewinecorner ↗</span>
-              </a>
-
-              <a
-                href={siteConfig.contact.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.mobileInstaLink}
-                onClick={() => setMobileOpen(false)}
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <FacebookIcon size={17} />
-                <span>Facebook Vang Hè — The Wine Corner ↗</span>
-              </a>
             </nav>
 
             <div className={styles.mobileContactBox}>
-              <p>Hotline Sommelier: <strong>{siteConfig.contact.hotlineDisplay}</strong></p>
-              <p style={{ marginTop: "4px", fontSize: "12px", opacity: 0.85 }}>
-                Zalo: <strong>0868 833 059</strong> · WhatsApp / Kakao: <strong>0866 817 884</strong>
+              <p>
+                Hotline: <strong>{siteConfig.contact.hotlineDisplay}</strong>
               </p>
               <div style={{ display: "flex", gap: "8px", marginTop: "0.75rem" }}>
                 <a
@@ -260,16 +170,24 @@ export default function Header() {
                   className="btn"
                   style={{ flex: 1, padding: "10px", fontSize: "13px" }}
                 >
-                  <PhoneIcon size={14} /> Gọi Hotline
+                  <PhoneIcon size={14} /> Hotline
                 </a>
                 <a
                   href={siteConfig.contact.zalo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"
-                  style={{ flex: 1, padding: "10px", fontSize: "13px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                  style={{
+                    flex: 1,
+                    padding: "10px",
+                    fontSize: "13px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "6px",
+                  }}
                 >
-                  <ZaloIcon size={14} /> Chat Zalo ↗
+                  <ZaloIcon size={14} /> Zalo
                 </a>
               </div>
             </div>
