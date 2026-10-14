@@ -58,16 +58,18 @@ const SPACE_PHOTOS = [
   },
   {
     id: 5,
-    src: "/images/1791444307745_8243178211297854059_8243178211297854059_8a09c2d9a895ad0ede8a13193d959fb5.jpg",
-    w: 1920,
-    h: 2560,
+    src: "/images/11.png",
+    // ảnh gốc 9:16 — cắt về 2:3 cho đồng đều với các ảnh khác
+    w: 1724,
+    h: 2584,
+    crop: true,
     alt: "Toàn Cảnh Bàn Tiệc Vang Hè",
     title: "Toàn Cảnh Dạ Tiệc",
     titleEn: "Evening Tablescape",
   },
   {
     id: 6,
-    src: "/images/gallery-interior.jpg",
+    src: "/images/12.png",
     w: 1724,
     h: 2584,
     alt: "Băng Ghế Banquette Ấm Cúng",
@@ -274,7 +276,7 @@ export default function HomePage() {
                     width={photo.w}
                     height={photo.h}
                     sizes="(max-width: 960px) 50vw, 33vw"
-                    className={styles.photoImg}
+                    className={`${styles.photoImg} ${"crop" in photo ? styles.photoImgCrop : ""}`}
                   />
                 </div>
                 <figcaption className={styles.photoCaption}>
@@ -315,9 +317,11 @@ export default function HomePage() {
           <div className={styles.reviews}>
             {REVIEWS.map((item) => (
               <blockquote key={item.name} className={`${styles.review} rv`}>
-                <p className={styles.reviewText}>“{t(item.comment)}”</p>
+                <div className={styles.reviewStars} aria-label="5/5">★★★★★</div>
+                <p className={styles.reviewText}>{t(item.comment)}</p>
                 <footer className={styles.reviewAuthor}>
-                  <strong>{t(item.name)}</strong> · {t(item.role)}
+                  <strong>{t(item.name)}</strong>
+                  <span>{t(item.role)}</span>
                 </footer>
               </blockquote>
             ))}
