@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -13,10 +13,10 @@ import {
   MapPinIcon,
   PhoneIcon,
   ClockIcon,
-  CheckCircleIcon,
   WhatsAppIcon,
   ZaloIcon,
 } from "@/components/ui/Icons";
+import BookingNotice, { type Notice } from "@/components/ui/BookingNotice";
 
 // w/h là kích thước gốc — hiển thị đúng tỉ lệ, không cắt ảnh
 const SPACE_PHOTOS = [
@@ -102,15 +102,15 @@ export default function HomePage() {
     );
   };
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
+  const EMPTY_FORM = {
     name: "",
     phone: "",
     date: "",
     time: "19:00",
-    guests: "1-2",
+    guests: "2",
     notes: "",
-  });
+  };
+  const [formData, setFormData] = useState(EMPTY_FORM);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -135,10 +135,47 @@ export default function HomePage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [formSending, setFormSending] = useState(false);
+  const [notice, setNotice] = useState<Notice | null>(null);
+  const closeNotice = useCallback(() => setNotice(null), []);
+
+  const sendBooking = async () => {
+    if (!formData.name || !formData.phone || formSending) return;
+    setFormSending(true);
+    try {
+      if (!siteConfig.bookingScriptUrl) throw new Error("bookingScriptUrl chưa được cấu hình");
+      // text/plain để tránh preflight CORS; Apps Script trả Access-Control-Allow-Origin: *
+      const res = await fetch(siteConfig.bookingScriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(formData),
+      });
+      const result = await res.json();
+      if (!result.ok) throw new Error(result.error);
+
+            const date = formData.date ? formData.date.split("-").reverse().join("/") : "";
+      setNotice({
+        type: "success",
+        name: formData.name,
+        phone: formData.phone,
+        summary: [isVi ? `${formData.guests} người` : `${formData.guests} guests`, formData.time, date].filter(Boolean).join(" · "),
+      });
+      setFormData(EMPTY_FORM);
+    } catch {
+      setNotice({ type: "error" });
+    } finally {
+      setFormSending(false);
+    }
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
-    setFormSubmitted(true);
+    sendBooking();
+  };
+
+  const retryBooking = () => {
+    setNotice(null);
+    sendBooking();
   };
 
   const telHref = `tel:${siteConfig.contact.hotline.replace(/\./g, "")}`;
@@ -149,7 +186,7 @@ export default function HomePage() {
     "@type": "Winery",
     "@id": `${siteConfig.url}/#winery`,
     name: "Vang Hè — The Wine Corner",
-    alternateName: "Vanghé Nha Trang",
+    alternateName: "Vanghè Nha Trang",
     url: siteConfig.url,
     logo: `${siteConfig.url}/Logo_VH.png`,
     image: `${siteConfig.url}/images/1.jpg`,
@@ -381,118 +418,96 @@ export default function HomePage() {
               </li>
             </ul>
 
-            {formSubmitted ? (
-              <div className={styles.success}>
-                <CheckCircleIcon size={44} />
-                <h3>{t("res.success_title")}</h3>
-                <p>
-                  {isVi ? (
-                    <>
-                      Cảm ơn bạn <strong>{formData.name}</strong>. Chúng tôi sẽ
-                      liên hệ <strong>{formData.phone}</strong> trong vòng 15
-                      phút.
-                    </>
-                  ) : (
-                    <>
-                      Thank you <strong>{formData.name}</strong>. We will
-                      contact you at <strong>{formData.phone}</strong> within 15
-                      minutes.
-                    </>
-                  )}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setFormSubmitted(false)}
-                  className={styles.btnOutline}
-                >
-                  {t("res.success_btn")}
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className={styles.form}>
-                <div className={styles.formRow}>
-                  <label>
-                    {t("res.label_name")}
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder={isVi ? "Nguyễn Văn A" : "John Doe"}
-                      value={formData.name}
-                      onChange={handleInputChange}
-                    />
-                  </label>
-                  <label>
-                    {t("res.label_phone")}
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      placeholder="0866 817 884"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                    />
-                  </label>
-                </div>
-
-                <div className={styles.formRow3}>
-                  <label>
-                    {t("res.label_date")}
-                    <input
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleInputChange}
-                    />
-                  </label>
-                  <label>
-                    {t("res.label_time")}
-                    <select
-                      name="time"
-                      value={formData.time}
-                      onChange={handleInputChange}
-                    >
-                      {[
-                        "17:00", "17:30", "18:00", "18:30", "19:00",
-                        "19:30", "20:00", "20:30", "21:00", "21:30",
-                      ].map((time) => (
-                        <option key={time} value={time}>
-                          {time}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label>
-                    {t("res.label_guests")}
-                    <select
-                      name="guests"
-                      value={formData.guests}
-                      onChange={handleInputChange}
-                    >
-                      <option value="1-2">{isVi ? "1 – 2 người" : "1 – 2 guests"}</option>
-                      <option value="3-4">{isVi ? "3 – 4 người" : "3 – 4 guests"}</option>
-                      <option value="5-8">{isVi ? "5 – 8 người" : "5 – 8 guests"}</option>
-                      <option value="9+">{isVi ? "Trên 8 người" : "8+ guests"}</option>
-                    </select>
-                  </label>
-                </div>
-
+            <form onSubmit={handleFormSubmit} className={styles.form}>
+              <div className={styles.formRow}>
                 <label>
-                  {t("res.label_notes")}
-                  <textarea
-                    name="notes"
-                    rows={3}
-                    placeholder={t("res.notes_placeholder")}
-                    value={formData.notes}
+                  {t("res.label_name")}
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder={isVi ? "Nguyễn Văn A" : "John Doe"}
+                    value={formData.name}
                     onChange={handleInputChange}
                   />
                 </label>
+                <label>
+                  {t("res.label_phone")}
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="0866 817 884"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
 
-                <button type="submit" className={styles.btn}>
-                  {t("res.submit_btn")}
-                </button>
-              </form>
-            )}
+              <div className={styles.formRow3}>
+                <label>
+                  {t("res.label_date")}
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  {t("res.label_time")}
+                  <select
+                    name="time"
+                    value={formData.time}
+                    onChange={handleInputChange}
+                  >
+                    {[
+                      "17:00", "17:30", "18:00", "18:30", "19:00",
+                      "19:30", "20:00", "20:30", "21:00", "21:30",
+                    ].map((time) => (
+                      <option key={time} value={time}>
+                        {time}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  {t("res.label_guests")}
+                  <input
+                    type="number"
+                    name="guests"
+                    min={1}
+                    max={200}
+                    inputMode="numeric"
+                    value={formData.guests}
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <label>
+                {t("res.label_notes")}
+                <textarea
+                  name="notes"
+                  rows={3}
+                  placeholder={t("res.notes_placeholder")}
+                  value={formData.notes}
+                  onChange={handleInputChange}
+                />
+              </label>
+
+              <button type="submit" className={styles.btn} disabled={formSending}>
+                {formSending ? (isVi ? "Đang gửi…" : "Sending…") : t("res.submit_btn")}
+              </button>
+            </form>
+
+            <BookingNotice
+              notice={notice}
+              isVi={isVi}
+              hotline={siteConfig.contact.hotlineDisplay}
+              onClose={closeNotice}
+              onRetry={retryBooking}
+            />
           </div>
         </div>
       </section>

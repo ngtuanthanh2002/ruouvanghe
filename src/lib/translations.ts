@@ -40,7 +40,7 @@ export const translations = {
     "script.feedback": "Lời yêu thương từ thực khách",
     "script.reservation": "Đón tiếp chu đáo & tận tâm",
     "hero.live_badge": "Mở cửa mỗi tối: 17:00 — 23:30 · 65 Trịnh Phong, Nha Trang",
-    "hero.eyebrow": "Vanghé · The Wine Corner · Nha Trang",
+    "hero.eyebrow": "Vanghè · The Wine Corner · Nha Trang",
     "hero.title_white": "Nơi Bàn Tiệc",
     "hero.title_gold": "Mở Lời Cho Cuộc Vui",
     "hero.tagline":
@@ -116,7 +116,7 @@ export const translations = {
     "space.g3_title": "Băng Ghế Banquette & Bàn Tiệc Ấm Cúng",
     "space.g3_desc": "Góc trò chuyện riêng tư bên ánh đèn viền mềm mại",
     "space.g4_tag": "04 · Brand Heritage",
-    "space.g4_title": "Biển Đồng Vanghé & Góc Check-in Tinh Tế",
+    "space.g4_title": "Biển Đồng Vanghè & Góc Check-in Tinh Tế",
     "space.g4_desc": "Điểm nhấn kim loại đồng ấm áp và góc gương nghệ thuật",
     "space.g5_tag": "05 · Candlelit Mood",
     "space.g5_title": "Nến Chai Mộc & Bình Hoa Bàn Tiệc",
@@ -266,7 +266,7 @@ export const translations = {
     "script.feedback": "Heartfelt words from guests",
     "script.reservation": "Thoughtful & gracious welcome",
     "hero.live_badge": "Open Tonight: 17:00 — 23:30 · 65 Trinh Phong, Nha Trang",
-    "hero.eyebrow": "Vanghé · The Wine Corner · Nha Trang",
+    "hero.eyebrow": "Vanghè · The Wine Corner · Nha Trang",
     "hero.title_white": "Where Fine Wine",
     "hero.title_gold": "Begins The Night",
     "hero.tagline":
@@ -492,7 +492,7 @@ export const translations = {
     "script.feedback": "Теплые слова наших гостей",
     "script.reservation": "Искреннее гостеприимство",
     "hero.live_badge": "Открыто каждый вечер: 17:00 — 23:30 · 65 Trinh Phong, Нячанг",
-    "hero.eyebrow": "Vanghé · The Wine Corner · Нячанг",
+    "hero.eyebrow": "Vanghè · The Wine Corner · Нячанг",
     "hero.title_white": "Там, где вино",
     "hero.title_gold": "Открывает вечер",
     "hero.tagline":
@@ -568,7 +568,7 @@ export const translations = {
     "space.g3_title": "Уединенные банкетки и столики",
     "space.g3_desc": "Комфортные диваны с мягкой фоновой подсветкой",
     "space.g4_tag": "04 · Brand Heritage",
-    "space.g4_title": "Латунный логотип Vanghé",
+    "space.g4_title": "Латунный логотип Vanghè",
     "space.g4_desc": "Теплые латунные акценты и арт-зеркала",
     "space.g5_tag": "05 · Candlelit Mood",
     "space.g5_title": "Бутылки-подсвечники и цветы",
@@ -718,7 +718,7 @@ export const translations = {
     "script.feedback": "고객들의 진솔한 이야기",
     "script.reservation": "정성 가득한 VIP 환대",
     "hero.live_badge": "매일 저녁 영업: 17:00 — 23:30 · 65 Trinh Phong, 나트랑",
-    "hero.eyebrow": "Vanghé · The Wine Corner · 나트랑",
+    "hero.eyebrow": "Vanghè · The Wine Corner · 나트랑",
     "hero.title_white": "와인 잔이 부딪히며",
     "hero.title_gold": "시작되는 특별한 밤",
     "hero.tagline":
@@ -944,7 +944,7 @@ export const translations = {
     "script.feedback": "宾客温情心声",
     "script.reservation": "悉心备至的专属款待",
     "hero.live_badge": "每晚营业: 17:00 — 23:30 · 芽庄郑峰路65号",
-    "hero.eyebrow": "Vanghé · The Wine Corner · 越南芽庄",
+    "hero.eyebrow": "Vanghè · The Wine Corner · 越南芽庄",
     "hero.title_white": "杯酒微醺",
     "hero.title_gold": "开启浪漫夜晚",
     "hero.tagline":

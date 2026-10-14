@@ -3,12 +3,12 @@ export const siteConfig = {
   shortName: "Vang Hè",
   slogan: "Nơi Bàn Tiệc Mở Lời Cho Cuộc Vui",
   description:
-    "Vanghé — The Wine Corner: Góc rượu vang ấm cúng giữa lòng Nha Trang và hệ thống tuyển chọn rượu vang nhập khẩu cao cấp. Nơi bàn tiệc tablescape nghệ thuật gặp gỡ những giọt vang tinh hoa, kết nối câu chuyện và cảm xúc.",
+    "Vanghè — The Wine Corner: Góc rượu vang ấm cúng giữa lòng Nha Trang và hệ thống tuyển chọn rượu vang nhập khẩu cao cấp. Nơi bàn tiệc tablescape nghệ thuật gặp gỡ những giọt vang tinh hoa, kết nối câu chuyện và cảm xúc.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://ruouvanghe.vn",
   ogImage: "https://ruouvanghe.vn/opengraph-image",
   keywords: [
     "vang hè",
-    "vanghé the wine corner",
+    "vanghè the wine corner",
     "rượu vang hè nha trang",
     "quán rượu vang nha trang",
     "tablescape tiệc rượu vang",
@@ -24,8 +24,8 @@ export const siteConfig = {
     name: "Vang Hè · The Wine Corner",
     url: "https://ruouvanghe.vn",
   },
-  creator: "Vanghé Sommelier & Hospitality Team",
-  publisher: "Vanghé — The Wine Corner",
+  creator: "Vanghè Sommelier & Hospitality Team",
+  publisher: "Vanghè — The Wine Corner",
   contact: {
     hotline: "0866.817.884",
     hotlineDisplay: "0866 817 884",
@@ -41,8 +41,11 @@ export const siteConfig = {
     tiktok: "https://www.tiktok.com/@vanghe.thewinecorner?_r=1&_t=ZS-9APUdFujXdO",
     menuUrl: "https://drive.google.com/drive/mobile/folders/1OSyZy0XzsEAoZuMRYNFzVkOgqW_nIOYk",
   },
+  // URL Web App của Apps Script (apps-script/dat-ban.gs) — dạng https://script.google.com/macros/s/.../exec
+  bookingScriptUrl:
+    "https://script.google.com/macros/s/AKfycbyYqEdeOHGAJ4b2dUFgFu7J9mg0o--Mydv2NTj9UCehDZzBxQLX8Ol5cacmtqCziMZF/exec",
   primaryLocation: {
-    name: "Vanghé — The Wine Corner",
+    name: "Vanghè — The Wine Corner",
     address: "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang, Khánh Hòa",
     phone: "0866 817 884",
     hours: "17:00 — 23:30 (Mở cửa tất cả các ngày trong tuần)",
@@ -53,7 +56,7 @@ export const siteConfig = {
   },
   locations: [
     {
-      name: "Vanghé — The Wine Corner (Nha Trang)",
+      name: "Vanghè — The Wine Corner (Nha Trang)",
       address: "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang, Khánh Hòa",
       phone: "0866 817 884",
       hours: "17:00 — 23:30 (Mở cửa hàng ngày)",

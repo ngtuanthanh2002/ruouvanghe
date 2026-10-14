@@ -1,0 +1,188 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(20, 10, 8, 0.72);
+  backdrop-filter: blur(6px);
+  animation: overlayIn 0.3s ease both;
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  color: var(--cream);
+  background: var(--espresso-2);
+  border: 1px solid var(--line-dark);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  animation: panelIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.closing {
+  animation: overlayOut 0.28s ease 0.05s both;
+}
+
+.closing .panel {
+  animation: panelOut 0.25s ease-in both;
+}
+
+.panel h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.panel p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.panel strong {
+  color: var(--cream);
+}
+
+.summary {
+  margin-top: 0.75rem;
+  font-size: 0.85rem !important;
+  color: var(--amber-light) !important;
+  letter-spacing: 0.02em;
+}
+
+.x {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--muted-light);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.x:hover {
+  color: var(--cream);
+}
+
+/* Icon: vẽ vòng tròn rồi vẽ dấu */
+.icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success .icon {
+  stroke: var(--amber);
+}
+
+.error .icon {
+  stroke: var(--terra-light);
+  animation: shake 0.45s ease 0.75s both;
+}
+
+.ring {
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: draw 0.6s ease-out 0.15s forwards;
+}
+
+.mark {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.35s ease-out 0.65s forwards;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.primary,
+.secondary {
+  padding: 0.7rem 1.6rem;
+  font: inherit;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.primary {
+  color: var(--cream);
+  background: var(--wine);
+  border: 1px solid var(--wine);
+}
+
+.primary:hover {
+  background: var(--wine-dark);
+}
+
+.secondary {
+  color: var(--cream);
+  background: none;
+  border: 1px solid var(--line-dark);
+}
+
+.secondary:hover {
+  border-color: var(--amber);
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+}
+
+@keyframes overlayOut {
+  to { opacity: 0; }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+}
+
+@keyframes panelOut {
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes shake {
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .panel,
+  .icon,
+  .ring,
+  .mark {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+}
