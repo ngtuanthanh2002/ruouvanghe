@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./BlogPostForm.module.css";
 import RichTextEditor from "./RichTextEditor";
-import { createBlogPost } from "@/app/actions/blog";
+import { createBlogPost, updateBlogPost } from "@/app/actions/blog";
+import type { AdminPost } from "@/lib/blog-admin";
 import { uploadBlogImage } from "@/lib/upload-image";
 
 function today() {
@@ -13,21 +14,21 @@ function today() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-export default function BlogPostForm() {
+/** Không truyền `post` → đăng bài mới; có `post` → sửa bài đó */
+export default function BlogPostForm({ post }: { post?: AdminPost }) {
   const router = useRouter();
-  const [title, setTitle] = useState("");
-  const [excerpt, setExcerpt] = useState("");
-  const [coverUrl, setCoverUrl] = useState("");
-  const [contentHtml, setContentHtml] = useState("");
-  const [eventDate, setEventDate] = useState(today);
-  const [eventTime, setEventTime] = useState("");
-  const [location, setLocation] = useState("");
-  const [category, setCategory] = useState("");
-  const [published, setPublished] = useState(true);
+  const [title, setTitle] = useState(post?.title ?? "");
+  const [excerpt, setExcerpt] = useState(post?.excerpt ?? "");
+  const [coverUrl, setCoverUrl] = useState(post?.cover_url ?? "");
+  const [contentHtml, setContentHtml] = useState(post?.content ?? "");
+  const [eventDate, setEventDate] = useState(post?.event_date ?? today);
+  const [eventTime, setEventTime] = useState(post?.event_time ?? "");
+  const [location, setLocation] = useState(post?.location ?? "");
+  const [category, setCategory] = useState(post?.category ?? "");
+  const [published, setPublished] = useState(post?.published ?? true);
 
   const [coverUploading, setCoverUploading] = useState(false);
   const [error, setError] = useState("");
-  const [savedDraftSlug, setSavedDraftSlug] = useState("");
   const [saving, startSaving] = useTransition();
   const coverInput = useRef<HTMLInputElement>(null);
 
@@ -52,41 +53,16 @@ export default function BlogPostForm() {
     if (!contentHtml) return setError("Nội dung bài viết đang trống");
 
     startSaving(async () => {
-      const result = await createBlogPost({
-        title,
-        excerpt,
-        coverUrl,
-        contentHtml,
-        eventDate,
-        eventTime,
-        location,
-        category,
-        published,
-      });
+      const input = { title, excerpt, coverUrl, contentHtml, eventDate, eventTime, location, category, published };
+      const result = post ? await updateBlogPost(post.id, input) : await createBlogPost(input);
       if (!result.ok) {
         setError(result.error);
-      } else if (published) {
-        router.push(`/blog/${result.slug}`);
       } else {
-        setSavedDraftSlug(result.slug);
+        // Bài hiện → xem bài; bài ẩn → về danh sách quản lý
+        router.push(published ? `/blog/${result.slug}` : "/admin/bai-viet");
       }
     });
   };
-
-  if (savedDraftSlug) {
-    return (
-      <div className={styles.done}>
-        <h2>Đã lưu bài (đang ẩn)</h2>
-        <p>
-          Bài <strong>{savedDraftSlug}</strong> đã lưu trên Supabase nhưng chưa hiển thị. Bật cột{" "}
-          <code>published</code> trong Supabase để đăng.
-        </p>
-        <button type="button" className={styles.submit} onClick={() => window.location.reload()}>
-          Viết bài khác
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form className={styles.form} onSubmit={submit}>
@@ -102,7 +78,7 @@ export default function BlogPostForm() {
           minLength={3}
           maxLength={200}
         />
-        <RichTextEditor onChange={setContentHtml} />
+        <RichTextEditor initialHtml={post?.content ?? ""} onChange={setContentHtml} />
       </div>
 
       {/* Cột phụ: ảnh bìa, mô tả, thông tin sự kiện, nút đăng */}
@@ -174,11 +150,11 @@ export default function BlogPostForm() {
         )}
 
         <div className={styles.actions}>
-          <Link href="/blog" className={styles.cancel}>
+          <Link href={post ? "/admin/bai-viet" : "/blog"} className={styles.cancel}>
             Huỷ
           </Link>
           <button type="submit" className={styles.submit} disabled={saving || coverUploading}>
-            {saving ? "Đang đăng…" : published ? "Đăng bài" : "Lưu bài (ẩn)"}
+            {saving ? "Đang lưu…" : post ? "Lưu thay đổi" : published ? "Đăng bài" : "Lưu bài (ẩn)"}
           </button>
         </div>
       </aside>

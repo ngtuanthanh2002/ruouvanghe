@@ -67,6 +67,9 @@ export default function UserMenu({ buttonClassName, activeClassName }: { buttonC
           <Link href="/admin/dang-bai" className={styles.item} role="menuitem" onClick={() => setMenuOpen(false)}>
             ✎ Đăng bài mới
           </Link>
+          <Link href="/admin/bai-viet" className={styles.item} role="menuitem" onClick={() => setMenuOpen(false)}>
+            ☰ Quản lý bài viết
+          </Link>
           <button
             type="button"
             className={styles.item}

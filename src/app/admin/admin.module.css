@@ -1,0 +1,67 @@
+/* Khung chung các trang quản trị */
+
+.page {
+  background: var(--espresso);
+  color: var(--cream);
+  padding: calc(var(--header-height) + 1.25rem) 0 3rem;
+  min-height: 70vh;
+}
+
+.inner {
+  max-width: 1100px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.tab {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--amber-light);
+}
+
+.tabActive {
+  color: var(--amber-light);
+  background: rgba(217, 154, 69, 0.12);
+  border-color: var(--border-gold);
+}
+
+.viewBlog {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted-light);
+  text-decoration: none;
+}
+
+.viewBlog:hover {
+  color: var(--amber-light);
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+}
+
+.note {
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+}

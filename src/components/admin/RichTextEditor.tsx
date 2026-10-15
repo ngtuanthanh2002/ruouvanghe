@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { EditorContent, useEditor, useEditorState, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import { Placeholder } from "@tiptap/extensions";
 import styles from "./RichTextEditor.module.css";
+import Dialog from "../ui/Dialog";
 import { uploadBlogImage } from "@/lib/upload-image";
 
 interface RichTextEditorProps {
@@ -91,13 +92,25 @@ function Toolbar({ editor }: { editor: Editor }) {
     }),
   });
 
-  const setLink = () => {
-    const prev = editor.getAttributes("link").href as string | undefined;
-    const url = window.prompt("Nhập đường link (để trống để bỏ link):", prev ?? "https://");
-    if (url === null) return;
+  // Modal nhập link: null = đóng, chuỗi = link hiện tại để sửa
+  const [linkDraft, setLinkDraft] = useState<string | null>(null);
+  const closeLink = useCallback(() => {
+    setLinkDraft(null);
+    editor.commands.focus();
+  }, [editor]);
+
+  const applyLink = (value: string) => {
+    setLinkDraft(null);
+    const url = value.trim();
     const chain = editor.chain().focus().extendMarkRange("link");
-    if (url.trim() === "" || url.trim() === "https://") chain.unsetLink().run();
-    else chain.setLink({ href: url.trim() }).run();
+    if (url === "" || url === "https://") {
+      chain.unsetLink().run();
+    } else if (editor.state.selection.empty && !editor.isActive("link")) {
+      // Chưa bôi đen chữ nào → chèn chính đường link làm chữ
+      chain.insertContent({ type: "text", text: url, marks: [{ type: "link", attrs: { href: url } }] }).run();
+    } else {
+      chain.setLink({ href: url }).run();
+    }
   };
 
   const insertImages = async (files: FileList | null) => {
@@ -129,7 +142,7 @@ function Toolbar({ editor }: { editor: Editor }) {
         <Btn title="In nghiêng (Ctrl+I)" active={s.italic} onClick={() => run().toggleItalic().run()}><i>I</i></Btn>
         <Btn title="Gạch chân (Ctrl+U)" active={s.underline} onClick={() => run().toggleUnderline().run()}><u>U</u></Btn>
         <Btn title="Gạch ngang" active={s.strike} onClick={() => run().toggleStrike().run()}><s>S</s></Btn>
-        <Btn title="Chèn / sửa link" active={s.link} onClick={setLink}>🔗</Btn>
+        <Btn title="Chèn / sửa link" active={s.link} onClick={() => setLinkDraft((editor.getAttributes("link").href as string) ?? "https://")}>🔗</Btn>
         <span className={styles.sep} />
         <Btn title="Danh sách chấm" active={s.bullet} onClick={() => run().toggleBulletList().run()}>• ≡</Btn>
         <Btn title="Danh sách số" active={s.ordered} onClick={() => run().toggleOrderedList().run()}>1. ≡</Btn>
@@ -156,6 +169,16 @@ function Toolbar({ editor }: { editor: Editor }) {
           {error}
         </p>
       )}
+
+      <Dialog
+        open={linkDraft !== null}
+        title="Chèn link"
+        message="Để trống rồi bấm Lưu để bỏ link."
+        input={{ defaultValue: linkDraft ?? "", placeholder: "https://…", type: "url" }}
+        confirmLabel="Lưu"
+        onConfirm={applyLink}
+        onClose={closeLink}
+      />
     </div>
   );
 }

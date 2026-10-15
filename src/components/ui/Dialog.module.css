@@ -1,0 +1,128 @@
+/* Cùng tông với modal đăng nhập / popup đặt bàn */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(20, 10, 8, 0.72);
+  backdrop-filter: blur(6px);
+  animation: overlayIn 0.2s ease both;
+}
+
+.panel {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  color: var(--cream);
+  background: var(--espresso-2);
+  border: 1px solid var(--line-dark);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  animation: panelIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.panel h3 {
+  margin-bottom: 0.5rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
+
+.message {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.message strong {
+  color: var(--cream);
+}
+
+.input {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.cancel,
+.confirm {
+  padding: 0.55rem 1.2rem;
+  font: inherit;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.cancel {
+  color: var(--cream);
+  background: none;
+  border: 1px solid var(--line-dark);
+}
+
+.cancel:hover:not(:disabled) {
+  border-color: var(--amber);
+}
+
+.confirm {
+  color: var(--cream);
+  background: var(--wine);
+  border: 1px solid var(--wine);
+}
+
+.confirm:hover:not(:disabled) {
+  background: var(--wine-dark);
+}
+
+.danger {
+  background: #9b2c22;
+  border-color: #9b2c22;
+}
+
+.danger:hover:not(:disabled) {
+  background: #7d2119;
+}
+
+.cancel:disabled,
+.confirm:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .panel {
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -190,23 +190,6 @@
   border-color: var(--amber);
 }
 
-.done {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.done h2 {
-  margin-bottom: 0.6rem;
-  font-size: 1.3rem;
-}
-
-.done p {
-  margin-bottom: 1.25rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
 /* Màn hình hẹp: xếp 1 cột, tuỳ chọn xuống dưới */
 @media (max-width: 860px) {
   .form {

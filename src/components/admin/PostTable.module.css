@@ -1,0 +1,186 @@
+.list {
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px 110px 170px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--line-dark);
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.head {
+  border-top: 0;
+  background: var(--espresso-2);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+
+.pending {
+  opacity: 0.5;
+}
+
+.right {
+  justify-self: end;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 64px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--espresso-2);
+}
+
+.postText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.postTitle {
+  overflow: hidden;
+  color: var(--cream);
+  font-weight: 500;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.postTitle:hover {
+  color: var(--amber-light);
+}
+
+.slug {
+  overflow: hidden;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.error {
+  font-size: 0.75rem;
+  color: var(--terra-light);
+}
+
+.date {
+  color: var(--text-secondary);
+}
+
+.status {
+  padding: 0.25rem 0.6rem;
+  font: inherit;
+  font-size: 0.75rem;
+  background: none;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.on {
+  color: #8fd18f;
+  border-color: rgba(111, 191, 115, 0.45);
+}
+
+.off {
+  color: var(--muted-light);
+}
+
+.status:hover:not(:disabled) {
+  border-color: var(--amber);
+}
+
+.actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.btn {
+  padding: 0.3rem 0.7rem;
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--cream);
+  text-decoration: none;
+  background: none;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  color: var(--amber-light);
+  border-color: var(--amber);
+}
+
+.danger:hover:not(:disabled) {
+  color: var(--terra-light);
+  border-color: var(--terra-light);
+}
+
+.empty {
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+}
+
+.empty a {
+  color: var(--amber-light);
+}
+
+/* Điện thoại: mỗi bài một khối, ẩn hàng tiêu đề cột */
+@media (max-width: 720px) {
+  .head {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "post post"
+      "date status"
+      "actions actions";
+  }
+
+  .post {
+    grid-area: post;
+  }
+
+  .date {
+    grid-area: date;
+  }
+
+  .row > span:nth-of-type(2) {
+    grid-area: status;
+    justify-self: end;
+  }
+
+  .actions {
+    grid-area: actions;
+    justify-self: stretch;
+  }
+
+  .actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+}
