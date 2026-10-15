@@ -8,18 +8,20 @@
  *    - Loại: Ứng dụng web (Web app)
  *    - Thực thi với tư cách (Execute as): Tôi (Me)
  *    - Người có quyền truy cập (Who has access): Bất kỳ ai (Anyone)
- * 4. Cấp quyền khi được hỏi, rồi copy "URL ứng dụng web" (…/exec)
- *    và dán vào `bookingScriptUrl` trong src/lib/site-config.ts.
+ * 4. Copy "URL ứng dụng web" (…/exec) và dán vào `bookingScriptUrl`
+ *    trong src/lib/site-config.ts.
  *
- * 5. Email thông báo: chọn hàm `testEmail` → Chạy (Run) → cấp quyền
- *    "Gửi email thay mặt bạn". Kiểm tra hộp thư (cả mục Spam).
+ * 5. CẤP QUYỀN: chọn hàm `authorize` → Chạy (Run) → Cho phép truy cập
+ *    Google Sheet + gửi Gmail. Nếu bỏ bước này website sẽ báo lỗi
+ *    "You do not have permission to call SpreadsheetApp.openById".
+ *    Sau đó chạy `testEmail` để thử email (kiểm tra cả mục Spam).
  *    Gmail miễn phí cho phép gửi ~100 email/ngày qua Apps Script.
  *
  * Khi sửa code: Deploy → Quản lý triển khai → chỉnh sửa (bút chì)
  * → Phiên bản: "Phiên bản mới" → Triển khai. URL giữ nguyên.
  */
 
-const SPREADSHEET_ID = "1tH8Z2p89aKrJkCytzN7Tw8r9hqGDGRySY6qwVCVY7Dw";
+const SPREADSHEET_ID = "1lsNeex6sNwHvcRihz97vCOjnLl0COKX3xjrr09q1kJA";
 const SHEET_NAME = "Đặt bàn";
 const TIMEZONE = "Asia/Ho_Chi_Minh";
 
@@ -167,6 +169,14 @@ function escapeHtml_(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+// Chạy hàm này 1 lần trong trình soạn thảo Apps Script (sau mỗi lần dán code mới) để
+// cấp ĐỦ quyền: đọc/ghi Google Sheet + gửi Gmail. Xem kết quả ở "Nhật ký thực thi".
+function authorize() {
+  const sheet = getSheet_();
+  console.log("Sheet OK: " + sheet.getParent().getName() + " / " + sheet.getName());
+  console.log("Gmail OK: còn gửi được " + MailApp.getRemainingDailyQuota() + " email hôm nay");
 }
 
 // Chạy hàm này 1 lần trong trình soạn thảo Apps Script để cấp quyền gửi mail
