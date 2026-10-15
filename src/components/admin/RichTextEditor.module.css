@@ -1,0 +1,143 @@
+.editor {
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.editor:focus-within {
+  border-color: var(--border-gold);
+}
+
+/* Thanh công cụ dính trên cùng khi cuộn bài dài */
+.toolbarWrap {
+  position: sticky;
+  top: calc(var(--header-height) - 4px);
+  z-index: 5;
+  background: var(--espresso-2);
+  border-bottom: 1px solid var(--line-dark);
+  border-radius: 6px 6px 0 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+}
+
+.btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--cream);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(217, 154, 69, 0.12);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.active {
+  color: var(--amber-light);
+  background: rgba(217, 154, 69, 0.16);
+  border-color: var(--border-gold);
+}
+
+.sep {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: var(--line-dark);
+}
+
+.error {
+  padding: 0 12px 8px;
+  font-size: 0.8rem;
+  color: var(--terra-light);
+}
+
+/* Vùng soạn thảo — cùng kiểu chữ với trang chi tiết bài */
+.content {
+  min-height: 420px;
+  padding: 0.9rem 1rem;
+  outline: none;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.content > * + * {
+  margin-top: 0.75rem;
+}
+
+.content h2 {
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: var(--cream);
+}
+
+.content h3 {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: var(--cream);
+}
+
+.content strong {
+  color: var(--cream);
+}
+
+.content a {
+  color: var(--amber-light);
+  text-decoration: underline;
+}
+
+.content ul,
+.content ol {
+  padding-left: 1.4rem;
+}
+
+.content blockquote {
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--amber);
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--cream);
+}
+
+.content hr {
+  width: 80px;
+  margin: 1.75rem auto;
+  border: 0;
+  border-top: 1px solid var(--border-gold);
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.content img:global(.ProseMirror-selectednode) {
+  outline: 3px solid var(--amber);
+}
+
+.content :global(p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--muted);
+  pointer-events: none;
+}

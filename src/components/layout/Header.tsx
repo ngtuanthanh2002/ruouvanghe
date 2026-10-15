@@ -8,6 +8,7 @@ import styles from "./Header.module.css";
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageDropdown from "./LanguageDropdown";
+import UserMenu from "../auth/UserMenu";
 import {
   PhoneIcon,
   ZaloIcon,
@@ -78,6 +79,12 @@ export default function Header() {
               {t("nav.space")}
             </Link>
             <Link
+              href="/blog"
+              className={`${styles.navLink} ${pathname.startsWith("/blog") ? styles.navLinkActive : ""}`}
+            >
+              {t("nav.blog")}
+            </Link>
+            <Link
               href="/#dat-ban"
               className={`${styles.navLink} ${styles.navReserveLink}`}
             >
@@ -89,14 +96,7 @@ export default function Header() {
             {/* Language Switcher Dropdown */}
             <LanguageDropdown variant="header" />
 
-            <a
-              href={`tel:${siteConfig.contact.hotline.replace(/\./g, "")}`}
-              className={styles.phoneBadge}
-              title={`Gọi hotline: ${siteConfig.contact.hotlineDisplay}`}
-            >
-              <PhoneIcon size={14} />
-              <span>{siteConfig.contact.hotlineDisplay}</span>
-            </a>
+            <UserMenu buttonClassName={styles.userButton} activeClassName={styles.userButtonActive} />
 
             <button
               className={styles.mobileToggle}
@@ -143,6 +143,13 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
               >
                 {t("nav.space")}
+              </Link>
+              <Link
+                href="/blog"
+                className={styles.mobileNavLink}
+                onClick={() => setMobileOpen(false)}
+              >
+                {t("nav.blog")}
               </Link>
               <Link
                 href="/#dat-ban"

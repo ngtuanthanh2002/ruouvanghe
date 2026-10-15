@@ -66,6 +66,9 @@ export default function Footer() {
                 <Link href="/#khong-gian">{t("nav.space")}</Link>
               </li>
               <li>
+                <Link href="/blog">{t("nav.blog")}</Link>
+              </li>
+              <li>
                 <Link href="/#dat-ban">{t("nav.reservation")}</Link>
               </li>
             </ul>

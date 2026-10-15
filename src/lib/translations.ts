@@ -5,14 +5,16 @@ export interface LanguageOption {
   label: string;
   nativeLabel: string;
   flag: string;
+  /** Mã rút gọn hiển thị trên nút chọn ngôn ngữ ở header */
+  short: string;
 }
 
 export const LANGUAGES: LanguageOption[] = [
-  { code: "vi", label: "Tiếng Việt", nativeLabel: "Tiếng Việt", flag: "🇻🇳" },
-  { code: "en", label: "English", nativeLabel: "English", flag: "🇬🇧" },
-  { code: "ru", label: "Русский", nativeLabel: "Русский", flag: "🇷🇺" },
-  { code: "ko", label: "한국어", nativeLabel: "한국어", flag: "🇰🇷" },
-  { code: "zh", label: "中文", nativeLabel: "中文", flag: "🇨🇳" },
+  { code: "vi", label: "Tiếng Việt", nativeLabel: "Tiếng Việt", flag: "🇻🇳", short: "VN" },
+  { code: "en", label: "English", nativeLabel: "English", flag: "🇬🇧", short: "EN" },
+  { code: "ru", label: "Русский", nativeLabel: "Русский", flag: "🇷🇺", short: "RU" },
+  { code: "ko", label: "한국어", nativeLabel: "한국어", flag: "🇰🇷", short: "KR" },
+  { code: "zh", label: "中文", nativeLabel: "中文", flag: "🇨🇳", short: "CN" },
 ];
 
 export const translations = {
@@ -31,6 +33,7 @@ export const translations = {
     "nav.location": "Bản Đồ & Vị Trí",
     "nav.handbook": "Cẩm Nang Vang",
     "nav.contact": "Đặt Bàn",
+    "nav.blog": "Blog",
 
     // Hero Section
     "script.hero": "Viên ngọc ẩm thực & rượu vang",
@@ -257,6 +260,7 @@ export const translations = {
     "nav.location": "Map & Location",
     "nav.handbook": "Wine Journal",
     "nav.contact": "Reservation",
+    "nav.blog": "Blog",
 
     // Hero Section
     "script.hero": "A culinary & wine gem",
@@ -483,6 +487,7 @@ export const translations = {
     "nav.location": "Карта и адрес",
     "nav.handbook": "Гид по винам",
     "nav.contact": "Бронь стола",
+    "nav.blog": "Блог",
 
     // Hero Section
     "script.hero": "Винная жемчужина у моря",
@@ -709,6 +714,7 @@ export const translations = {
     "nav.location": "위치 안내",
     "nav.handbook": "와인 가이드",
     "nav.contact": "예약하기",
+    "nav.blog": "블로그",
 
     // Hero Section
     "script.hero": "도심 속 프라이빗 와인바",
@@ -935,6 +941,7 @@ export const translations = {
     "nav.location": "位置导航",
     "nav.handbook": "品酒手册",
     "nav.contact": "立即订座",
+    "nav.blog": "博客",
 
     // Hero Section
     "script.hero": "美食与佳酿的私享之地",

@@ -67,8 +67,11 @@ export default function LanguageDropdown({
         aria-expanded={isOpen}
         aria-label="Chọn ngôn ngữ / Select language"
       >
-        <span className={styles.flagIcon}>{currentLanguage.flag}</span>
-        <span className={styles.langText}>{currentLanguage.nativeLabel}</span>
+        {/* Header chỉ hiện mã rút gọn (VN, EN…); danh sách đầy đủ nằm trong dropdown */}
+        {isMobile && <span className={styles.flagIcon}>{currentLanguage.flag}</span>}
+        <span className={styles.langText}>
+          {isMobile ? currentLanguage.nativeLabel : currentLanguage.short}
+        </span>
         <span
           className={`${styles.caretIcon} ${isOpen ? styles.caretIconOpen : ""}`}
           aria-hidden="true"

@@ -1,0 +1,249 @@
+/* Trang chi tiết sự kiện */
+
+.page {
+  background: var(--espresso);
+  color: var(--cream);
+  padding-bottom: 5rem;
+}
+
+.head {
+  max-width: 760px;
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--amber-light);
+}
+
+.category {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.3;
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted-light);
+}
+
+.meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.coverWrap {
+  max-width: 960px;
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--espresso-2);
+}
+
+.img {
+  object-fit: cover;
+}
+
+.body {
+  max-width: 720px;
+  padding-top: 2.5rem;
+}
+
+.body p {
+  margin-bottom: 1.25rem;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.body .excerpt {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--cream);
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  background: rgba(217, 154, 69, 0.08);
+}
+
+.cta p {
+  margin: 0;
+  color: var(--cream);
+}
+
+.ctaBtn {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.9rem;
+  color: var(--cream);
+  background: var(--wine);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ctaBtn:hover {
+  background: var(--wine-dark);
+}
+
+/* ===== SỰ KIỆN KHÁC ===== */
+.others {
+  max-width: 960px;
+  padding-top: 4rem;
+}
+
+.othersTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.othersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.otherCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.otherImg {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+}
+
+.otherDate {
+  font-size: 0.78rem;
+  color: var(--amber);
+}
+
+.otherName {
+  font-size: 1.02rem;
+  line-height: 1.45;
+  transition: color 0.2s;
+}
+
+.otherCard:hover .otherName {
+  color: var(--amber-light);
+}
+
+@media (max-width: 640px) {
+  .othersGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== NỘI DUNG SOẠN TỪ TRÌNH SOẠN THẢO ===== */
+.rich h2 {
+  margin: 2.25rem 0 1rem;
+  font-size: 1.6rem;
+  line-height: 1.35;
+}
+
+.rich h3 {
+  margin: 1.75rem 0 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.rich strong {
+  color: var(--cream);
+}
+
+.rich a {
+  color: var(--amber-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rich ul,
+.rich ol {
+  margin: 0 0 1.25rem 1.4rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+.rich li {
+  margin-bottom: 0.35rem;
+}
+
+.rich li p {
+  margin-bottom: 0;
+}
+
+.rich blockquote {
+  margin: 1.75rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--amber);
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+.rich blockquote p {
+  font-size: 1.15rem;
+  color: var(--cream);
+}
+
+.rich img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.75rem 0;
+  border-radius: 6px;
+}
+
+.rich hr {
+  margin: 2.25rem auto;
+  width: 80px;
+  border: 0;
+  border-top: 1px solid var(--border-gold);
+}
