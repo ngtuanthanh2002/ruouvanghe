@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -84,6 +84,12 @@ const REVIEWS = [
   { comment: "feedback.c3_comment", name: "feedback.c3_name", role: "feedback.c3_role" },
 ] as const;
 
+// "Hôm nay" theo giờ Việt Nam (quán ở Nha Trang), dạng YYYY-MM-DD.
+// Đọc qua useSyncExternalStore để trang vẫn prerender tĩnh: server trả "", trình duyệt trả ngày thật.
+const todayInVietnam = () =>
+  new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).format(new Date());
+const noSubscribe = () => () => {};
+
 export default function HomePage() {
   const { t, lang } = useLanguage();
   const isVi = lang === "vi";
@@ -105,12 +111,15 @@ export default function HomePage() {
   const EMPTY_FORM = {
     name: "",
     phone: "",
-    date: "",
+    email: "",
+    date: "", // "" = hôm nay (xem bookingDate)
     time: "19:00",
     guests: "2",
     notes: "",
   };
   const [formData, setFormData] = useState(EMPTY_FORM);
+  const today = useSyncExternalStore(noSubscribe, todayInVietnam, () => "");
+  const bookingDate = formData.date || today;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -148,12 +157,12 @@ export default function HomePage() {
       const res = await fetch(siteConfig.bookingScriptUrl, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, date: bookingDate }),
       });
       const result = await res.json();
       if (!result.ok) throw new Error(result.error);
 
-            const date = formData.date ? formData.date.split("-").reverse().join("/") : "";
+      const date = bookingDate.split("-").reverse().join("/");
       setNotice({
         type: "success",
         name: formData.name,
@@ -444,13 +453,27 @@ export default function HomePage() {
                 </label>
               </div>
 
+              <label>
+                {t("res.label_email")}
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  placeholder="email@example.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+              </label>
+
               <div className={styles.formRow3}>
                 <label>
                   {t("res.label_date")}
                   <input
                     type="date"
                     name="date"
-                    value={formData.date}
+                    required
+                    min={today || undefined}
+                    value={bookingDate}
                     onChange={handleInputChange}
                   />
                 </label>

@@ -36,6 +36,7 @@ const HEADERS = [
   "Số khách",
   "Ghi chú",
   "Trạng thái",
+  "Email", // thêm sau — để cuối cho khớp các dòng cũ đã có trong Sheet
 ];
 
 function doPost(e) {
@@ -48,6 +49,17 @@ function doPost(e) {
     if (!name || !phone) {
       return json_({ ok: false, error: "missing name or phone" });
     }
+
+    // Không nhận đặt bàn cho ngày đã qua (so theo giờ Việt Nam; "yyyy-MM-dd" so sánh được như chuỗi)
+    const today = Utilities.formatDate(new Date(), TIMEZONE, "yyyy-MM-dd");
+    if (data.date && String(data.date) < today) {
+      return json_({ ok: false, error: "date in the past" });
+    }
+
+    // Email không bắt buộc; sai định dạng thì bỏ qua
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email || "").trim())
+      ? String(data.email).trim().slice(0, 200)
+      : "";
 
     // "18:00 · 20/10/2026" — khách không chọn ngày thì chỉ ghi giờ
     const bookingTime = [clean_(data.time), formatDate_(data.date)].filter(String).join(" · ");
@@ -62,6 +74,7 @@ function doPost(e) {
       clean_(data.guests),
       clean_(data.notes),
       "Mới",
+      email,
     ]);
 
     // Đơn đã được lưu vào Sheet; lỗi gửi mail (vd. hết hạn mức ngày) không được
@@ -70,6 +83,7 @@ function doPost(e) {
       notify_({
         name: name,
         phone: phone,
+        email: email,
         bookingTime: bookingTime,
         guests: clean_(data.guests),
         notes: clean_(data.notes),
@@ -98,9 +112,12 @@ function getSheet_() {
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold").setBackground("#F5ECE0");
     sheet.setFrozenRows(1);
   }
+  // Sheet tạo từ phiên bản cũ chưa có cột Email → bổ sung tiêu đề cột cuối
+  const lastHeader = sheet.getRange(1, HEADERS.length);
+  if (!lastHeader.getValue()) lastHeader.setValue(HEADERS[HEADERS.length - 1]);
+  sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold").setBackground("#F5ECE0");
   return sheet;
 }
 
@@ -110,6 +127,7 @@ function notify_(b) {
   const rows = [
     ["Họ tên", b.name],
     ["Số điện thoại", b.phone],
+    ["Email", b.email || "(không có)"],
     ["Giờ đặt bàn", b.bookingTime || "(chưa chọn)"],
     ["Số khách", b.guests],
     ["Ghi chú", b.notes],
@@ -135,8 +153,11 @@ function notify_(b) {
         .join("") +
       "</table>" +
       '<p style="margin-top:16px"><a href="' + escapeHtml_(tel) + '">📞 Gọi khách</a>' +
+      (b.email ? ' &nbsp;·&nbsp; <a href="mailto:' + escapeHtml_(b.email) + '">✉️ Email khách</a>' : "") +
       ' &nbsp;·&nbsp; <a href="' + sheetUrl + '">Mở Google Sheet</a></p></div>',
     name: "Vanghè – Đặt bàn",
+    // Bấm "Trả lời" trong Gmail là gửi thẳng cho khách
+    replyTo: b.email || undefined,
   });
 }
 
@@ -154,6 +175,7 @@ function testEmail() {
   notify_({
     name: "Khách thử",
     phone: "0900000000",
+    email: "khach.thu@example.com",
     bookingTime: "19:00 · 20/10/2026",
     guests: "2",
     notes: "Email kiểm tra",
