@@ -43,7 +43,7 @@ export const siteConfig = {
   },
   // URL Web App của Apps Script (apps-script/dat-ban.gs) — dạng https://script.google.com/macros/s/.../exec
   bookingScriptUrl:
-    "https://script.google.com/macros/s/AKfycbyYqEdeOHGAJ4b2dUFgFu7J9mg0o--Mydv2NTj9UCehDZzBxQLX8Ol5cacmtqCziMZF/exec",
+    "https://script.google.com/macros/s/AKfycbzoAyBLaYb5H73btr7QLF4wYpBPGNLY4jq4zfPSwDjU3mNQOy0mEeUwQkpAsRzy8u-_/exec",
   primaryLocation: {
     name: "Vanghè — The Wine Corner",
     address: "65 Trịnh Phong, Phường Tân Lập, TP. Nha Trang, Khánh Hòa",
