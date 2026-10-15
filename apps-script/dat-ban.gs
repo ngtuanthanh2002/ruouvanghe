@@ -25,10 +25,18 @@ const SPREADSHEET_ID = "1lsNeex6sNwHvcRihz97vCOjnLl0COKX3xjrr09q1kJA";
 const SHEET_NAME = "Đặt bàn";
 const TIMEZONE = "Asia/Ho_Chi_Minh";
 
-// Email nhận thông báo mỗi khi có đơn mới. Mặc định là Gmail của chủ script
-// (tài khoản triển khai Web app). Có thể thay bằng "a@gmail.com, b@gmail.com",
-// hoặc đặt "" để tắt thông báo.
-const NOTIFY_EMAIL = Session.getEffectiveUser().getEmail();
+// Email nhận thêm thông báo mỗi khi có đơn mới (ngoài Gmail của chủ script).
+// Thêm bao nhiêu địa chỉ cũng được, mỗi địa chỉ một dòng, trong dấu ngoặc kép, cuối dòng có dấu phẩy.
+// Không cần là Gmail và không cần quyền xem Sheet.
+const EXTRA_NOTIFY_EMAILS = [
+  "nt.desan@gmail.com",
+];
+
+// Danh sách nhận thông báo: Gmail của chủ script (tài khoản triển khai Web app) + các email ở trên.
+// Muốn KHÔNG gửi cho chủ script nữa thì xoá phần "Session.getEffectiveUser().getEmail(),".
+const NOTIFY_EMAIL = [Session.getEffectiveUser().getEmail(), ...EXTRA_NOTIFY_EMAILS]
+  .filter(Boolean)
+  .join(",");
 
 const HEADERS = [
   "Thời gian gửi",
