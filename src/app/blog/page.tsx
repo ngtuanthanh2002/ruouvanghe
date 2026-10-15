@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { getBlogPosts } from "@/lib/blog";
 import NewPostButton from "@/components/admin/NewPostButton";
 
+
 export const metadata: Metadata = {
   title: "Blog & Sự Kiện",
   description:
