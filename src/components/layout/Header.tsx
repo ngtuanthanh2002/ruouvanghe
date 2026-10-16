@@ -37,6 +37,16 @@ export default function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Đã ở trang chủ: Next không scroll lại khi hash không đổi → tự cuộn
+  const scrollToReservation = (e: React.MouseEvent) => {
+    const target = document.getElementById("dat-ban");
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", "/#dat-ban");
+    }
+  };
+
   const isHome = pathname === "/";
   const isSolid = !isHome || scrolled;
 
@@ -87,6 +97,7 @@ export default function Header() {
             <Link
               href="/#dat-ban"
               className={`${styles.navLink} ${styles.navReserveLink}`}
+              onClick={scrollToReservation}
             >
               {t("nav.reservation")}
             </Link>
@@ -154,7 +165,10 @@ export default function Header() {
               <Link
                 href="/#dat-ban"
                 className={styles.mobileNavLink}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  setMobileOpen(false);
+                  scrollToReservation(e);
+                }}
               >
                 {t("nav.reservation")}
               </Link>

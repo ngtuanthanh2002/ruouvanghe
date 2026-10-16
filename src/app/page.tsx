@@ -271,7 +271,19 @@ export default function HomePage() {
           </h1>
           <p className={styles.heroText}>{t("hero.tagline")}</p>
           <div className={styles.heroCtas}>
-            <Link href="/#dat-ban" className={styles.btn}>
+            <Link
+              href="/#dat-ban"
+              className={styles.btn}
+              onClick={(e) => {
+                // Đã ở trang chủ: Next không scroll lại khi hash không đổi → tự cuộn
+                const target = document.getElementById("dat-ban");
+                if (target) {
+                  e.preventDefault();
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.history.replaceState(null, "", "/#dat-ban");
+                }
+              }}
+            >
               {t("hero.cta_reserve")}
             </Link>
             <Link href="/thuc-don" className={styles.btnLight}>
