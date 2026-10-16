@@ -4,7 +4,6 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AgeNotice from "@/components/layout/AgeNotice";
 import JsonLd from "@/components/seo/JsonLd";
 import {
   generateOrganizationSchema,
@@ -138,7 +137,6 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <AgeNotice />
         </LanguageProvider>
       </body>
     </html>
